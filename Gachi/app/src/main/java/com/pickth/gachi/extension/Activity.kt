@@ -2,6 +2,7 @@
 package com.pickth.gachi.extension
 
 import android.app.Activity
+import android.content.Intent
 import android.widget.Toast
 
 /**
@@ -28,4 +29,9 @@ fun Activity.toast(msg: String, length: Int = Toast.LENGTH_SHORT) {
             Toast.makeText(this, msg, length).show()
         }
     }
+}
+
+fun Activity.intent(activity: Class<*>) {
+    val mIntent = Intent(this, activity)
+    startActivity(mIntent)
 }
