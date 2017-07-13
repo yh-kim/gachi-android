@@ -13,6 +13,12 @@ import com.pickth.gachi.extension.toast
 import com.pickth.gachi.view.login.LoginActivity
 import com.pickth.gachi.view.main.MainActivity
 
+/**
+ * Created by yonghoon on 2017-07-09.
+ * Blog   : http://blog.pickth.com
+ * Github : https://github.com/yh-kim
+ * Mail   : yonghoon.kim@pickth.com
+ */
 class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
