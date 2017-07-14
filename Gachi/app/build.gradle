@@ -18,12 +18,22 @@ android {
         debug {
             minifyEnabled false
             useProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles 'proguard-rules.pro'
+            proguardFiles 'proguard-kakao.pro'
+            proguardFiles 'proguard-retrofit2.pro'
+            proguardFiles 'proguard-gson.pro'
+            proguardFiles 'proguard-picasso.pro'
         }
 
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFiles 'proguard-rules.pro'
+            proguardFiles 'proguard-kakao.pro'
+            proguardFiles 'proguard-retrofit2.pro'
+            proguardFiles 'proguard-gson.pro'
+            proguardFiles 'proguard-picasso.pro'
 
             applicationVariants.all { variant ->
                 variant.outputs.each {
@@ -40,6 +50,10 @@ android {
                 }
             }
         }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin' // src/main/kotlin 디렉터리를 소스 디렉터리에 추가합니다.
     }
 }
 
