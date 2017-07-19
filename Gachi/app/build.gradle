@@ -3,14 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion propCompileSdkVersion
+    buildToolsVersion propBuildToolsVersion
     defaultConfig {
         applicationId "com.pickth.gachi"
-        minSdkVersion 19
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion propMinSdkVersion
+        targetSdkVersion propTargetSdkVersion
+        versionCode propVersionCode
+        versionName propVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -63,13 +63,14 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
+    compile 'com.pickth:commons:1.0.1'
 
     // UI
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile "com.android.support:appcompat-v7:$support_libs"
+    compile "com.android.support:recyclerview-v7:$support_libs"
+    compile "com.android.support:design:$support_libs"
+    compile "com.android.support:support-vector-drawable:$support_libs"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
 
     // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"

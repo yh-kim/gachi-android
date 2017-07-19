@@ -6,17 +6,15 @@ import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
+import com.pickth.commons.activities.BaseActivity
+import com.pickth.commons.extensions.intent
+import com.pickth.commons.extensions.toast
 import com.pickth.gachi.R
-import com.pickth.gachi.base.BaseActivity
-import com.pickth.gachi.extension.intent
-import com.pickth.gachi.extension.toast
 import com.pickth.gachi.view.login.LoginActivity
 import com.pickth.gachi.view.main.MainActivity
 
 /**
  * Created by yonghoon on 2017-07-09.
- * Blog   : http://blog.pickth.com
- * Github : https://github.com/yh-kim
  * Mail   : yonghoon.kim@pickth.com
  */
 class SplashActivity : BaseActivity() {

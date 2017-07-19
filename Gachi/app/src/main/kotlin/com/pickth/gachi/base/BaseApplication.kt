@@ -5,8 +5,6 @@ import com.kakao.auth.*
 
 /**
  * Created by yonghoon on 2017-07-11.
- * Blog   : http://blog.pickth.com
- * Github : https://github.com/yh-kim
  * Mail   : yonghoon.kim@pickth.com
  */
 class BaseApplication: Application() {

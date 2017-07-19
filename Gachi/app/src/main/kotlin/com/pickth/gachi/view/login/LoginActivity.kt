@@ -28,10 +28,10 @@ import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
 import com.kakao.util.exception.KakaoException
+import com.pickth.commons.activities.BaseActivity
+import com.pickth.commons.extensions.intent
+import com.pickth.commons.extensions.toast
 import com.pickth.gachi.R
-import com.pickth.gachi.base.BaseActivity
-import com.pickth.gachi.extension.intent
-import com.pickth.gachi.extension.toast
 import com.pickth.gachi.view.main.MainActivity
 import java.util.*
 
@@ -322,7 +322,7 @@ class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor> {
             try {
                 // Simulate network access.
                 Thread.sleep(2000)
-            } catch (e: InterruptedException) {
+            } catch (e: Exception) {
                 return false
             }
 
