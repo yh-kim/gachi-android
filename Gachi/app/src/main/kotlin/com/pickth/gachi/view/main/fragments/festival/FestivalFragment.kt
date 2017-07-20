@@ -31,7 +31,7 @@ class FestivalFragment: Fragment(), FestivalContract.View {
 
     override fun onResume() {
         super.onResume()
-        mPresenter.start()
+//        mPresenter.start()
     }
 
 }

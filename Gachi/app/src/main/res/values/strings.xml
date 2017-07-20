@@ -15,7 +15,8 @@
         completions."
     </string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_festival">Festival</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_alarm">Alarm</string>
+    <string name="title_myinfo">Myinfo</string>
 </resources>

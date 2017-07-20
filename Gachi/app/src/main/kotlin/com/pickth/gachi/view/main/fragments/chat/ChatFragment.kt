@@ -30,6 +30,6 @@ class ChatFragment: Fragment(), ChatContract.View {
 
     override fun onResume() {
         super.onResume()
-        mPresenter.start()
+//        mPresenter.start()
     }
 }
