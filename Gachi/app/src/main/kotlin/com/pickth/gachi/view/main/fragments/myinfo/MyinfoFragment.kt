@@ -14,10 +14,6 @@ import com.pickth.gachi.R
 class MyinfoFragment: Fragment(), MyinfoContract.View {
     private lateinit var mPresenter: MyinfoContract.Presenter
 
-    override fun setPresenter(presenter: MyinfoContract.Presenter) {
-        mPresenter = presenter
-    }
-
     companion object {
         fun newInstance(): MyinfoFragment = MyinfoFragment()
     }

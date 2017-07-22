@@ -25,10 +25,6 @@ class FestivalFragment: Fragment(), FestivalContract.View {
         return root
     }
 
-    override fun setPresenter(presenter: FestivalContract.Presenter) {
-        mPresenter = presenter
-    }
-
     override fun onResume() {
         super.onResume()
 //        mPresenter.start()

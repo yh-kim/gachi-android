@@ -65,10 +65,6 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
 
     }
 
-    override fun setPresenter(presenter: MainContract.Presenter) {
-        mMainPresenter = presenter
-    }
-
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
     }
 

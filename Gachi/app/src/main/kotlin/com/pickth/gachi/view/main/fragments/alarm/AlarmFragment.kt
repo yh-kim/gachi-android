@@ -15,10 +15,6 @@ class AlarmFragment: Fragment(), AlarmContract.View {
 
     private lateinit var mPresenter: AlarmContract.Presenter
 
-    override fun setPresenter(presenter: AlarmContract.Presenter) {
-        mPresenter = presenter
-    }
-
     companion object {
         fun newInstance(): AlarmFragment = AlarmFragment()
     }

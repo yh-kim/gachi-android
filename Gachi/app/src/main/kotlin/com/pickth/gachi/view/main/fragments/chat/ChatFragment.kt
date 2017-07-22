@@ -14,10 +14,6 @@ import com.pickth.gachi.R
 class ChatFragment: Fragment(), ChatContract.View {
     private lateinit var mPresenter: ChatContract.Presenter
 
-    override fun setPresenter(presenter: ChatContract.Presenter) {
-        mPresenter = presenter
-    }
-
     companion object {
         fun newInstance(): ChatFragment = ChatFragment()
     }
