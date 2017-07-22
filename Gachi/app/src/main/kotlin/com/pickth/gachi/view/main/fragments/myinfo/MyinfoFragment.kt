@@ -12,7 +12,7 @@ import com.pickth.gachi.R
  * Mail   : yonghoon.kim@pickth.com
  */
 class MyinfoFragment: Fragment(), MyinfoContract.View {
-    private lateinit var mPresenter: MyinfoContract.Presenter
+    private lateinit var mPresenter: MyinfoPresenter
 
     companion object {
         fun newInstance(): MyinfoFragment = MyinfoFragment()

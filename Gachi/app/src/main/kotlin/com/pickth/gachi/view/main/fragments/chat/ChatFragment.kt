@@ -12,7 +12,7 @@ import com.pickth.gachi.R
  * Mail   : yonghoon.kim@pickth.com
  */
 class ChatFragment: Fragment(), ChatContract.View {
-    private lateinit var mPresenter: ChatContract.Presenter
+    private lateinit var mPresenter: ChatPresenter
 
     companion object {
         fun newInstance(): ChatFragment = ChatFragment()

@@ -13,7 +13,7 @@ import com.pickth.gachi.R
  */
 class FestivalFragment: Fragment(), FestivalContract.View {
 
-    private lateinit var mPresenter: FestivalContract.Presenter
+    private lateinit var mPresenter: FestivalPresenter
 
     companion object {
         fun newInstance(): FestivalFragment = FestivalFragment()
