@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/colorWhite"
+        tools:override="true"
         app:menu="@menu/navigation" />
     <!-- tools:override="true"
     추가시 dimens에 있는 값 실행되므로 텍스트 에니메이션 사라짐

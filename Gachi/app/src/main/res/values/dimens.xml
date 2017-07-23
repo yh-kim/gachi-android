@@ -1,8 +1,8 @@
 <resources>
     <!-- Bottom navigation values -->
-    <!--<dimen name="design_bottom_navigation_margin">20dp</dimen>-->
-    <!--<dimen name="design_bottom_navigation_active_text_size">0sp</dimen>-->
-    <!--<dimen name="design_bottom_navigation_text_size">0sp</dimen>-->
+    <dimen name="design_bottom_navigation_margin">16dp</dimen>
+    <dimen name="design_bottom_navigation_text_size">0sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size">0sp</dimen>
 
 
     <!-- Default screen margins, per the Android Design guidelines. -->
