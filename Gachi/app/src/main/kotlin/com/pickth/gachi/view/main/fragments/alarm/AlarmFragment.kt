@@ -45,6 +45,5 @@ class AlarmFragment: Fragment(), AlarmContract.View {
 
     override fun onResume() {
         super.onResume()
-//        mPresenter.start()
     }
 }

@@ -39,6 +39,5 @@ class GachiFragment: Fragment(), GachiContract.View {
 
     override fun onResume() {
         super.onResume()
-//        mPresenter.start()
     }
 }
