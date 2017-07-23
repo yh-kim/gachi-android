@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.pickth.gachi.view.main.fragments.alarm.AlarmFragment
 import com.pickth.gachi.view.main.fragments.chat.ChatFragment
 import com.pickth.gachi.view.main.fragments.festival.FestivalFragment
+import com.pickth.gachi.view.main.fragments.gachi.GachiFragment
 import com.pickth.gachi.view.main.fragments.myinfo.MyinfoFragment
 
 /**
@@ -15,6 +16,7 @@ import com.pickth.gachi.view.main.fragments.myinfo.MyinfoFragment
 class MainPagerAdapter(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager), MainPagerModel {
 
     private val mFestivalFragment = FestivalFragment.newInstance()
+    private val mGachiFragment = GachiFragment.newInstance()
     private val mChatFragment = ChatFragment.newInstance()
     private val mAlarmFragment = AlarmFragment.newInstance()
     private val mMyinfoFragment = MyinfoFragment.newInstance()
@@ -22,9 +24,10 @@ class MainPagerAdapter(fragmentManager: FragmentManager): FragmentPagerAdapter(f
     private val itemList = ArrayList<Int>()
 
     override fun getItem(position: Int): Fragment = when(position) {
-        1 -> mChatFragment
-        2 -> mAlarmFragment
-        3 -> mMyinfoFragment
+        1 -> mGachiFragment
+        2 -> mChatFragment
+        3 -> mAlarmFragment
+        4 -> mMyinfoFragment
         else -> mFestivalFragment
     }
 

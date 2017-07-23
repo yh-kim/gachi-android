@@ -26,16 +26,20 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
                 mViewPager!!.currentItem = 0
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_chat -> {
+            R.id.navigation_gachi -> {
                 mViewPager!!.currentItem = 1
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_alarm -> {
+            R.id.navigation_chat -> {
                 mViewPager!!.currentItem = 2
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_myinfo -> {
+            R.id.navigation_alarm -> {
                 mViewPager!!.currentItem = 3
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_myinfo -> {
+                mViewPager!!.currentItem = 4
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -55,12 +59,13 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         mViewPager!!.addOnPageChangeListener(this)
         mViewPager!!.currentItem = 0
         prevBottomNavigation = mNavigation.menu.getItem(0)
-        mViewPager!!.offscreenPageLimit = 4
+        mViewPager!!.offscreenPageLimit = 5
 
         mMainPagerAdapter!!.setListItem(0)
         mMainPagerAdapter!!.setListItem(1)
         mMainPagerAdapter!!.setListItem(2)
         mMainPagerAdapter!!.setListItem(3)
+        mMainPagerAdapter!!.setListItem(4)
         mMainPagerAdapter!!.notifyDataSetChanged()
 
     }
