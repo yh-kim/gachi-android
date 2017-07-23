@@ -2,6 +2,7 @@ package com.pickth.gachi.view.main.fragments.chat
 
 import com.pickth.commons.mvp.BasePresenter
 import com.pickth.commons.mvp.BaseView
+import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapterContract
 
 /**
  * Created by yonghoon on 2017-07-20.
@@ -13,6 +14,8 @@ interface ChatContract {
     }
 
     interface Presenter: BasePresenter {
+        fun setChatAdapterView(chatView: ChatAdapterContract.View)
 
+        fun setChatAdapterModel(chatModel: ChatAdapterContract.Model)
     }
 }
