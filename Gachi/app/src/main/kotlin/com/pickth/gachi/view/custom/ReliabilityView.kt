@@ -35,20 +35,15 @@ class ReliabilityView : LinearLayout {
 
     private val mCircleViews = ArrayList<ImageView>()
 
-    constructor(context: Context): super(context) {
-        initializeView()
+    constructor(context: Context): this(context, null, 0) {
     }
 
-    constructor(context: Context, attrs: AttributeSet): super(context, attrs) {
-        initializeView()
+    constructor(context: Context, attrs: AttributeSet): this(context, attrs, 0) {
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int): super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int): super(context, attrs, defStyleAttr) {
         initializeView()
-    }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int): super(context, attrs, defStyleAttr, defStyleRes) {
-        initializeView()
+        getAttrs(attrs, defStyleAttr)
     }
 
     private fun initializeView() {
@@ -69,29 +64,31 @@ class ReliabilityView : LinearLayout {
         notifyDataSetChanged()
     }
 
+    /**
+     * @param size width, height pixel
+     */
+    fun setViewSize(size: Int) {
+        val param = LinearLayout.LayoutParams(size, size)
+        val margin = size/10
+        param.setMargins(margin,0,margin,0)
+        for(i in mCircleViews) {
+            i.layoutParams = param
+        }
+    }
+
     fun notifyDataSetChanged() {
         for(i in 0..mReliability/20-1) mCircleViews[i].isSelected = true
     }
 
-    private fun getAttrs(attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ReliabilityBar, defStyleAttr, defStyleRes)
+    private fun getAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ReliabilityBar, defStyleAttr, 0)
         setTypeArray(typedArray)
     }
 
     private fun setTypeArray(typedArray: TypedArray) {
-//        int bg_resID = typedArray.getResourceId(R.styleable.LoginButton_bg, R.drawable.login_naver_bg);
-//        bg.setBackgroundResource(bg_resID);
-//
-//        int symbol_resID = typedArray.getResourceId(R.styleable.LoginButton_symbol, R.drawable.login_naver_symbol);
-//        symbol.setImageResource(symbol_resID);
-//
-//        int textColor = typedArray.getColor(R.styleable.LoginButton_textColor, 0);
-//        text.setTextColor(textColor);
-//
-//        String text_string = typedArray.getString(R.styleable.LoginButton_text);
-//        text.setText(text_string);
+        val size = typedArray.getInt(R.styleable.ReliabilityBar_size, 60)
+        setViewSize(size)
 
         typedArray.recycle();
-
     }
 }
