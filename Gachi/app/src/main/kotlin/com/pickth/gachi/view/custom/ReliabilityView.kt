@@ -28,10 +28,6 @@ import kotlinx.android.synthetic.main.view_reliability.view.*
 class ReliabilityView : LinearLayout {
 
     private var mReliability = 68
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
 
     private val mCircleViews = ArrayList<ImageView>()
 
@@ -61,6 +57,11 @@ class ReliabilityView : LinearLayout {
             mCircleViews.add(iv_reliability_circle_5)
         }
 
+        notifyDataSetChanged()
+    }
+
+    fun setReliability(reliability: Int) {
+        mReliability = reliability
         notifyDataSetChanged()
     }
 

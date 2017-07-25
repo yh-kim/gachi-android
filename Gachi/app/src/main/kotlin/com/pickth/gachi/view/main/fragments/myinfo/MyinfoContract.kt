@@ -9,10 +9,9 @@ import com.pickth.commons.mvp.BaseView
  */
 interface MyinfoContract {
     interface View: BaseView<Presenter> {
-
+        fun setMyReliability(reliability: Int)
     }
 
     interface Presenter: BasePresenter {
-
     }
 }

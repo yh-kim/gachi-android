@@ -8,6 +8,9 @@ import android.view.View
  * Mail   : yonghoon.kim@pickth.com
  */
 class MyinfoPresenter: MyinfoContract.Presenter {
+    lateinit private var mView: View
+
     override fun attachView(view: View, context: Context) {
+        mView = view
     }
 }

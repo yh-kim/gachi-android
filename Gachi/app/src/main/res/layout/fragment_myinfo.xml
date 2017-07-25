@@ -21,6 +21,7 @@
             android:textSize="15sp" />
 
         <com.pickth.gachi.view.custom.ReliabilityView
+            android:id="@+id/rv_myinfo_reliability"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="6dp"
@@ -35,12 +36,11 @@
         android:layout_marginTop="30dp" />
 
     <TextView
-        android:text="이름"
-        android:textSize="30sp"
         android:id="@+id/tv_myinfo_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:textSize="30sp" />
 
 </LinearLayout>

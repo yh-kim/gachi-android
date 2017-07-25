@@ -18,14 +18,16 @@ import kotlinx.android.synthetic.main.fragment_myinfo.view.*
  * Mail   : yonghoon.kim@pickth.com
  */
 class MyinfoFragment: Fragment(), MyinfoContract.View {
+
     private lateinit var mPresenter: MyinfoPresenter
+    private lateinit var rootView: View
 
     companion object {
         fun newInstance(): MyinfoFragment = MyinfoFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_myinfo, container, false)
+        rootView = inflater!!.inflate(R.layout.fragment_myinfo, container, false)
 
         UserManagement.requestMe(object: MeResponseCallback() {
             override fun onSessionClosed(errorResult: ErrorResult?) {
@@ -45,8 +47,13 @@ class MyinfoFragment: Fragment(), MyinfoContract.View {
 
         })
 
+        setMyReliability(86)
 
-            return rootView
+        return rootView
+    }
+
+    override fun setMyReliability(reliability: Int) {
+        rootView.rv_myinfo_reliability.setReliability(reliability)
     }
 
     override fun onResume() {
