@@ -1,5 +1,6 @@
 package com.pickth.gachi.view.main.fragments.chat.adapter
 
+import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.pickth.gachi.util.OnItemClickListener
@@ -12,7 +13,8 @@ import kotlinx.android.synthetic.main.item_chat.view.*
 class ChatViewHolder(view: View, clickListener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
     fun onBind(item: Chat, position: Int) {
         with(itemView) {
-            text_chat_content.text = item.msg
+            tv_chat_title.text = item.title
+            tv_chat_title.setTypeface(null, Typeface.BOLD)
         }
     }
 }

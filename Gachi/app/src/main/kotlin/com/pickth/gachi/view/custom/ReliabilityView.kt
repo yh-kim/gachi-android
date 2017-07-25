@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.view_reliability.view.*
 
 class ReliabilityView : LinearLayout {
 
-    private var mReliability = 68
+    private var mReliability = 0
 
     private val mCircleViews = ArrayList<ImageView>()
 

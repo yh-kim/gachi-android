@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
+import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapter
 import kotlinx.android.synthetic.main.fragment_chat.view.*
 
@@ -30,6 +31,7 @@ class ChatFragment: Fragment(), ChatContract.View {
         mAdapter = ChatAdapter()
         rootView.recycler_chat.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rootView.recycler_chat.adapter = mAdapter
+        rootView.recycler_chat.addItemDecoration(MyDividerItemDecoration(context))
 
         // presenter
         mPresenter = ChatPresenter()
