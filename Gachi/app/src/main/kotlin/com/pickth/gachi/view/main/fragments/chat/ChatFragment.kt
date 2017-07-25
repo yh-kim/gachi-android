@@ -35,7 +35,7 @@ class ChatFragment: Fragment(), ChatContract.View {
 
         // presenter
         mPresenter = ChatPresenter()
-        mPresenter.attachView(rootView, context)
+        mPresenter.attachView(this)
         mPresenter.setChatAdapterView(mAdapter)
         mPresenter.setChatAdapterModel(mAdapter)
 

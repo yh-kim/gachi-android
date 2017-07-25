@@ -1,7 +1,6 @@
 package com.pickth.gachi.view.main.fragments.alarm
 
-import android.content.Context
-import android.view.View
+import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.view.main.fragments.alarm.adapter.Alarm
 import com.pickth.gachi.view.main.fragments.alarm.adapter.AlarmAdapterContract
@@ -12,12 +11,13 @@ import com.pickth.gachi.view.main.fragments.alarm.adapter.AlarmAdapterContract
  */
 class AlarmPresenter: AlarmContract.Presenter, OnItemClickListener {
 
-    lateinit private var mView: View
+    lateinit private var mView: AlarmContract.View
     lateinit private var mAlarmView: AlarmAdapterContract.View
     lateinit private var mAlarmModel: AlarmAdapterContract.Model
 
-    override fun attachView(view: View, context: Context) {
-        this.mView = view
+
+    override fun attachView(view: BaseView<*>) {
+        this.mView = view as AlarmContract.View
     }
 
     override fun setAlarmAdapterView(alarmView: AlarmAdapterContract.View) {

@@ -49,8 +49,8 @@ class GachiFragment: Fragment(), GachiContract.View {
 
         // presenter
         mPresenter = GachiPresenter()
+        mPresenter.attachView(this)
         with(mPresenter) {
-            attachView(rootView, context)
             setGachiAdapterView(mAdapter)
             setGachiAdapterModel(mAdapter)
         }

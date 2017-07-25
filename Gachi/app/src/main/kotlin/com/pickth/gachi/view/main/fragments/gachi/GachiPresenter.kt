@@ -16,14 +16,13 @@
 
 package com.pickth.gachi.view.main.fragments.gachi
 
-import android.content.Context
-import android.view.View
+import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
 
 class GachiPresenter: GachiContract.Presenter {
 
-    lateinit private var mView: View
+    lateinit private var mView: GachiContract.View
     lateinit private var mGachiView: GachiAdapterContract.View
     lateinit private var mGachiModel: GachiAdapterContract.Model
 
@@ -35,8 +34,8 @@ class GachiPresenter: GachiContract.Presenter {
         mGachiModel = gachiModel
     }
 
-    override fun attachView(view: View, context: Context) {
-        mView = view
+    override fun attachView(view: BaseView<*>) {
+        this.mView = view as GachiContract.View
     }
 
     fun addTest() {

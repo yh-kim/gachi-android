@@ -35,7 +35,7 @@ class AlarmFragment: Fragment(), AlarmContract.View {
 
         // presenter
         mPresenter = AlarmPresenter()
-        mPresenter.attachView(rootView, context)
+        mPresenter.attachView(this)
         mPresenter.setAlarmAdapterView(mAdapter)
         mPresenter.setAlarmAdapterModel(mAdapter)
 

@@ -15,7 +15,7 @@ import com.pickth.gachi.view.custom.MyBottomNavigationView
  */
 class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeListener {
 
-    private lateinit var mMainPresenter: MainContract.Presenter
+    private lateinit var mMainPresenter: MainPresenter
     private var mMainPagerAdapter: MainPagerAdapter? = null
     private var mViewPager: ViewPager? = null
     private lateinit var mNavigation: MyBottomNavigationView
@@ -50,24 +50,32 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        mMainPresenter = MainPresenter()
+        mMainPresenter.attachView(this)
+
         mViewPager = findViewById(R.id.view_pager) as ViewPager
         mNavigation = findViewById(R.id.navigation) as MyBottomNavigationView
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         mMainPagerAdapter = MainPagerAdapter(supportFragmentManager)
-        mViewPager!!.adapter = mMainPagerAdapter
+
+        mViewPager?.run {
+            adapter = mMainPagerAdapter
+            currentItem = 0
+            offscreenPageLimit = 5
+        }
+
         mViewPager!!.addOnPageChangeListener(this)
-        mViewPager!!.currentItem = 0
         prevBottomNavigation = mNavigation.menu.getItem(0)
-        mViewPager!!.offscreenPageLimit = 5
 
-        mMainPagerAdapter!!.setListItem(0)
-        mMainPagerAdapter!!.setListItem(1)
-        mMainPagerAdapter!!.setListItem(2)
-        mMainPagerAdapter!!.setListItem(3)
-        mMainPagerAdapter!!.setListItem(4)
-        mMainPagerAdapter!!.notifyDataSetChanged()
-
+        mMainPagerAdapter?.run {
+            setListItem(0)
+            setListItem(1)
+            setListItem(2)
+            setListItem(3)
+            setListItem(4)
+            notifyDataSetChanged()
+        }
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {

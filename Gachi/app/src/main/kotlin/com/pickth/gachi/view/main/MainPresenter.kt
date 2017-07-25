@@ -1,16 +1,16 @@
 package com.pickth.gachi.view.main
 
-import android.content.Context
-import android.view.View
+import com.pickth.commons.mvp.BaseView
 
 /**
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
-class MainPresenter(mainView: MainContract.View): MainContract.Presenter {
+class MainPresenter(): MainContract.Presenter {
 
-    private var mMainView: MainContract.View = mainView
+    lateinit private var mMainView: MainContract.View
 
-    override fun attachView(view: View, context: Context) {
+    override fun attachView(view: BaseView<*>) {
+        this.mMainView =  view as MainContract.View
     }
 }

@@ -1,7 +1,6 @@
 package com.pickth.gachi.view.main.fragments.chat
 
-import android.content.Context
-import android.view.View
+import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.view.main.fragments.chat.adapter.Chat
 import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapterContract
 
@@ -11,12 +10,12 @@ import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapterContract
  */
 class ChatPresenter: ChatContract.Presenter {
 
-    lateinit private var mView: View
+    lateinit private var mView: ChatContract.View
     lateinit private var mChatView: ChatAdapterContract.View
     lateinit private var mChatModel: ChatAdapterContract.Model
 
-    override fun attachView(view: View, context: Context) {
-        this.mView = view
+    override fun attachView(view: BaseView<*>) {
+        this.mView = view as ChatContract.View
     }
 
     override fun setChatAdapterView(chatView: ChatAdapterContract.View) {

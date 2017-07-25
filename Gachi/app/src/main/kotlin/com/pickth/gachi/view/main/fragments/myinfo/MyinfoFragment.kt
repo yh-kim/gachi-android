@@ -29,6 +29,9 @@ class MyinfoFragment: Fragment(), MyinfoContract.View {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater!!.inflate(R.layout.fragment_myinfo, container, false)
 
+        mPresenter = MyinfoPresenter()
+        mPresenter.attachView(this)
+
         UserManagement.requestMe(object: MeResponseCallback() {
             override fun onSessionClosed(errorResult: ErrorResult?) {
             }
