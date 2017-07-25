@@ -14,20 +14,6 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.gachi
+package com.pickth.gachi.view.main.fragments.gachi.adapter
 
-import com.pickth.commons.mvp.BasePresenter
-import com.pickth.commons.mvp.BaseView
-import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
-
-interface GachiContract {
-    interface View: BaseView<Presenter> {
-
-    }
-
-    interface Presenter: BasePresenter {
-        fun setGachiAdapterView(gachiView: GachiAdapterContract.View)
-
-        fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model)
-    }
-}
+data class Gachi(var title: String, var reliability: Int)

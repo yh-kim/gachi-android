@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.gachi
+package com.pickth.gachi.view.main.fragments.gachi.adapter
 
-import com.pickth.commons.mvp.BasePresenter
-import com.pickth.commons.mvp.BaseView
-import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
+import com.pickth.gachi.util.OnItemClickListener
 
-interface GachiContract {
-    interface View: BaseView<Presenter> {
-
+interface GachiAdapterContract {
+    interface View {
+        fun setItemClickListener(clickListener: OnItemClickListener)
     }
 
-    interface Presenter: BasePresenter {
-        fun setGachiAdapterView(gachiView: GachiAdapterContract.View)
+    interface Model {
+        fun getItem(position: Int): Gachi
 
-        fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model)
+        fun addItem(item: Gachi)
     }
 }

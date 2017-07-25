@@ -56,8 +56,6 @@ class ReliabilityView : LinearLayout {
             mCircleViews.add(iv_reliability_circle_4)
             mCircleViews.add(iv_reliability_circle_5)
         }
-
-        notifyDataSetChanged()
     }
 
     fun setReliability(reliability: Int) {
@@ -77,7 +75,8 @@ class ReliabilityView : LinearLayout {
         }
     }
 
-    fun notifyDataSetChanged() {
+    private fun notifyDataSetChanged() {
+        for(i in mCircleViews) i.isSelected = false
         for(i in 0..mReliability/20-1) mCircleViews[i].isSelected = true
     }
 

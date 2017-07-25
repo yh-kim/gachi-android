@@ -14,20 +14,21 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.gachi
+package com.pickth.gachi.view.main.fragments.gachi.adapter
 
-import com.pickth.commons.mvp.BasePresenter
-import com.pickth.commons.mvp.BaseView
-import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
+import android.graphics.Typeface
+import android.support.v7.widget.RecyclerView
+import android.util.Log
+import android.view.View
+import kotlinx.android.synthetic.main.item_gachi.view.*
 
-interface GachiContract {
-    interface View: BaseView<Presenter> {
+class GachiViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    fun onBind(item: Gachi, position: Int) {
+        with(itemView) {
+            tv_gachi_title.text = item.title
+            tv_gachi_title.setTypeface(null, Typeface.BOLD)
 
-    }
-
-    interface Presenter: BasePresenter {
-        fun setGachiAdapterView(gachiView: GachiAdapterContract.View)
-
-        fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model)
+            rv_gachi_reliability.setReliability(item.reliability)
+        }
     }
 }

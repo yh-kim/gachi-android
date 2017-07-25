@@ -18,8 +18,30 @@ package com.pickth.gachi.view.main.fragments.gachi
 
 import android.content.Context
 import android.view.View
+import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
+import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
 
 class GachiPresenter: GachiContract.Presenter {
+
+    lateinit private var mView: View
+    lateinit private var mGachiView: GachiAdapterContract.View
+    lateinit private var mGachiModel: GachiAdapterContract.Model
+
+    override fun setGachiAdapterView(gachiView: GachiAdapterContract.View) {
+        mGachiView = gachiView
+    }
+
+    override fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model) {
+        mGachiModel = gachiModel
+    }
+
     override fun attachView(view: View, context: Context) {
+        mView = view
+    }
+
+    fun addTest() {
+        for(i in 0..10) {
+            mGachiModel.addItem(Gachi("${i}번째 가치입니다.", i*10))
+        }
     }
 }

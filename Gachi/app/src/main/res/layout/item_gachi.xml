@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="21dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="21dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image_gachi_thumbnail"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="22dp"
+        android:layout_toEndOf="@+id/image_gachi_thumbnail"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_gachi_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="닉네임" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이끄미 신뢰도" />
+
+            <com.pickth.gachi.view.custom.ReliabilityView
+                android:id="@+id/rv_gachi_reliability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                app:size="20" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="오전 9시" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textColor="@color/colorPrimary"-->
+    <!--android:layout_marginTop="3dp"-->
+    <!--android:paddingRight="6dp"-->
+    <!--android:paddingLeft="6dp"-->
+    <!--android:paddingBottom="3dp"-->
+    <!--android:paddingTop="3dp"-->
+    <!--android:background="@drawable/background_text_rectangle"-->
+    <!--android:text="모집중" />-->
+
+    <!--</LinearLayout>-->
+
+</RelativeLayout>
