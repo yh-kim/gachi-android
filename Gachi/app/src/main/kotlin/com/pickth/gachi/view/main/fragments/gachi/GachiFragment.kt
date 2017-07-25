@@ -32,9 +32,9 @@ class GachiFragment: Fragment(), GachiContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater!!.inflate(R.layout.fragment_gachi, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_gachi, container, false)
 
-        return root
+        return rootView
     }
 
     override fun onResume() {

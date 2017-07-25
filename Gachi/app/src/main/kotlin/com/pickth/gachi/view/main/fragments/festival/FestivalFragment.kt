@@ -20,9 +20,9 @@ class FestivalFragment: Fragment(), FestivalContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater!!.inflate(R.layout.fragment_festival, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_festival, container, false)
 
-        return root
+        return rootView
     }
 
     override fun onResume() {
