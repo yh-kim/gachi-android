@@ -2,7 +2,9 @@ package com.pickth.gachi.adapter.pager
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
+import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.view.main.fragments.alarm.AlarmFragment
 import com.pickth.gachi.view.main.fragments.chat.ChatFragment
 import com.pickth.gachi.view.main.fragments.festival.FestivalFragment
@@ -11,10 +13,9 @@ import com.pickth.gachi.view.main.fragments.myinfo.MyinfoFragment
 import com.pickth.gachi.view.main.fragments.search.SearchFragment
 
 /**
- * Created by yonghoon on 2017-07-20.
- * Mail   : yonghoon.kim@pickth.com
+ * Extend FragmentStatePagerAdapter, Because FragmentPagerAdapter is not call getItem at calling notifyDataSetChanged
  */
-class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager), MainPagerModel {
+class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager), MainPagerModel {
 
     private val mFestivalFragment = FestivalFragment.getInstance()
     private val mGachiFragment = GachiFragment.getInstance()
@@ -23,6 +24,8 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentPagerAdapt
     private val mMyinfoFragment = MyinfoFragment.getInstance()
     private val mSearchFragment = SearchFragment.getInstance()
 
+    private var mSwitchFragment: BaseFragment? = null
+
     private val itemList = ArrayList<Int>()
 
     override fun getItem(position: Int): Fragment = when(position) {
@@ -30,7 +33,41 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentPagerAdapt
         2 -> mChatFragment
         3 -> mAlarmFragment
         4 -> mMyinfoFragment
-        else -> mFestivalFragment
+        else -> {
+            if(mSwitchFragment == null) {
+                mSwitchFragment = mFestivalFragment
+            }
+
+            mSwitchFragment!!
+        }
+    }
+
+    /**
+     * If fragment is festival fragment, change to search fragment
+     * If it is upside down, likewise it is the same.
+     */
+    fun changeBetweenFragment() {
+        fragmentManager.beginTransaction().remove(mSwitchFragment).commit()
+
+        if(mSwitchFragment is FestivalFragment) {
+            mSwitchFragment = mSearchFragment
+        } else {
+            mSwitchFragment = mFestivalFragment
+        }
+
+        notifyDataSetChanged()
+    }
+
+    override fun getItemPosition(`object`: Any?): Int {
+        if(`object` is FestivalFragment && mSwitchFragment is SearchFragment) {
+            return PagerAdapter.POSITION_NONE
+        }
+
+        if(`object` is SearchFragment && mSwitchFragment is FestivalFragment) {
+            return PagerAdapter.POSITION_NONE
+        }
+
+        return PagerAdapter.POSITION_UNCHANGED
     }
 
     override fun setListItem(position: Int) {
