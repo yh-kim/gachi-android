@@ -81,14 +81,15 @@ class ReliabilityView : LinearLayout {
     }
 
     private fun getAttrs(attrs: AttributeSet?, defStyleAttr: Int) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ReliabilityBar, defStyleAttr, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ReliabilityView, defStyleAttr, 0)
         setTypeArray(typedArray)
     }
 
     private fun setTypeArray(typedArray: TypedArray) {
-        val size = typedArray.getInt(R.styleable.ReliabilityBar_size, 60)
+        val size = typedArray.getInt(R.styleable.ReliabilityView_size, 60)
         setViewSize(size)
 
+        // give it back to cache
         typedArray.recycle();
     }
 }

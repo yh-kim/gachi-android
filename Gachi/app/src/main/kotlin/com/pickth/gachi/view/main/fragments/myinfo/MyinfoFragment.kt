@@ -1,7 +1,6 @@
 package com.pickth.gachi.view.main.fragments.myinfo
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,9 @@ import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
+import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
+import com.pickth.gachi.view.main.fragments.gachi.GachiFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_myinfo.view.*
 
@@ -17,13 +18,14 @@ import kotlinx.android.synthetic.main.fragment_myinfo.view.*
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class MyinfoFragment: Fragment(), MyinfoContract.View {
+class MyinfoFragment: BaseFragment(), MyinfoContract.View {
 
     private lateinit var mPresenter: MyinfoPresenter
     private lateinit var rootView: View
 
     companion object {
-        fun newInstance(): MyinfoFragment = MyinfoFragment()
+        private val mInstance = MyinfoFragment()
+        fun getInstance(): MyinfoFragment = mInstance
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

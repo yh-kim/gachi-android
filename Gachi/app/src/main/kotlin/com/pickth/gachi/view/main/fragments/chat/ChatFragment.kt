@@ -1,11 +1,11 @@
 package com.pickth.gachi.view.main.fragments.chat
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapter
@@ -15,13 +15,14 @@ import kotlinx.android.synthetic.main.fragment_chat.view.*
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class ChatFragment: Fragment(), ChatContract.View {
+class ChatFragment: BaseFragment(), ChatContract.View {
 
     private lateinit var mPresenter: ChatPresenter
     private lateinit var mAdapter: ChatAdapter
 
     companion object {
-        fun newInstance(): ChatFragment = ChatFragment()
+        private val mInstance = ChatFragment()
+        fun getInstance(): ChatFragment = mInstance
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

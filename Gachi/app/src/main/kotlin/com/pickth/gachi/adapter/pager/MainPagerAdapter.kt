@@ -8,18 +8,20 @@ import com.pickth.gachi.view.main.fragments.chat.ChatFragment
 import com.pickth.gachi.view.main.fragments.festival.FestivalFragment
 import com.pickth.gachi.view.main.fragments.gachi.GachiFragment
 import com.pickth.gachi.view.main.fragments.myinfo.MyinfoFragment
+import com.pickth.gachi.view.main.fragments.search.SearchFragment
 
 /**
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class MainPagerAdapter(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager), MainPagerModel {
+class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager), MainPagerModel {
 
-    private val mFestivalFragment = FestivalFragment.newInstance()
-    private val mGachiFragment = GachiFragment.newInstance()
-    private val mChatFragment = ChatFragment.newInstance()
-    private val mAlarmFragment = AlarmFragment.newInstance()
-    private val mMyinfoFragment = MyinfoFragment.newInstance()
+    private val mFestivalFragment = FestivalFragment.getInstance()
+    private val mGachiFragment = GachiFragment.getInstance()
+    private val mChatFragment = ChatFragment.getInstance()
+    private val mAlarmFragment = AlarmFragment.getInstance()
+    private val mMyinfoFragment = MyinfoFragment.getInstance()
+    private val mSearchFragment = SearchFragment.getInstance()
 
     private val itemList = ArrayList<Int>()
 
