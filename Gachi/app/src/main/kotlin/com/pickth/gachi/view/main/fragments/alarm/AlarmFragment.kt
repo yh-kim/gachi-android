@@ -9,7 +9,7 @@ import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.alarm.adapter.AlarmAdapter
-import kotlinx.android.synthetic.main.fragment_alarm.view.*
+import kotlinx.android.synthetic.main.fragment_main_alarm.view.*
 
 /**
  * Created by yonghoon on 2017-07-20.
@@ -26,7 +26,7 @@ class AlarmFragment: BaseFragment(), AlarmContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_alarm, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_main_alarm, container, false)
 
         // adapter
         mAdapter = AlarmAdapter()

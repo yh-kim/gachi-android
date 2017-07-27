@@ -24,9 +24,8 @@ import android.view.ViewGroup
 import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
-import com.pickth.gachi.view.main.fragments.chat.ChatFragment
 import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapter
-import kotlinx.android.synthetic.main.fragment_gachi.view.*
+import kotlinx.android.synthetic.main.fragment_main_gachi.view.*
 
 class GachiFragment: BaseFragment(), GachiContract.View {
 
@@ -39,7 +38,7 @@ class GachiFragment: BaseFragment(), GachiContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_gachi, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_main_gachi, container, false)
 
         // adapter
         mAdapter = GachiAdapter()

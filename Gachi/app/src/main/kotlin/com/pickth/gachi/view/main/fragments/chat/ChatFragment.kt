@@ -9,7 +9,7 @@ import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapter
-import kotlinx.android.synthetic.main.fragment_chat.view.*
+import kotlinx.android.synthetic.main.fragment_main_chat.view.*
 
 /**
  * Created by yonghoon on 2017-07-20.
@@ -26,7 +26,7 @@ class ChatFragment: BaseFragment(), ChatContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_chat, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_main_chat, container, false)
 
         // adapter
         mAdapter = ChatAdapter()

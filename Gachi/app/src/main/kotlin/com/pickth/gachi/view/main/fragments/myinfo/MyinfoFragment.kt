@@ -10,9 +10,8 @@ import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
 import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
-import com.pickth.gachi.view.main.fragments.gachi.GachiFragment
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_myinfo.view.*
+import kotlinx.android.synthetic.main.fragment_main_myinfo.view.*
 
 /**
  * Created by yonghoon on 2017-07-20.
@@ -29,7 +28,7 @@ class MyinfoFragment: BaseFragment(), MyinfoContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater!!.inflate(R.layout.fragment_myinfo, container, false)
+        rootView = inflater!!.inflate(R.layout.fragment_main_myinfo, container, false)
 
         mPresenter = MyinfoPresenter()
         mPresenter.attachView(this)
