@@ -95,7 +95,10 @@ class AddInfoViewPager : LinearLayout {
         currentIndex++
 
         if(mFragmentManager != null) {
-            mFragmentManager?.beginTransaction()?.replace(mFrameLayout!!.id, mViews[currentIndex])?.commit()
+            mFragmentManager?.beginTransaction()?.run {
+                setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
+                replace(mFrameLayout!!.id, mViews[currentIndex])?.commit()
+            }
         }
 
         updateIndexes()
