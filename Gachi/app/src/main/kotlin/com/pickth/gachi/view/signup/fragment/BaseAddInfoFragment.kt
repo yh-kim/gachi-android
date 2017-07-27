@@ -16,10 +16,10 @@
 
 package com.pickth.gachi.view.signup.fragment
 
-import com.pickth.commons.fragments.BaseFragment
+import android.support.v4.app.Fragment
 import com.pickth.gachi.view.custom.ChangeFragmentListener
 
-abstract class BaseAddInfoFragment : BaseFragment() {
+abstract class BaseAddInfoFragment : Fragment() {
     var mListener: ChangeFragmentListener? = null
 
     fun setChangeFragmentListener(listener: ChangeFragmentListener) {

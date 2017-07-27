@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
-import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.view.main.fragments.alarm.AlarmFragment
 import com.pickth.gachi.view.main.fragments.chat.ChatFragment
 import com.pickth.gachi.view.main.fragments.festival.FestivalFragment
@@ -24,7 +23,7 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePager
     private val mMyinfoFragment = MyinfoFragment.getInstance()
     private val mSearchFragment = SearchFragment.getInstance()
 
-    private var mSwitchFragment: BaseFragment? = null
+    private var mSwitchFragment: Fragment? = null
 
     private val itemList = ArrayList<Int>()
 

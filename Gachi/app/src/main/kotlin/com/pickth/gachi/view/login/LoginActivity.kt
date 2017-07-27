@@ -16,6 +16,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
 import android.view.View.OnClickListener
@@ -28,7 +29,6 @@ import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
 import com.kakao.util.exception.KakaoException
-import com.pickth.commons.activities.BaseActivity
 import com.pickth.commons.extensions.intent
 import com.pickth.commons.extensions.toast
 import com.pickth.gachi.R
@@ -39,7 +39,7 @@ import java.util.*
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
-class LoginActivity : BaseActivity(), LoaderCallbacks<Cursor> {
+class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */

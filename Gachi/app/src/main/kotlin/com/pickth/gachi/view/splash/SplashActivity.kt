@@ -2,11 +2,11 @@ package com.pickth.gachi.view.splash
 
 import android.os.Bundle
 import android.os.Handler
+import android.support.v7.app.AppCompatActivity
 import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
-import com.pickth.commons.activities.BaseActivity
 import com.pickth.commons.extensions.intent
 import com.pickth.commons.extensions.toast
 import com.pickth.gachi.R
@@ -17,7 +17,7 @@ import com.pickth.gachi.view.main.MainActivity
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
-class SplashActivity : BaseActivity() {
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

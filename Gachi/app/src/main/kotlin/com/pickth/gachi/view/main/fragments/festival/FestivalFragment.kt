@@ -1,17 +1,17 @@
 package com.pickth.gachi.view.main.fragments.festival
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
 
 /**
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class FestivalFragment: BaseFragment(), FestivalContract.View {
+class FestivalFragment: Fragment(), FestivalContract.View {
     private lateinit var mPresenter: FestivalPresenter
 
     companion object {

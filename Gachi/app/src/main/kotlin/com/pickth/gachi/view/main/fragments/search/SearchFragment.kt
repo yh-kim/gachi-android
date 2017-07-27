@@ -17,13 +17,13 @@
 package com.pickth.gachi.view.main.fragments.search
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
 
-class SearchFragment: BaseFragment() {
+class SearchFragment: Fragment() {
 
     companion object {
         private val mInstance = SearchFragment()

@@ -17,17 +17,17 @@
 package com.pickth.gachi.view.main.fragments.gachi
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapter
 import kotlinx.android.synthetic.main.fragment_main_gachi.view.*
 
-class GachiFragment: BaseFragment(), GachiContract.View {
+class GachiFragment: Fragment(), GachiContract.View {
 
     private lateinit var mPresenter: GachiPresenter
     private lateinit var mAdapter: GachiAdapter
