@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         populateAutoComplete()
 
         mPasswordView = findViewById(R.id.password) as EditText
-        mPasswordView!!.setOnEditorActionListener(TextView.OnEditorActionListener { textView, id, keyEvent ->
+        mPasswordView!!.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
             if (id == R.id.login || id == EditorInfo.IME_NULL) {
                 attemptLogin()
                 return@OnEditorActionListener true

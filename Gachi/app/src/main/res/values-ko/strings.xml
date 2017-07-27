@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">가치</string>
+
+    <!-- title -->
+    <string name="title_activity_main">메인</string>
+    <string name="title_festival">페스티벌</string>
+    <string name="title_gachi">가치</string>
+    <string name="title_chat">채팅</string>
+    <string name="title_alarm">알람</string>
+    <string name="title_myinfo">내정보</string>
+    <string name="title_change_fragment">프래그먼트 변경</string>
+</resources>

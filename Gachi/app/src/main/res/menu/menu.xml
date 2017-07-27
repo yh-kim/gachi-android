@@ -3,7 +3,7 @@
     xmlns:gachi="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_change_fragment"
-        android:title="Change fragment"
+        android:title="@string/title_change_fragment"
         gachi:showAsAction="collapseActionView"
         />
 </menu>

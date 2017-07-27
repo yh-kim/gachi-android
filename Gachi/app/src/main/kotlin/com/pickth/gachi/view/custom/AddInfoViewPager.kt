@@ -47,7 +47,7 @@ class AddInfoViewPager : LinearLayout {
         initializeView()
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int): super(context, attrs) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int): super(context, attrs, defStyleAttr) {
         initializeView()
     }
 

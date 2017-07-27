@@ -14,10 +14,13 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- title -->
     <string name="title_activity_main">MainActivity</string>
     <string name="title_festival">Festival</string>
     <string name="title_gachi">Gachi</string>
     <string name="title_chat">Chat</string>
     <string name="title_alarm">Alarm</string>
     <string name="title_myinfo">Myinfo</string>
+    <string name="title_change_fragment">Change fragment</string>
 </resources>
