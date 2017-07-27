@@ -27,7 +27,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.pickth.gachi.R
-import com.pickth.gachi.view.signup.fragment.TestFragment
+import com.pickth.gachi.view.signup.fragment.BaseAddInfoFragment
 import kotlinx.android.synthetic.main.view_pager_add_info.view.*
 
 class AddInfoViewPager : LinearLayout, View.OnTouchListener {
@@ -57,7 +57,7 @@ class AddInfoViewPager : LinearLayout, View.OnTouchListener {
         mFragmentManager = fragmentManager
     }
 
-    fun addItemView(fragment: TestFragment) {
+    fun addItemView(fragment: BaseAddInfoFragment) {
         fragment.setChangeFragmentListener(object: ChangeFragmentListener {
             override fun onChange() {
                 changeNextFragment()
