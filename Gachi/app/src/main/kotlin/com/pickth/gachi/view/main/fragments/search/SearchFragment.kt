@@ -22,8 +22,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.commons.fragments.BaseFragment
 import com.pickth.gachi.R
-import com.pickth.gachi.view.main.fragments.festival.FestivalFragment
-import kotlinx.android.synthetic.main.fragment_main_search.view.*
 
 class SearchFragment: BaseFragment() {
 
@@ -34,10 +32,6 @@ class SearchFragment: BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_main_search, container, false)
-
-        rootView.tv_search_test.setOnClickListener {
-            fragmentManager.beginTransaction().replace(container!!.id, FestivalFragment.getInstance()).commit()
-        }
 
         return rootView
     }

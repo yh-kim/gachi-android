@@ -20,7 +20,7 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_festival, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_main_festival, container, false)
 
         mPresenter = FestivalPresenter()
         mPresenter.attachView(this)
