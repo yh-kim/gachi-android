@@ -3,8 +3,9 @@ package com.pickth.gachi.view.main
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
+import android.support.v7.app.AppCompatActivity
+import android.view.Menu
 import android.view.MenuItem
-import com.pickth.commons.activities.BaseActivity
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerAdapter
 import com.pickth.gachi.view.custom.MyBottomNavigationView
@@ -13,7 +14,7 @@ import com.pickth.gachi.view.custom.MyBottomNavigationView
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
-class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeListener {
+class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageChangeListener {
 
     private lateinit var mMainPresenter: MainPresenter
     private var mMainPagerAdapter: MainPagerAdapter? = null
@@ -89,5 +90,20 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         prevBottomNavigation.isChecked = false
         prevBottomNavigation = mNavigation.menu.getItem(position)
         prevBottomNavigation.isChecked = true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.menu_change_fragment -> {
+                mMainPagerAdapter?.changeBetweenFragment()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

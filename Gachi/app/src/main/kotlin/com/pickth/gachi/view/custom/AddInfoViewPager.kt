@@ -21,8 +21,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -30,7 +28,7 @@ import com.pickth.gachi.R
 import com.pickth.gachi.view.signup.fragment.BaseAddInfoFragment
 import kotlinx.android.synthetic.main.view_pager_add_info.view.*
 
-class AddInfoViewPager : LinearLayout, View.OnTouchListener {
+class AddInfoViewPager : LinearLayout {
     private var mFrameLayout: FrameLayout? = null
     private var mFragmentManager: FragmentManager? = null
     private val mIndexButtons = ArrayList<ImageView>()
@@ -73,9 +71,9 @@ class AddInfoViewPager : LinearLayout, View.OnTouchListener {
 
         mFrameLayout = rootView.fl_view_pager
 
-        var params = LinearLayout.LayoutParams(60, 60)
+        var params = LinearLayout.LayoutParams(40, 40)
         params.topMargin = 30
-        params.bottomMargin = 30
+        params.bottomMargin = 100
 
 
         for(i in 0..ITEM_COUNT-1) {
@@ -109,13 +107,9 @@ class AddInfoViewPager : LinearLayout, View.OnTouchListener {
         }
     }
 
-    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-        return true
-    }
-
     fun notifyDataSetChanged() {
         if(mFragmentManager != null) {
-            mFragmentManager?.beginTransaction()?.add(R.id.fl_view_pager, mViews[currentIndex])?.commit()
+            mFragmentManager?.beginTransaction()?.replace(R.id.fl_view_pager, mViews[currentIndex])?.commit()
         }
 
         updateIndexes()
