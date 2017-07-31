@@ -24,6 +24,7 @@ android {
             proguardFiles 'proguard-retrofit2.pro'
             proguardFiles 'proguard-gson.pro'
             proguardFiles 'proguard-picasso.pro'
+            proguardFiles 'proguard-glide.pro'
         }
 
         release {
@@ -34,6 +35,7 @@ android {
             proguardFiles 'proguard-retrofit2.pro'
             proguardFiles 'proguard-gson.pro'
             proguardFiles 'proguard-picasso.pro'
+            proguardFiles 'proguard-glide.pro'
 
             applicationVariants.all { variant ->
                 variant.outputs.each {
@@ -51,6 +53,9 @@ android {
             }
         }
     }
+    packagingOptions {
+        exclude 'META-INF/commons_release.kotlin_module'
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin' // src/main/kotlin 디렉터리를 소스 디렉터리에 추가합니다.
@@ -65,7 +70,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.pickth:commons:1.0.3'
 
-    // UI
+    // Support
     compile "com.android.support:appcompat-v7:$support_libs"
     compile "com.android.support:recyclerview-v7:$support_libs"
     compile "com.android.support:design:$support_libs"
@@ -75,12 +80,20 @@ dependencies {
     // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    // Anko
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    compile "org.jetbrains.anko:anko-sdk25:$anko_version"
+
     // Retrofit
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 
     // Picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Glide
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
 
     // kakao login
     compile group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION

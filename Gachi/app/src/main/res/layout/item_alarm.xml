@@ -12,7 +12,7 @@
         android:id="@+id/image_alarm_thumbnail"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:background="@color/colorPrimary" />
+        android:src="@drawable/test" />
 
     <LinearLayout
         android:layout_width="wrap_content"

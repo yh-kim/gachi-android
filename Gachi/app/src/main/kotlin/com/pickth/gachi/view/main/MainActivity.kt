@@ -9,6 +9,7 @@ import android.view.MenuItem
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerAdapter
 import com.pickth.gachi.view.custom.MyBottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by yonghoon on 2017-07-09.
@@ -54,8 +55,8 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
         mMainPresenter = MainPresenter()
         mMainPresenter.attachView(this)
 
-        mViewPager = findViewById(R.id.view_pager) as ViewPager
-        mNavigation = findViewById(R.id.navigation) as MyBottomNavigationView
+        mViewPager = view_pager
+        mNavigation = navigation
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         mMainPagerAdapter = MainPagerAdapter(supportFragmentManager)

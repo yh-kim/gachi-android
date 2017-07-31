@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ReliabilityBar">
+    <!-- ReliabilityView Custom Styling -->
+    <declare-styleable name="ReliabilityView">
         <attr name="size" format="reference|integer" />
     </declare-styleable>
 </resources>

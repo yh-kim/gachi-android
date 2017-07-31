@@ -21,7 +21,10 @@ import android.text.TextUtils
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.inputmethod.EditorInfo
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.EditText
+import android.widget.TextView
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
 import com.kakao.network.ErrorResult
@@ -33,6 +36,7 @@ import com.pickth.commons.extensions.intent
 import com.pickth.commons.extensions.toast
 import com.pickth.gachi.R
 import com.pickth.gachi.view.main.MainActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
 
 /**
@@ -67,10 +71,10 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         // Set up the login form.
-        mEmailView = findViewById(R.id.email) as AutoCompleteTextView
+        mEmailView = email
         populateAutoComplete()
 
-        mPasswordView = findViewById(R.id.password) as EditText
+        mPasswordView = password
         mPasswordView!!.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
             if (id == R.id.login || id == EditorInfo.IME_NULL) {
                 attemptLogin()
@@ -79,7 +83,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             false
         })
 
-        val mEmailSignInButton = findViewById(R.id.email_sign_in_button) as Button
+        val mEmailSignInButton = email_sign_in_button
         mEmailSignInButton.setOnClickListener { attemptLogin() }
 
         mLoginFormView = findViewById(R.id.login_form)
