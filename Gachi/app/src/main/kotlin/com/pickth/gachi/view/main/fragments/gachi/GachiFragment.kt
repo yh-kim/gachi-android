@@ -75,6 +75,7 @@ class GachiFragment: BaseFragment(), GachiContract.View {
     override fun scrollToTop() {
         if(mPresenter.getItemCount() < 1) return
 
-        mRecyclerView.layoutManager.scrollToPosition(0)
+        mRecyclerView.layoutManager.smoothScrollToPosition(mRecyclerView, RecyclerView.State(), 0)
+//        mRecyclerView.layoutManager.scrollToPosition(0)
     }
 }
