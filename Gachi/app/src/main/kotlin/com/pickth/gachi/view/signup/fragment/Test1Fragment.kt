@@ -21,7 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
-import kotlinx.android.synthetic.main.fragment_signup_add_info.view.*
+import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
 
 class Test1Fragment: BaseAddInfoFragment() {
 
@@ -31,9 +31,11 @@ class Test1Fragment: BaseAddInfoFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_signup_add_info, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
-        rootView.tv_add_info_title.text = "page1"
+        rootView.tv_add_info_title.text = "닉네임"
+        rootView.et_add_info_input.hint = "닉네임"
+        rootView.tv_add_info_explanation.text = "필수 입력사항입니다"
 
         rootView.btn_add_info_next.setOnClickListener {
             mListener?.onChange()

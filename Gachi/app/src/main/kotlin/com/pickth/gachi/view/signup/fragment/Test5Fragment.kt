@@ -23,7 +23,7 @@ import android.view.ViewGroup
 import com.pickth.commons.extensions.intent
 import com.pickth.gachi.R
 import com.pickth.gachi.view.main.MainActivity
-import kotlinx.android.synthetic.main.fragment_signup_add_info.view.*
+import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
 
 class Test5Fragment: BaseAddInfoFragment() {
     companion object {
@@ -32,10 +32,11 @@ class Test5Fragment: BaseAddInfoFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_signup_add_info, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
-        rootView.tv_add_info_title.text = "page5"
-        rootView.btn_add_info_next.text = "complete"
+        rootView.tv_add_info_title.text = "장르"
+        rootView.btn_add_info_next.text = resources.getString(R.string.apply)
+
         rootView.btn_add_info_next.setOnClickListener {
             intent(MainActivity::class.java)
             activity.finish()

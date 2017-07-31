@@ -23,4 +23,7 @@
     <string name="title_alarm">Alarm</string>
     <string name="title_myinfo">Myinfo</string>
     <string name="title_change_fragment">Change fragment</string>
+    
+    <string name="next">next</string>
+    <string name="apply">apply</string>
 </resources>
