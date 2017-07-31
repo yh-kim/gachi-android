@@ -23,7 +23,12 @@
 
         <activity
             android:name=".view.main.MainActivity"
-            android:label="@string/title_activity_main" />
+            android:label="@string/title_activity_main" >
+
+        </activity>
+        <activity android:name=".view.signup.AddInfoActivity">
+
+        </activity>
         <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
