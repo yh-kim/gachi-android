@@ -24,6 +24,13 @@
     <string name="title_myinfo">Myinfo</string>
     <string name="title_change_fragment">Change fragment</string>
     
+    <!-- add info -->
+    <string name="title_nickname">nickname</string>
+    <string name="title_age">age</string>
+    <string name="title_gender">gender</string>
+    <string name="title_region">region</string>
+    <string name="title_genre">genre</string>
+
     <string name="next">next</string>
     <string name="apply">apply</string>
 </resources>

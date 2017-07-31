@@ -24,7 +24,10 @@ import com.pickth.gachi.R
 import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
 
 class Test4Fragment: BaseAddInfoFragment() {
+
     companion object {
+        val PAGE_INDEX = 3
+
         private val mInstance = Test4Fragment()
         fun getInstance(): Test4Fragment = mInstance
     }
@@ -32,7 +35,7 @@ class Test4Fragment: BaseAddInfoFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
-        rootView.tv_add_info_title.text = "지역"
+        rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
         rootView.et_add_info_input.hint = "닉네임"
         rootView.tv_add_info_explanation.text = "필수 입력사항입니다"
 

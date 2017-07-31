@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="add_info_title">
+        <item>@string/title_nickname</item>
+        <item>@string/title_age</item>
+        <item>@string/title_gender</item>
+        <item>@string/title_region</item>
+        <item>@string/title_genre</item>
+    </string-array>
+</resources>

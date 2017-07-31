@@ -11,6 +11,13 @@
     <string name="title_myinfo">내정보</string>
     <string name="title_change_fragment">프래그먼트 변경</string>
 
+    <!-- add info-->
+    <string name="title_nickname">닉네임</string>
+    <string name="title_age">나이</string>
+    <string name="title_gender">성별</string>
+    <string name="title_region">지역</string>
+    <string name="title_genre">장르</string>
+
     <string name="next">다음</string>
     <string name="apply">적용</string>
 </resources>

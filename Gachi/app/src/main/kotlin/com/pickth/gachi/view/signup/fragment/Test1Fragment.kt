@@ -26,6 +26,8 @@ import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
 class Test1Fragment: BaseAddInfoFragment() {
 
     companion object {
+        val PAGE_INDEX = 0
+
         private val mInstance = Test1Fragment()
         fun getInstance(): Test1Fragment = mInstance
     }
@@ -33,7 +35,7 @@ class Test1Fragment: BaseAddInfoFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
-        rootView.tv_add_info_title.text = "닉네임"
+        rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
         rootView.et_add_info_input.hint = "닉네임"
         rootView.tv_add_info_explanation.text = "필수 입력사항입니다"
 
