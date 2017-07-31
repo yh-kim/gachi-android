@@ -18,13 +18,20 @@ package com.pickth.gachi.view.main.fragments.gachi.adapter
 
 import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.pickth.gachi.R
 import kotlinx.android.synthetic.main.item_gachi.view.*
 
-class GachiViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class GachiViewHolder(val view: View): RecyclerView.ViewHolder(view) {
     fun onBind(item: Gachi, position: Int) {
         with(itemView) {
+            Glide.with(view)
+                    .load(R.drawable.test)
+                    .apply(RequestOptions().circleCrop())
+                    .into(image_gachi_thumbnail)
+
             tv_gachi_title.text = item.title
             tv_gachi_title.setTypeface(null, Typeface.BOLD)
 
