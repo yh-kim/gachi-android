@@ -26,6 +26,8 @@ class ChatPresenter: ChatContract.Presenter {
         mChatModel = chatModel
     }
 
+    override fun getItemCount(): Int = mChatModel.getItemCount()
+
     fun addTest() {
         for(i in 0..10) {
             mChatModel.addItem(Chat("${i}번째 대화방입니다."))

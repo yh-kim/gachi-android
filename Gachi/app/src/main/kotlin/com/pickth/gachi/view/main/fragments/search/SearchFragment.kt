@@ -17,13 +17,13 @@
 package com.pickth.gachi.view.main.fragments.search
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseFragment
 
-class SearchFragment: Fragment() {
+class SearchFragment: BaseFragment() {
 
     companion object {
         private val mInstance = SearchFragment()
@@ -34,5 +34,8 @@ class SearchFragment: Fragment() {
         val rootView = inflater!!.inflate(R.layout.fragment_main_search, container, false)
 
         return rootView
+    }
+
+    override fun clickAgain() {
     }
 }

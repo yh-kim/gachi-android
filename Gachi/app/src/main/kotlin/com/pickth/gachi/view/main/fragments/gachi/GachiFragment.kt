@@ -17,20 +17,22 @@
 package com.pickth.gachi.view.main.fragments.gachi
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseFragment
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapter
 import kotlinx.android.synthetic.main.fragment_main_gachi.view.*
 
-class GachiFragment: Fragment(), GachiContract.View {
+class GachiFragment: BaseFragment(), GachiContract.View {
 
     private lateinit var mPresenter: GachiPresenter
     private lateinit var mAdapter: GachiAdapter
+    private lateinit var mRecyclerView: RecyclerView
 
     companion object {
         private val mInstance = GachiFragment()
@@ -42,7 +44,7 @@ class GachiFragment: Fragment(), GachiContract.View {
 
         // adapter
         mAdapter = GachiAdapter()
-        with(rootView.recycler_gachi) {
+        mRecyclerView = rootView.recycler_gachi.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = mAdapter
             addItemDecoration(MyDividerItemDecoration(context))
@@ -51,7 +53,7 @@ class GachiFragment: Fragment(), GachiContract.View {
         // presenter
         mPresenter = GachiPresenter()
         mPresenter.attachView(this)
-        with(mPresenter) {
+        mPresenter.run {
             setGachiAdapterView(mAdapter)
             setGachiAdapterModel(mAdapter)
         }
@@ -64,5 +66,15 @@ class GachiFragment: Fragment(), GachiContract.View {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun clickAgain() {
+        scrollToTop()
+    }
+
+    override fun scrollToTop() {
+        if(mPresenter.getItemCount() < 1) return
+
+        mRecyclerView.layoutManager.scrollToPosition(0)
     }
 }

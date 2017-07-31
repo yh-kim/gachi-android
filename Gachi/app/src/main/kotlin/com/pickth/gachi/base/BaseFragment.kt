@@ -14,22 +14,10 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.gachi
+package com.pickth.gachi.base
 
-import com.pickth.commons.mvp.BasePresenter
-import com.pickth.commons.mvp.BaseView
-import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
+import android.support.v4.app.Fragment
 
-interface GachiContract {
-    interface View: BaseView<Presenter> {
-        fun scrollToTop()
-    }
-
-    interface Presenter: BasePresenter {
-        fun setGachiAdapterView(gachiView: GachiAdapterContract.View)
-
-        fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model)
-
-        fun getItemCount(): Int
-    }
+abstract class BaseFragment: Fragment() {
+    abstract fun clickAgain()
 }

@@ -25,19 +25,36 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_festival -> {
-                mViewPager!!.currentItem = 0
+                if(mViewPager?.currentItem == 0) {
+                    mMainPagerAdapter?.getItem(0)?.clickAgain()
+                } else {
+                    mViewPager?.currentItem = 0
+                }
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_gachi -> {
-                mViewPager!!.currentItem = 1
+                if(mViewPager?.currentItem == 1) {
+                    mMainPagerAdapter?.getItem(1)?.clickAgain()
+                } else {
+                    mViewPager?.currentItem = 1
+                }
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_chat -> {
-                mViewPager!!.currentItem = 2
+                if(mViewPager?.currentItem == 2) {
+                    mMainPagerAdapter?.getItem(2)?.clickAgain()
+                } else {
+                    mViewPager?.currentItem = 2
+                }
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_alarm -> {
-                mViewPager!!.currentItem = 3
+                if(mViewPager?.currentItem == 3) {
+                    mMainPagerAdapter?.getItem(3)?.clickAgain()
+                } else {
+                    mViewPager?.currentItem = 3
+                }
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_myinfo -> {

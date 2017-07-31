@@ -1,12 +1,13 @@
 package com.pickth.gachi.view.main.fragments.alarm
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseFragment
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.alarm.adapter.AlarmAdapter
 import kotlinx.android.synthetic.main.fragment_main_alarm.view.*
@@ -15,10 +16,11 @@ import kotlinx.android.synthetic.main.fragment_main_alarm.view.*
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class AlarmFragment: Fragment(), AlarmContract.View {
+class AlarmFragment: BaseFragment(), AlarmContract.View {
 
     private lateinit var mPresenter: AlarmPresenter
     private lateinit var mAdapter: AlarmAdapter
+    private lateinit var mRecyclerView: RecyclerView
 
     companion object {
         private val mInstance = AlarmFragment()
@@ -30,9 +32,11 @@ class AlarmFragment: Fragment(), AlarmContract.View {
 
         // adapter
         mAdapter = AlarmAdapter()
-        rootView.recycler_alarm.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rootView.recycler_alarm.adapter = mAdapter
-        rootView.recycler_alarm.addItemDecoration(MyDividerItemDecoration(context))
+        mRecyclerView = rootView.recycler_alarm.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            adapter = mAdapter
+            addItemDecoration(MyDividerItemDecoration(context))
+        }
 
         // presenter
         mPresenter = AlarmPresenter()
@@ -48,5 +52,15 @@ class AlarmFragment: Fragment(), AlarmContract.View {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun clickAgain() {
+        scrollToTop()
+    }
+
+    override fun scrollToTop() {
+        if(mPresenter.getItemCount() < 1) return
+
+        mRecyclerView.layoutManager.scrollToPosition(0)
     }
 }

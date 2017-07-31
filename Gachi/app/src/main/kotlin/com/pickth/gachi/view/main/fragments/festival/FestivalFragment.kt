@@ -1,17 +1,19 @@
 package com.pickth.gachi.view.main.fragments.festival
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseFragment
+import org.jetbrains.anko.toast
 
 /**
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class FestivalFragment: Fragment(), FestivalContract.View {
+class FestivalFragment: BaseFragment(), FestivalContract.View {
+
     private lateinit var mPresenter: FestivalPresenter
 
     companion object {
@@ -30,6 +32,10 @@ class FestivalFragment: Fragment(), FestivalContract.View {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun clickAgain() {
+        activity.toast("또 눌렀음")
     }
 
 }

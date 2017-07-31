@@ -15,5 +15,7 @@ interface AlarmAdapterContract {
         fun getItem(position: Int): Alarm
 
         fun addItem(item: Alarm)
+
+        fun getItemCount(): Int
     }
 }
