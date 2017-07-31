@@ -23,21 +23,21 @@ import android.view.ViewGroup
 import com.pickth.gachi.R
 import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
 
-class Test2Fragment: BaseAddInfoFragment() {
+class NicknameAddFragment : BaseAddInfoFragment() {
 
     companion object {
-        val PAGE_INDEX = 1
+        val PAGE_INDEX = 0
 
-        private val mInstance = Test2Fragment()
-        fun getInstance(): Test2Fragment = mInstance
+        private val mInstance = NicknameAddFragment()
+        fun getInstance(): NicknameAddFragment = mInstance
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
-        rootView.et_add_info_input.hint = "22"
-        rootView.tv_add_info_explanation.text = "연령대로 표시됩니다"
+        rootView.et_add_info_input.hint = "닉네임"
+        rootView.tv_add_info_explanation.text = "필수 입력사항입니다"
 
         rootView.btn_add_info_next.setOnClickListener {
             mListener?.onChange()
@@ -45,4 +45,5 @@ class Test2Fragment: BaseAddInfoFragment() {
 
         return rootView
     }
+
 }

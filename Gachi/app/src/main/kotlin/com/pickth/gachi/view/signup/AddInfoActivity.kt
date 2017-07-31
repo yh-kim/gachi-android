@@ -27,11 +27,11 @@ class AddInfoActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_info)
 
-        val test1 = Test1Fragment.getInstance()
-        val test2 = Test2Fragment.getInstance()
-        val test3 = Test3Fragment.getInstance()
-        val test4 = Test4Fragment.getInstance()
-        val test5 = Test5Fragment.getInstance()
+        val test1 = NicknameAddFragment.getInstance()
+        val test2 = AgeAddFragment.getInstance()
+        val test3 = GenderAddFragment.getInstance()
+        val test4 = RegionAddFragment.getInstance()
+        val test5 = GenreAddFragment.getInstance()
 
         vf_add_info.setFragmentManager(supportFragmentManager)
         vf_add_info.run {

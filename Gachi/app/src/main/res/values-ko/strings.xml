@@ -20,4 +20,14 @@
 
     <string name="next">다음</string>
     <string name="apply">적용</string>
+
+    <string name="region_seoul">서울특별시</string>
+    <string name="region_gyeonggi">경기도</string>
+
+    <string name="region_incheon">인천광역시</string>
+    <string name="region_busan">부산광역시</string>
+    <string name="region_daegu">대구광역시</string>
+    <string name="region_gwangju">광주광역시</string>
+    <string name="region_daejeon">대전광역시</string>
+    <string name="region_ulsan">울산광역시</string>
 </resources>

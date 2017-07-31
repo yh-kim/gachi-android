@@ -17,27 +17,31 @@
 package com.pickth.gachi.view.signup.fragment
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
 
-class Test3Fragment: BaseAddInfoFragment() {
+class AgeAddFragment : BaseAddInfoFragment() {
 
     companion object {
-        val PAGE_INDEX = 2
+        val PAGE_INDEX = 1
 
-        private val mInstance = Test3Fragment()
-        fun getInstance(): Test3Fragment = mInstance
+        private val mInstance = AgeAddFragment()
+        fun getInstance(): AgeAddFragment = mInstance
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
-        rootView.et_add_info_input.hint = "닉네임"
-        rootView.tv_add_info_explanation.text = "필수 입력사항입니다"
+
+        rootView.et_add_info_input.hint = "22"
+        rootView.et_add_info_input.inputType = InputType.TYPE_NUMBER_FLAG_SIGNED
+
+        rootView.tv_add_info_explanation.text = "연령대로 표시됩니다"
 
         rootView.btn_add_info_next.setOnClickListener {
             mListener?.onChange()

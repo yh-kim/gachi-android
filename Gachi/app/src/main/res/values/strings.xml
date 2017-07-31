@@ -33,4 +33,14 @@
 
     <string name="next">next</string>
     <string name="apply">apply</string>
+    
+    <string name="region_seoul">Seoul</string>
+    <string name="region_gyeonggi">Gyeong-gi</string>
+
+    <string name="region_incheon">Incheon</string>
+    <string name="region_busan">Busan</string>
+    <string name="region_daegu">Daegu</string>
+    <string name="region_gwangju">Gwangju</string>
+    <string name="region_daejeon">Daejeon</string>
+    <string name="region_ulsan">Ulsan</string>
 </resources>

@@ -20,29 +20,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pickth.commons.extensions.intent
 import com.pickth.gachi.R
-import com.pickth.gachi.view.main.MainActivity
-import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
+import kotlinx.android.synthetic.main.fragment_signup_add_region.view.*
 
-class Test5Fragment: BaseAddInfoFragment() {
+class RegionAddFragment : BaseAddInfoFragment() {
 
     companion object {
-        val PAGE_INDEX = 4
+        val PAGE_INDEX = 3
 
-        private val mInstance = Test5Fragment()
-        fun getInstance(): Test5Fragment = mInstance
+        private val mInstance = RegionAddFragment()
+        fun getInstance(): RegionAddFragment = mInstance
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
+        val rootView = inflater!!.inflate(R.layout.fragment_signup_add_region, container, false)
 
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
-        rootView.btn_add_info_next.text = resources.getString(R.string.apply)
 
         rootView.btn_add_info_next.setOnClickListener {
-            intent(MainActivity::class.java)
-            activity.finish()
+            mListener?.onChange()
         }
 
         return rootView

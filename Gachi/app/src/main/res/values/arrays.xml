@@ -7,4 +7,15 @@
         <item>@string/title_region</item>
         <item>@string/title_genre</item>
     </string-array>
+
+    <string-array name="region_list">
+        <item>@string/region_seoul</item>
+        <item>@string/region_gyeonggi</item>
+        <item>@string/region_incheon</item>
+        <item>@string/region_busan</item>
+        <item>@string/region_daegu</item>
+        <item>@string/region_gwangju</item>
+        <item>@string/region_daejeon</item>
+        <item>@string/region_ulsan</item>
+    </string-array>
 </resources>
