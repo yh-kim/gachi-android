@@ -11,6 +11,10 @@
     <string name="title_myinfo">내정보</string>
     <string name="title_change_fragment">프래그먼트 변경</string>
 
+    <!-- signup -->
+    <string name="email">이메일</string>
+    <string name="password">비밀번호</string>
+
     <!-- add info-->
     <string name="title_nickname">닉네임</string>
     <string name="title_age">나이</string>

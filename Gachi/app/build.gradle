@@ -95,6 +95,9 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
 
+    // UI
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+
     // kakao login
     compile group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
     // kakao link
