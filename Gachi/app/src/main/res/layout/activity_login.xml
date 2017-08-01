@@ -1,9 +1,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
 
+    <TextView
+        android:id="@+id/tv_login_with_email"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="sign in with email"
+        android:textColor="@color/colorWhite" />
 
     <com.kakao.usermgmt.LoginButton
         android:id="@+id/kakao_sign_in_button"

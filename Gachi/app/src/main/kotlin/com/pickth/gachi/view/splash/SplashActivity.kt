@@ -7,11 +7,11 @@ import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
-import com.pickth.commons.extensions.intent
 import com.pickth.commons.extensions.toast
 import com.pickth.gachi.R
 import com.pickth.gachi.view.login.LoginActivity
 import com.pickth.gachi.view.main.MainActivity
+import org.jetbrains.anko.startActivity
 
 /**
  * Created by yonghoon on 2017-07-09.
@@ -31,30 +31,38 @@ class SplashActivity : AppCompatActivity() {
         UserManagement.requestMe(object: MeResponseCallback() {
             override fun onSuccess(result: UserProfile?) {
                 toast("로그인 성공")
-                intent(MainActivity::class.java)
+                startActivity<MainActivity>()
                 finish()
             }
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
                 toast("세션이 닫힘, 로그인 페이지로 이동")
-                intent(LoginActivity::class.java)
+                startActivity<LoginActivity>()
                 finish()
             }
 
             override fun onNotSignedUp() {
                 toast("세션은 있으나 회원가입이 안됨, 회원가입 페이지로 이동")
+                startActivity<LoginActivity>()
+                finish()
             }
 
             override fun onFailure(errorResult: ErrorResult?) {
                 super.onFailure(errorResult)
                 toast("요청이 실패, 로그인 페이지로 이동")
-                intent(LoginActivity::class.java)
+                startActivity<LoginActivity>()
                 finish()
             }
         })
     }
 
+    override fun onBackPressed() {
+//        super.onBackPressed()
+    }
+
     private val mTimer = Runnable {
-        getUser()
+//        getUser()
+        startActivity<LoginActivity>()
+        finish()
     }
 }

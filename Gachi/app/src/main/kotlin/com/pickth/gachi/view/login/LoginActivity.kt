@@ -10,7 +10,8 @@ import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
 import com.kakao.util.exception.KakaoException
 import com.pickth.gachi.R
-import com.pickth.gachi.view.main.MainActivity
+import com.pickth.gachi.view.signup.SignupActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -36,6 +37,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        tv_login_with_email.setOnClickListener {
+            startActivity<SignupActivity>()
+            finish()
+        }
 
         // kakao login
         Session.getCurrentSession().addCallback(mSessionCallback)
@@ -51,13 +56,12 @@ class LoginActivity : AppCompatActivity() {
         UserManagement.requestMe(object: MeResponseCallback() {
             override fun onSuccess(result: UserProfile?) {
                 toast("로그인 성공")
-                startActivity<MainActivity>()
-                finish()
+//                startActivity<MainActivity>()
+//                finish()
             }
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
                 toast("세션이 닫힘, 로그인 페이지로 이동")
-                setContentView(R.layout.activity_login)
             }
 
             override fun onNotSignedUp() {
@@ -67,7 +71,6 @@ class LoginActivity : AppCompatActivity() {
             override fun onFailure(errorResult: ErrorResult?) {
                 super.onFailure(errorResult)
                 toast("요청이 실패, 로그인 페이지로 이동")
-                setContentView(R.layout.activity_login)
             }
         })
     }
