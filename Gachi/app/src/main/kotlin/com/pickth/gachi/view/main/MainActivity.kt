@@ -124,4 +124,13 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
 
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onBackPressed() {
+        if(mViewPager?.currentItem == 0 && mMainPagerAdapter!!.isSwitch) {
+            mMainPagerAdapter?.changeBetweenFragment()
+        } else {
+            super.onBackPressed()
+        }
+
+    }
 }

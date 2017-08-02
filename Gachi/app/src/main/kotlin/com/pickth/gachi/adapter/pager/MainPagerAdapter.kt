@@ -24,6 +24,7 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePager
     private val mSearchFragment = SearchFragment.getInstance()
 
     private var mSwitchFragment: BaseFragment? = null
+    var isSwitch = false
 
     private val itemList = ArrayList<Int>()
 
@@ -35,6 +36,7 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePager
         else -> {
             if(mSwitchFragment == null) {
                 mSwitchFragment = mFestivalFragment
+                mSearchFragment.setMainPagerAdapter(this)
             }
 
             mSwitchFragment!!
@@ -45,7 +47,7 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePager
      * If fragment is festival fragment, change to search fragment
      * If it is upside down, likewise it is the same.
      */
-    fun changeBetweenFragment() {
+    override fun changeBetweenFragment() {
         fragmentManager.beginTransaction().remove(mSwitchFragment).commit()
 
         if(mSwitchFragment is FestivalFragment) {
@@ -59,10 +61,12 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePager
 
     override fun getItemPosition(`object`: Any?): Int {
         if(`object` is FestivalFragment && mSwitchFragment is SearchFragment) {
+            isSwitch = true
             return PagerAdapter.POSITION_NONE
         }
 
         if(`object` is SearchFragment && mSwitchFragment is FestivalFragment) {
+            isSwitch = false
             return PagerAdapter.POSITION_NONE
         }
 

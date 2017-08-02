@@ -5,6 +5,7 @@ package com.pickth.gachi.adapter.pager
  * Mail   : yonghoon.kim@pickth.com
  */
 interface MainPagerModel {
+    fun changeBetweenFragment()
 
     fun setListItem(position: Int)
 

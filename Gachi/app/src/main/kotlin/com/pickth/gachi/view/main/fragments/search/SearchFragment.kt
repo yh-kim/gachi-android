@@ -21,9 +21,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
+import com.pickth.gachi.adapter.pager.MainPagerModel
 import com.pickth.gachi.base.BaseFragment
 
 class SearchFragment: BaseFragment() {
+
+    private lateinit var mAdapter: MainPagerModel
 
     companion object {
         private val mInstance = SearchFragment()
@@ -36,6 +39,11 @@ class SearchFragment: BaseFragment() {
         return rootView
     }
 
+    fun setMainPagerAdapter(adapter: MainPagerModel) {
+        mAdapter = adapter
+    }
+
     override fun clickAgain() {
+        if(mAdapter != null) mAdapter.changeBetweenFragment()
     }
 }
