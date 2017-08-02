@@ -12,10 +12,6 @@ import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
 import kotlinx.android.synthetic.main.fragment_main_festival.view.*
 
-/**
- * Created by yonghoon on 2017-07-20.
- * Mail   : yonghoon.kim@pickth.com
- */
 class FestivalFragment: BaseFragment(), FestivalContract.View {
 
     private lateinit var mPresenter: FestivalPresenter
@@ -32,6 +28,9 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
 
         setHasOptionsMenu(true)
 
+        mPresenter = FestivalPresenter()
+        mPresenter.attachView(this)
+
         mPopularAdapter = FestivalAdapter()
         mImmediateAdapter = FestivalAdapter()
 
@@ -46,13 +45,10 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
         }
 
         // test input
-        for(i in 0..5) {
+        for(i in 0..4) {
             mPopularAdapter.addItem(Festival("", "", ""))
             mImmediateAdapter.addItem(Festival("", "", ""))
         }
-
-        mPresenter = FestivalPresenter()
-        mPresenter.attachView(this)
 
         return rootView
     }

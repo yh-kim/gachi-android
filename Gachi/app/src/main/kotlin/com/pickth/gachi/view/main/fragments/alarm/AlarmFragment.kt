@@ -14,10 +14,6 @@ import com.pickth.gachi.view.main.fragments.alarm.adapter.AlarmAdapter
 import kotlinx.android.synthetic.main.fragment_main_alarm.view.*
 import org.jetbrains.anko.startActivity
 
-/**
- * Created by yonghoon on 2017-07-20.
- * Mail   : yonghoon.kim@pickth.com
- */
 class AlarmFragment: BaseFragment(), AlarmContract.View {
 
     private lateinit var mPresenter: AlarmPresenter
@@ -41,10 +37,11 @@ class AlarmFragment: BaseFragment(), AlarmContract.View {
         }
 
         // presenter
-        mPresenter = AlarmPresenter()
-        mPresenter.attachView(this)
-        mPresenter.setAlarmAdapterView(mAdapter)
-        mPresenter.setAlarmAdapterModel(mAdapter)
+        mPresenter = AlarmPresenter().apply {
+            attachView(this@AlarmFragment)
+            setAlarmAdapterView(mAdapter)
+            setAlarmAdapterModel(mAdapter)
+        }
 
         // test
         mPresenter.addTest()
@@ -68,6 +65,5 @@ class AlarmFragment: BaseFragment(), AlarmContract.View {
         if(mPresenter.getItemCount() < 1) return
 
         mRecyclerView.smoothScrollToPosition(0)
-//        mRecyclerView.layoutManager.scrollToPosition(0)
     }
 }

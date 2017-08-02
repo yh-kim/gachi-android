@@ -110,17 +110,19 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
 
     private lateinit var prevBottomNavigation: MenuItem
     override fun onPageSelected(position: Int) {
-        prevBottomNavigation.isChecked = false
-        prevBottomNavigation = mNavigation.menu.getItem(position)
-        prevBottomNavigation.isChecked = true
+        prevBottomNavigation.run {
+            isChecked = false
+            mNavigation.menu.getItem(position)
+            isChecked = true
+        }
 
         title = resources.getStringArray(R.array.page_title)[position]
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
+
         menu?.findItem(R.id.menu_change_fragment)?.isVisible = false
-//        menu?.setGroupVisible(R.id.menu_main_group, false)
         return super.onCreateOptionsMenu(menu)
     }
 

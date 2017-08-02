@@ -14,10 +14,6 @@ import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapter
 import kotlinx.android.synthetic.main.fragment_main_chat.view.*
 import org.jetbrains.anko.startActivity
 
-/**
- * Created by yonghoon on 2017-07-20.
- * Mail   : yonghoon.kim@pickth.com
- */
 class ChatFragment: BaseFragment(), ChatContract.View {
 
     private lateinit var mPresenter: ChatPresenter
@@ -41,10 +37,11 @@ class ChatFragment: BaseFragment(), ChatContract.View {
         }
 
         // presenter
-        mPresenter = ChatPresenter()
-        mPresenter.attachView(this)
-        mPresenter.setChatAdapterView(mAdapter)
-        mPresenter.setChatAdapterModel(mAdapter)
+        mPresenter = ChatPresenter().apply {
+            attachView(this@ChatFragment)
+            setChatAdapterView(mAdapter)
+            setChatAdapterModel(mAdapter)
+        }
 
         // test
         mPresenter.addTest()
