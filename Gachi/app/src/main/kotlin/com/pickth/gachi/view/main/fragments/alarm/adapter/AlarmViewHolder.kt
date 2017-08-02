@@ -22,5 +22,9 @@ class AlarmViewHolder(val view: View, val onItemClickListener: OnItemClickListen
 
             text_alarm_content.text = item.msg
         }
+
+        itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(position)
+        }
     }
 }

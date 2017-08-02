@@ -14,24 +14,15 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.gachi
+package com.pickth.gachi.view.alarm
 
-import com.pickth.commons.mvp.BasePresenter
-import com.pickth.commons.mvp.BaseView
-import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import com.pickth.gachi.R
 
-interface GachiContract {
-    interface View: BaseView<Presenter> {
-        fun intentToGachiDetailActivity(position: Int)
-
-        fun scrollToTop()
-    }
-
-    interface Presenter: BasePresenter {
-        fun setGachiAdapterView(gachiView: GachiAdapterContract.View)
-
-        fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model)
-
-        fun getItemCount(): Int
+class AlarmDetailActivity: AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_alarm_detail)
     }
 }

@@ -38,7 +38,7 @@ class GachiAdapter: RecyclerView.Adapter<GachiViewHolder>(), GachiAdapterContrac
                 .from(parent?.context)
                 .inflate(R.layout.item_gachi, parent, false)
 
-        return GachiViewHolder(itemView)
+        return GachiViewHolder(itemView, mOnItemClickListener)
     }
 
     override fun setItemClickListener(clickListener: OnItemClickListener) {

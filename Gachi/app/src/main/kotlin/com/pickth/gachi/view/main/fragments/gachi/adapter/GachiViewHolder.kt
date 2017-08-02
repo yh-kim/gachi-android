@@ -22,9 +22,10 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pickth.gachi.R
+import com.pickth.gachi.util.OnItemClickListener
 import kotlinx.android.synthetic.main.item_gachi.view.*
 
-class GachiViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+class GachiViewHolder(val view: View, val onItemClickListener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
     fun onBind(item: Gachi, position: Int) {
         with(itemView) {
             Glide.with(view)
@@ -36,6 +37,10 @@ class GachiViewHolder(val view: View): RecyclerView.ViewHolder(view) {
             tv_gachi_title.setTypeface(null, Typeface.BOLD)
 
             rv_gachi_reliability.setReliability(item.reliability)
+        }
+
+        itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(position)
         }
     }
 }

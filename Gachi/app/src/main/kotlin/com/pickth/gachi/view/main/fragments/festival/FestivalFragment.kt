@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseFragment
-import org.jetbrains.anko.toast
 
 /**
  * Created by yonghoon on 2017-07-20.
@@ -35,7 +34,6 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
     }
 
     override fun clickAgain() {
-        activity.toast("또 눌렀음")
     }
 
 }

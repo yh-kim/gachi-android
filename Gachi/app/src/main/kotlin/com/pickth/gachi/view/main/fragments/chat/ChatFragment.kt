@@ -67,7 +67,6 @@ class ChatFragment: BaseFragment(), ChatContract.View {
     override fun scrollToTop() {
         if(mPresenter.getItemCount() < 1) return
 
-        mRecyclerView.layoutManager.smoothScrollToPosition(mRecyclerView, RecyclerView.State(), 0)
-//        mRecyclerView.layoutManager.scrollToPosition(0)
+        mRecyclerView.smoothScrollToPosition(0)
     }
 }
