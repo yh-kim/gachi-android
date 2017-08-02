@@ -3,6 +3,7 @@ package com.pickth.gachi.view.main.fragments.festival
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
@@ -29,6 +30,7 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_main_festival, container, false)
 
+        setHasOptionsMenu(true)
 
         mPopularAdapter = FestivalAdapter()
         mImmediateAdapter = FestivalAdapter()
@@ -53,6 +55,11 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
         mPresenter.attachView(this)
 
         return rootView
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?) {
+        menu?.findItem(R.id.menu_change_fragment)?.isVisible = true
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onResume() {

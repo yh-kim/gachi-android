@@ -69,25 +69,19 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // actionbar
+        setSupportActionBar(main_toolbar)
+        title = resources.getStringArray(R.array.page_title)[0]
+
+        // presenter
         mMainPresenter = MainPresenter()
         mMainPresenter.attachView(this)
 
-        mViewPager = view_pager
+        // navigation
         mNavigation = navigation
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        mMainPagerAdapter = MainPagerAdapter(supportFragmentManager)
-
-        mViewPager?.run {
-            adapter = mMainPagerAdapter
-            currentItem = 0
-            offscreenPageLimit = 5
-        }
-
-        mViewPager!!.addOnPageChangeListener(this)
-        prevBottomNavigation = mNavigation.menu.getItem(0)
-
-        mMainPagerAdapter?.run {
+        mMainPagerAdapter = MainPagerAdapter(supportFragmentManager).apply {
             setListItem(0)
             setListItem(1)
             setListItem(2)
@@ -95,6 +89,17 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
             setListItem(4)
             notifyDataSetChanged()
         }
+
+        mViewPager = view_pager.apply {
+            adapter = mMainPagerAdapter
+            currentItem = 0
+            offscreenPageLimit = 5
+            addOnPageChangeListener(this@MainActivity)
+            setOnTouchListener { view, motionEvent -> true }
+        }
+
+        prevBottomNavigation = mNavigation.menu.getItem(0)
+
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
@@ -108,10 +113,14 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
         prevBottomNavigation.isChecked = false
         prevBottomNavigation = mNavigation.menu.getItem(position)
         prevBottomNavigation.isChecked = true
+
+        title = resources.getStringArray(R.array.page_title)[position]
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
+        menu?.findItem(R.id.menu_change_fragment)?.isVisible = false
+//        menu?.setGroupVisible(R.id.menu_main_group, false)
         return super.onCreateOptionsMenu(menu)
     }
 

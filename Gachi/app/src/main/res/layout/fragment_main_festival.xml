@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:orientation="vertical"
+        android:paddingTop="13dp"
         android:paddingBottom="20dp"
         android:paddingLeft="20dp">
 
