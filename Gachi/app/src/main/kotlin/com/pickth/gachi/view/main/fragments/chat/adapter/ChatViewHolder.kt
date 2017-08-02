@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.item_chat.view.*
  * Created by yonghoon on 2017-07-23.
  * Mail   : yonghoon.kim@pickth.com
  */
-class ChatViewHolder(val view: View, clickListener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
+class ChatViewHolder(val view: View, val clickListener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
     fun onBind(item: Chat, position: Int) {
         with(itemView) {
             Glide.with(view)
@@ -23,6 +23,10 @@ class ChatViewHolder(val view: View, clickListener: OnItemClickListener?): Recyc
 
             tv_chat_title.text = item.title
             tv_chat_title.setTypeface(null, Typeface.BOLD)
+        }
+
+        itemView.setOnClickListener {
+            clickListener?.onItemClick(position)
         }
     }
 }

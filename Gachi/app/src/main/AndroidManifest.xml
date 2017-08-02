@@ -38,6 +38,7 @@
         <activity android:name=".view.signup.SignupActivity">
 
         </activity>
+        <activity android:name=".view.chat.ChatDetailActivity" />
     </application>
 
 </manifest>

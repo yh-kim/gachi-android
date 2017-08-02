@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseFragment
 import com.pickth.gachi.util.MyDividerItemDecoration
+import com.pickth.gachi.view.chat.ChatDetailActivity
 import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapter
 import kotlinx.android.synthetic.main.fragment_main_chat.view.*
+import org.jetbrains.anko.startActivity
 
 /**
  * Created by yonghoon on 2017-07-20.
@@ -58,6 +60,9 @@ class ChatFragment: BaseFragment(), ChatContract.View {
         scrollToTop()
     }
 
+    override fun intentToChatDetailActivity(position: Int) {
+        activity.startActivity<ChatDetailActivity>()
+    }
 
     override fun scrollToTop() {
         if(mPresenter.getItemCount() < 1) return

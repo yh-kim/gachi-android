@@ -10,6 +10,8 @@ import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapterContract
  */
 interface ChatContract {
     interface View: BaseView<Presenter> {
+        fun intentToChatDetailActivity(position: Int)
+
         fun scrollToTop()
     }
 
