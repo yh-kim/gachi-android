@@ -41,6 +41,7 @@
         <activity android:name=".view.chat.ChatDetailActivity" />
         <activity android:name=".view.alarm.AlarmDetailActivity" />
         <activity android:name=".view.gachi.GachiDetailActivity" />
+        <activity android:name=".view.festival.FestivalDetailActivity" />
     </application>
 
 </manifest>

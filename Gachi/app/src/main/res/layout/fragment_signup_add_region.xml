@@ -22,9 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:spinnerMode="dialog"
             android:entries="@array/region_list"
-            android:prompt="@string/title_region" />
+            android:prompt="@string/title_region"
+            android:spinnerMode="dialog" />
     </LinearLayout>
 
     <TextView

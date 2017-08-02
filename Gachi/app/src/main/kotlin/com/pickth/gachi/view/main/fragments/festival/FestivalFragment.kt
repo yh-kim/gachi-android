@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseFragment
+import com.pickth.gachi.view.festival.FestivalDetailActivity
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
 import kotlinx.android.synthetic.main.fragment_main_festival.view.*
+import org.jetbrains.anko.startActivity
 
 class FestivalFragment: BaseFragment(), FestivalContract.View {
 
@@ -42,6 +44,10 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
         rootView.rv_main_festival_immediate.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = mImmediateAdapter
+        }
+
+        rootView.tv_view_all_popular.setOnClickListener {
+            activity.startActivity<FestivalDetailActivity>()
         }
 
         // test input
