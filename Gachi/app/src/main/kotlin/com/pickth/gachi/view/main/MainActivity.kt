@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
     private var mMainPagerAdapter: MainPagerAdapter? = null
     private var mViewPager: ViewPager? = null
     private lateinit var mNavigation: MyBottomNavigationView
+    private lateinit var mMenuItem: MenuItem
+    private lateinit var prevBottomNavigation: MenuItem
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -71,6 +73,7 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
 
         // actionbar
         setSupportActionBar(main_toolbar)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_gachi)
         title = resources.getStringArray(R.array.page_title)[0]
 
         // presenter
@@ -108,28 +111,48 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
     override fun onPageScrollStateChanged(state: Int) {
     }
 
-    private lateinit var prevBottomNavigation: MenuItem
-    override fun onPageSelected(position: Int) {
-        prevBottomNavigation.run {
-            isChecked = false
-            mNavigation.menu.getItem(position)
-            isChecked = true
+    override fun changeFestivalAndSearch() {
+        mMainPagerAdapter?.changeBetweenFragment()
+
+        isSearch().let {
+            mMenuItem.isVisible = !it
+            supportActionBar?.setDisplayShowTitleEnabled(!it)
+            supportActionBar?.setDisplayHomeAsUpEnabled(it)
         }
 
+    }
+
+    override fun isSearch(): Boolean = mMainPagerAdapter!!.isSwitch
+
+    override fun onPageSelected(position: Int) {
+        prevBottomNavigation.isChecked = false
+        prevBottomNavigation = mNavigation.menu.getItem(position)
+        prevBottomNavigation.isChecked = true
+
+        (position == 0 && isSearch()).let {
+            supportActionBar?.setDisplayShowTitleEnabled(!it)
+            supportActionBar?.setDisplayHomeAsUpEnabled(it)
+        }
+
+        mMenuItem.isVisible = (position == 0 && !isSearch())
         title = resources.getStringArray(R.array.page_title)[position]
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
 
-        menu?.findItem(R.id.menu_change_fragment)?.isVisible = false
+        mMenuItem = menu?.findItem(R.id.menu_change_fragment)!!
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             R.id.menu_change_fragment -> {
-                mMainPagerAdapter?.changeBetweenFragment()
+                changeFestivalAndSearch()
+            }
+
+            android.R.id.home -> {
+                changeFestivalAndSearch()
             }
         }
 
@@ -138,7 +161,7 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
 
     override fun onBackPressed() {
         if(mViewPager?.currentItem == 0 && mMainPagerAdapter!!.isSwitch) {
-            mMainPagerAdapter?.changeBetweenFragment()
+            changeFestivalAndSearch()
         } else {
             super.onBackPressed()
         }
