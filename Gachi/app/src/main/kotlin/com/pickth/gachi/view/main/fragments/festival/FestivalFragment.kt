@@ -27,11 +27,14 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_main_festival, container, false)
 
-        mPresenter = FestivalPresenter()
-        mPresenter.attachView(this)
-
         mPopularAdapter = FestivalAdapter()
         mImmediateAdapter = FestivalAdapter()
+
+        mPresenter = FestivalPresenter().apply {
+            attachView(this@FestivalFragment)
+            setPopularAdapter(mPopularAdapter)
+            setImmediateAdapter(mImmediateAdapter)
+        }
 
         rootView.rv_main_festival_popular.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -41,10 +44,6 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
         rootView.rv_main_festival_immediate.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = mImmediateAdapter
-        }
-
-        rootView.tv_view_all_popular.setOnClickListener {
-            activity.startActivity<FestivalDetailActivity>()
         }
 
         // test input
@@ -58,6 +57,10 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
 
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun intentToFestivalDetailActivity(position: Int) {
+        activity.startActivity<FestivalDetailActivity>()
     }
 
     override fun clickAgain() {

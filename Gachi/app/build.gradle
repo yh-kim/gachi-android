@@ -97,6 +97,7 @@ dependencies {
 
     // UI
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'jp.wasabeef:glide-transformations:2.0.2'
 
     // kakao login
     compile group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION

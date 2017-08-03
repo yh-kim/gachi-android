@@ -16,14 +16,30 @@
 
 package com.pickth.gachi.view.festival
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.pickth.gachi.R
+import com.pickth.gachi.util.MyBlurTransformation
+import kotlinx.android.synthetic.main.activity_festival_detail.*
 
 class FestivalDetailActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_festival_detail)
+
+        Glide.with(this)
+                .load(R.drawable.test)
+                .apply(RequestOptions.bitmapTransform(MyBlurTransformation(this)))
+                .into(object: SimpleTarget<Drawable>() {
+                    override fun onResourceReady(resource: Drawable?, transition: Transition<in Drawable>?) {
+                        ll_festival_blur_background.background = resource
+                    }
+                })
     }
 }

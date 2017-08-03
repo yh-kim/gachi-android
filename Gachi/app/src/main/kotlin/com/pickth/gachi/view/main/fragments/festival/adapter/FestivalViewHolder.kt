@@ -18,9 +18,12 @@ package com.pickth.gachi.view.main.fragments.festival.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.pickth.gachi.util.OnItemClickListener
 
-class FestivalViewHolder(view: View): RecyclerView.ViewHolder(view) {
-    fun onBind() {
-
+class FestivalViewHolder(view: View, val listener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
+    fun onBind(item: Festival, position: Int) {
+        itemView.setOnClickListener {
+            listener?.onItemClick(position)
+        }
     }
 }
