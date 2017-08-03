@@ -11,37 +11,43 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoTitle">
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
 
         <activity
             android:name=".view.main.MainActivity"
-            android:theme="@style/AppTheme.NoTitle" >
-
-        </activity>
-        <activity android:name=".view.signup.AddInfoActivity">
-
-        </activity>
-        <activity android:name=".view.splash.SplashActivity"
-            android:theme="@style/AppTheme.NoTitle">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".view.signup.SignupActivity">
+        <activity android:name=".view.signup.AddInfoActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".view.chat.ChatDetailActivity" />
-        <activity android:name=".view.alarm.AlarmDetailActivity" />
-        <activity android:name=".view.gachi.GachiDetailActivity" />
-        <activity android:name=".view.festival.FestivalDetailActivity" />
+        <activity android:name=".view.splash.SplashActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".view.login.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.signup.SignupActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".view.chat.ChatDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.alarm.AlarmDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.gachi.GachiDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.festival.FestivalDetailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

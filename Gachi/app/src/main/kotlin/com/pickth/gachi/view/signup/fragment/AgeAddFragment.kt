@@ -36,10 +36,13 @@ class AgeAddFragment : BaseAddInfoFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
+
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
 
-        rootView.et_add_info_input.hint = "22"
-        rootView.et_add_info_input.inputType = InputType.TYPE_NUMBER_FLAG_SIGNED
+        rootView.et_add_info_input.run {
+            hint = "22"
+            inputType = (InputType.TYPE_CLASS_NUMBER)
+        }
 
         rootView.tv_add_info_explanation.text = "연령대로 표시됩니다"
 
