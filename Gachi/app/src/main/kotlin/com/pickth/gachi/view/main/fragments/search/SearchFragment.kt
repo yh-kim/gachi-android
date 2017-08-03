@@ -20,13 +20,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerModel
 import com.pickth.gachi.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_main_search.view.*
+import org.jetbrains.anko.toast
 
-class SearchFragment: BaseFragment() {
+class SearchFragment: BaseFragment(), SearchContract.View {
 
     private lateinit var mAdapter: MainPagerModel
+    private lateinit var mPresenter: SearchPresenter
 
     companion object {
         private val mInstance = SearchFragment()
@@ -36,6 +40,21 @@ class SearchFragment: BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.fragment_main_search, container, false)
 
+        mPresenter = SearchPresenter().apply {
+            attachView(this@SearchFragment)
+        }
+
+        rootView.et_search_festival.setOnEditorActionListener { textView, i, keyEvent ->
+            when(i) {
+                EditorInfo.IME_ACTION_SEARCH -> {
+                    activity.toast("search ${textView.text.toString().trim()}")
+                    true
+                }
+            }
+
+            false
+        }
+
         return rootView
     }
 
@@ -44,6 +63,6 @@ class SearchFragment: BaseFragment() {
     }
 
     override fun clickAgain() {
-        if(mAdapter != null) mAdapter.changeBetweenFragment()
+//        if(mAdapter != null) mAdapter.changeBetweenFragment()
     }
 }
