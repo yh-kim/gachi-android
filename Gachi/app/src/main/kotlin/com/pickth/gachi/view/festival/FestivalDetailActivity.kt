@@ -18,7 +18,11 @@ package com.pickth.gachi.view.festival
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.content.res.AppCompatResources
+import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
@@ -33,6 +37,18 @@ class FestivalDetailActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_festival_detail)
 
+
+//        val icon = ContextCompat.getDrawable(this, R.drawable.ic_gachi)
+        val icon = AppCompatResources.getDrawable(this, R.drawable.ic_gachi)!!
+        DrawableCompat.setTint(icon, ContextCompat.getColor(this, R.color.colorWhite))
+
+        setSupportActionBar(festival_toolbar)
+        supportActionBar?.run {
+            setHomeAsUpIndicator(icon)
+            setDisplayShowTitleEnabled(false)
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         Glide.with(this)
                 .load(R.drawable.test)
                 .apply(RequestOptions.bitmapTransform(MyBlurTransformation(this)))
@@ -41,5 +57,16 @@ class FestivalDetailActivity: AppCompatActivity() {
                         ll_festival_blur_background.background = resource
                     }
                 })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+
+        return super.onOptionsItemSelected(item)
     }
 }
