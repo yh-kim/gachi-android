@@ -11,6 +11,14 @@
     <style name="AppTheme.NoTitle">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="android:actionBarSize">49dp</item>
+        <item name="actionBarSize">49dp</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="AppTheme.NoTitle.TransLucent">
