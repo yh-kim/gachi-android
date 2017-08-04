@@ -26,13 +26,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <com.pickth.gachi.view.custom.NoSwipePager
+    <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-    </com.pickth.gachi.view.custom.NoSwipePager>
+    </android.support.v4.view.ViewPager>
 
     <com.pickth.gachi.view.custom.MyBottomNavigationView
         android:id="@+id/navigation"

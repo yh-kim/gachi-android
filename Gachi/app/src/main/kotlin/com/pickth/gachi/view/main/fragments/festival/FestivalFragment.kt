@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseFragment
+import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.festival.FestivalDetailActivity
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
@@ -39,11 +40,13 @@ class FestivalFragment: BaseFragment(), FestivalContract.View {
         rootView.rv_main_festival_popular.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = mPopularAdapter
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 16, false))
         }
 
         rootView.rv_main_festival_immediate.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = mImmediateAdapter
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 16, false))
         }
 
         // test input

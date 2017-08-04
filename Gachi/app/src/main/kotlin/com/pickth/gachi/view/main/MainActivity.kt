@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageCha
             currentItem = 0
             offscreenPageLimit = 5
             addOnPageChangeListener(this@MainActivity)
-            setOnTouchListener { view, motionEvent -> true }
+//            setOnTouchListener { view, motionEvent -> true }
         }
 
         prevBottomNavigation = mNavigation.menu.getItem(0)

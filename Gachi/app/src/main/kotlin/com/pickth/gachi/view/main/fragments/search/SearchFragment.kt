@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.main.fragments.search
 
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,9 @@ import android.view.inputmethod.EditorInfo
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerModel
 import com.pickth.gachi.base.BaseFragment
+import com.pickth.gachi.util.GridSpacingItemDecoration
+import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
+import com.pickth.gachi.view.main.fragments.search.adapter.SearchAdapter
 import kotlinx.android.synthetic.main.fragment_main_search.view.*
 import org.jetbrains.anko.toast
 
@@ -43,6 +47,15 @@ class SearchFragment: BaseFragment(), SearchContract.View {
         mPresenter = SearchPresenter().apply {
             attachView(this@SearchFragment)
         }
+
+        val adapter = SearchAdapter()
+        rootView.rv_search_festival.run {
+            layoutManager = GridLayoutManager(context, 2)
+            this.adapter = adapter
+            addItemDecoration(GridSpacingItemDecoration(context,2, 16, false))
+        }
+
+        for(i in 0..5) adapter.addItem(Festival("","",""))
 
         rootView.et_search_festival.setOnEditorActionListener { textView, i, keyEvent ->
             when(i) {

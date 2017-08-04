@@ -22,6 +22,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.content.res.AppCompatResources
+import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -29,6 +30,8 @@ import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyBlurTransformation
+import com.pickth.gachi.util.MyDividerItemDecoration
+import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 import kotlinx.android.synthetic.main.activity_festival_detail.*
 
 class FestivalDetailActivity: AppCompatActivity() {
@@ -48,6 +51,19 @@ class FestivalDetailActivity: AppCompatActivity() {
             setDisplayShowTitleEnabled(false)
             setDisplayHomeAsUpEnabled(true)
         }
+
+        val adapter = FestivalDetailAdapter()
+        rv_festival_gachi.run {
+            layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+            this.adapter = adapter
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 15, false))
+        }
+
+
+
+        // test input
+        for(i in 0..4) adapter.addItem(Gachi("", 0))
+
 
         Glide.with(this)
                 .load(R.drawable.test)
