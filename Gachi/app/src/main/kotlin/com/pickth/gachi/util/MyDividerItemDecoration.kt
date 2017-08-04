@@ -54,7 +54,7 @@ class MyDividerItemDecoration(context: Context, val orientation: Int , var spaci
     override fun onDrawOver(c: Canvas?, parent: RecyclerView?, state: RecyclerView.State?) {
 
         val childCount = parent!!.childCount
-        for(i in 0..childCount-1) {
+        for(i in 0..childCount-2) {
             val child = parent.getChildAt(i)
 
             val params = child.layoutParams as RecyclerView.LayoutParams
