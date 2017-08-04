@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingBottom="20dp"
         android:paddingRight="20dp">
 
         <android.support.design.widget.AppBarLayout
@@ -39,7 +40,7 @@
             <ImageView
                 android:layout_width="104dp"
                 android:layout_height="127dp"
-                android:background="@drawable/test" />
+                android:background="@drawable/festival0" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -66,7 +66,7 @@ class FestivalDetailActivity: BaseActivity() {
 
 
         Glide.with(this)
-                .load(R.drawable.test)
+                .load(R.drawable.festival0)
                 .apply(RequestOptions.bitmapTransform(MyBlurTransformation(this)))
                 .into(object: SimpleTarget<Drawable>() {
                     override fun onResourceReady(resource: Drawable?, transition: Transition<in Drawable>?) {
