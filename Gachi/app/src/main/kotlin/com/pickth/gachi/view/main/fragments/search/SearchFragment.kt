@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.main.fragments.search
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -24,12 +25,12 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerModel
-import com.pickth.gachi.view.main.fragments.TapBaseFragment
+import com.pickth.gachi.dialog.GachiProgressDialog
 import com.pickth.gachi.util.GridSpacingItemDecoration
+import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.search.adapter.SearchAdapter
 import kotlinx.android.synthetic.main.fragment_main_search.view.*
-import org.jetbrains.anko.toast
 
 class SearchFragment : TapBaseFragment(), SearchContract.View {
 
@@ -55,12 +56,21 @@ class SearchFragment : TapBaseFragment(), SearchContract.View {
             addItemDecoration(GridSpacingItemDecoration(context,2, 16, false))
         }
 
-        for(i in 0..5) adapter.addItem(Festival("","",""))
+        // test input
+        adapter.addItem(Festival("07.27 ~ 07.29", "0", "2012 지산 밸리 록 페스티벌"))
+        adapter.addItem(Festival("08.11 ~ 08.13", "1", "2017 인천 펜사포트 락 페스티벌"))
+        adapter.addItem(Festival("08.11 ~ 08.13", "2", "2017 인천 펜사포트 락 페스티벌"))
+        adapter.addItem(Festival("07.29 ~ 07.31", "3", "2011 지산 밸리 록 페스티벌"))
+        adapter.addItem(Festival("09.14 ~ 09.15", "4", "렛츠락 페스티벌"))
 
         rootView.et_search_festival.setOnEditorActionListener { textView, i, keyEvent ->
             when(i) {
                 EditorInfo.IME_ACTION_SEARCH -> {
-                    activity.toast("search ${textView.text.toString().trim()}")
+                    val dialog = GachiProgressDialog(context).showDialog()
+                    Handler().postDelayed({
+                        dialog.dismiss()
+                        rootView.ll_search_result_screen.visibility = View.VISIBLE
+                    }, 3000)
                     true
                 }
             }

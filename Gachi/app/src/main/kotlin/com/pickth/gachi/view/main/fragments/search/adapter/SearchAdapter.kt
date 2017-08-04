@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
+import kotlinx.android.synthetic.main.item_search_festival.view.*
 
 class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     private var items = ArrayList<Festival>()
@@ -36,7 +37,7 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder?, position: Int) {
-        holder?.onBInd()
+        holder?.onBInd(items[position])
     }
 
     fun addItem(item: Festival) {
@@ -44,9 +45,13 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
         notifyItemInserted(itemCount - 1)
     }
 
-    class SearchViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun onBInd() {
-
+    class SearchViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+        fun onBInd(item: Festival) {
+            with(itemView) {
+                iv_search_result.setBackgroundResource(resources.getIdentifier("festival"+item.imageUrl, "drawable", view.context.packageName))
+                tv_search_result_title.text = item.title
+                tv_search_result_date.text = item.date
+            }
         }
     }
 }

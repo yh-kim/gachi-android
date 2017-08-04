@@ -32,20 +32,28 @@
             android:inputType="text"
             android:textColorHint="#c8c8c8" />
 
-        <TextView
-            android:text="Search Results"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:textColor="#222222"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_search_festival"
+        <LinearLayout
+            android:id="@+id/ll_search_result_screen"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:layout_marginTop="17dp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:text="Search Results"
+                android:textColor="#222222"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_search_festival"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="17dp"
+                android:overScrollMode="never" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
