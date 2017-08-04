@@ -31,7 +31,7 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SearchViewHolder {
         val itemView = LayoutInflater
                 .from(parent?.context)
-                .inflate(R.layout.item_main_festival, parent, false)
+                .inflate(R.layout.item_search_festival, parent, false)
         return SearchViewHolder(itemView)
     }
 
