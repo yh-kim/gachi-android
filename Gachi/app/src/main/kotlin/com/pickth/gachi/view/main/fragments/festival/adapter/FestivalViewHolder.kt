@@ -19,9 +19,15 @@ package com.pickth.gachi.view.main.fragments.festival.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.pickth.gachi.util.OnItemClickListener
+import kotlinx.android.synthetic.main.item_main_festival.view.*
 
-class FestivalViewHolder(view: View, val listener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
+class FestivalViewHolder(val view: View, val listener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
     fun onBind(item: Festival, position: Int) {
+        with(itemView) {
+            iv_main_festival.setBackgroundResource(resources.getIdentifier("festival"+item.imageUrl, "drawable", view.context.packageName))
+            tv_main_festival_title.text = item.title
+            tv_main_festival_date.text = item.date
+        }
         itemView.setOnClickListener {
             listener?.onItemClick(position)
         }

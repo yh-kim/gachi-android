@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
-import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.festival.FestivalDetailActivity
+import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
 import kotlinx.android.synthetic.main.fragment_main_festival.view.*
@@ -50,10 +50,17 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
         }
 
         // test input
-        for(i in 0..4) {
-            mPopularAdapter.addItem(Festival("", "", ""))
-            mImmediateAdapter.addItem(Festival("", "", ""))
-        }
+        mPopularAdapter.addItem(Festival("07.27 ~ 07.29", "0", "2012 지산 밸리 록 페스티벌"))
+        mPopularAdapter.addItem(Festival("08.11 ~ 08.13", "1", "2017 인천 펜사포트 락 페스티벌"))
+        mPopularAdapter.addItem(Festival("08.11 ~ 08.13", "2", "2017 인천 펜사포트 락 페스티벌"))
+        mPopularAdapter.addItem(Festival("07.29 ~ 07.31", "3", "2011 지산 밸리 록 페스티벌"))
+        mPopularAdapter.addItem(Festival("09.14 ~ 09.15", "4", "렛츠락 페스티벌"))
+
+        mImmediateAdapter.addItem(Festival("09.14 ~ 09.15", "4", "렛츠락 페스티벌"))
+        mImmediateAdapter.addItem(Festival("07.29 ~ 07.31", "3", "2011 지산 밸리 록 페스티벌"))
+        mImmediateAdapter.addItem(Festival("08.11 ~ 08.13", "2", "2017 인천 펜사포트 락 페스티벌"))
+        mImmediateAdapter.addItem(Festival("08.11 ~ 08.13", "1", "2017 인천 펜사포트 락 페스티벌"))
+        mImmediateAdapter.addItem(Festival("07.27 ~ 07.29", "0", "2012 지산 밸리 록 페스티벌"))
 
         return rootView
     }
