@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
-import com.pickth.gachi.base.BaseFragment
+import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.festival.FestivalDetailActivity
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
@@ -14,7 +14,7 @@ import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
 import kotlinx.android.synthetic.main.fragment_main_festival.view.*
 import org.jetbrains.anko.startActivity
 
-class FestivalFragment: BaseFragment(), FestivalContract.View {
+class FestivalFragment : TapBaseFragment(), FestivalContract.View {
 
     private lateinit var mPresenter: FestivalPresenter
     private lateinit var mPopularAdapter: FestivalAdapter

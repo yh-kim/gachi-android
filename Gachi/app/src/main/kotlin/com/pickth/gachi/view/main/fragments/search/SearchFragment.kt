@@ -24,14 +24,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerModel
-import com.pickth.gachi.base.BaseFragment
+import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.util.GridSpacingItemDecoration
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.search.adapter.SearchAdapter
 import kotlinx.android.synthetic.main.fragment_main_search.view.*
 import org.jetbrains.anko.toast
 
-class SearchFragment: BaseFragment(), SearchContract.View {
+class SearchFragment : TapBaseFragment(), SearchContract.View {
 
     private lateinit var mAdapter: MainPagerModel
     private lateinit var mPresenter: SearchPresenter

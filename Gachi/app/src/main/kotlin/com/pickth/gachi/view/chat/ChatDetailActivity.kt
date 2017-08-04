@@ -21,11 +21,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.view.chat.adapter.ChatDetailAdapter
 import kotlinx.android.synthetic.main.activity_chat_detail.*
 import org.jetbrains.anko.toast
 
-class ChatDetailActivity: AppCompatActivity(), ChatDetailContract.View {
+class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
 
     private lateinit var mPresenter: ChatDetailPresenter
     private lateinit var mAdapter: ChatDetailAdapter

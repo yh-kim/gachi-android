@@ -1,7 +1,6 @@
 package com.pickth.gachi.view.login
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
 import com.kakao.network.ErrorResult
@@ -10,6 +9,7 @@ import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
 import com.kakao.util.exception.KakaoException
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.view.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
@@ -19,7 +19,7 @@ import org.jetbrains.anko.toast
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     // kakao login
     private var mSessionCallback = object: ISessionCallback {

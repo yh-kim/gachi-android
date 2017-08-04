@@ -17,12 +17,12 @@
 package com.pickth.gachi.view.signup
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.view.signup.fragment.*
 import kotlinx.android.synthetic.main.activity_add_info.*
 
-class AddInfoActivity: AppCompatActivity() {
+class AddInfoActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_info)

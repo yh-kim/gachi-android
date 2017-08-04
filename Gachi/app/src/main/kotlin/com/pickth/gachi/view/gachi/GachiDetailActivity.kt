@@ -19,8 +19,9 @@ package com.pickth.gachi.view.gachi
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseActivity
 
-class GachiDetailActivity: AppCompatActivity() {
+class GachiDetailActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gachi_detail)

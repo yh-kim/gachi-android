@@ -3,11 +3,11 @@ package com.pickth.gachi.view.main
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerAdapter
+import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.view.custom.MyBottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
-class MainActivity : AppCompatActivity(), MainContract.View, ViewPager.OnPageChangeListener {
+class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeListener {
 
     private lateinit var mMainPresenter: MainPresenter
     private var mMainPagerAdapter: MainPagerAdapter? = null

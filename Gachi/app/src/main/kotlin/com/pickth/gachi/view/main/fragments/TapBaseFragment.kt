@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.base
+package com.pickth.gachi.view.main.fragments
 
-import android.support.v4.app.Fragment
+import com.pickth.gachi.base.BaseFragment
 
-abstract class BaseFragment: Fragment() {
+abstract class TapBaseFragment : BaseFragment() {
     abstract fun clickAgain()
 }

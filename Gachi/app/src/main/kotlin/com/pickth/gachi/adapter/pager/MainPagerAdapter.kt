@@ -3,7 +3,7 @@ package com.pickth.gachi.adapter.pager
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
-import com.pickth.gachi.base.BaseFragment
+import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.alarm.AlarmFragment
 import com.pickth.gachi.view.main.fragments.chat.ChatFragment
 import com.pickth.gachi.view.main.fragments.festival.FestivalFragment
@@ -23,12 +23,12 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePager
     private val mMyinfoFragment = MyinfoFragment.getInstance()
     private val mSearchFragment = SearchFragment.getInstance()
 
-    private var mSwitchFragment: BaseFragment? = null
+    private var mSwitchFragment: TapBaseFragment? = null
     var isSwitch = false
 
     private val itemList = ArrayList<Int>()
 
-    override fun getItem(position: Int): BaseFragment = when(position) {
+    override fun getItem(position: Int): TapBaseFragment = when(position) {
         1 -> mGachiFragment
         2 -> mChatFragment
         3 -> mAlarmFragment

@@ -20,7 +20,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.DrawableCompat
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
@@ -29,12 +28,13 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.util.MyBlurTransformation
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 import kotlinx.android.synthetic.main.activity_festival_detail.*
 
-class FestivalDetailActivity: AppCompatActivity() {
+class FestivalDetailActivity: BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

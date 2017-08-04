@@ -17,13 +17,13 @@
 package com.pickth.gachi.view.signup
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class SignupActivity: AppCompatActivity() {
+class SignupActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)

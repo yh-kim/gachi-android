@@ -11,14 +11,14 @@ import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeResponseCallback
 import com.kakao.usermgmt.response.model.UserProfile
 import com.pickth.gachi.R
-import com.pickth.gachi.base.BaseFragment
+import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import kotlinx.android.synthetic.main.fragment_main_myinfo.view.*
 
 /**
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class MyinfoFragment: BaseFragment(), MyinfoContract.View {
+class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
 
     private lateinit var mPresenter: MyinfoPresenter
     private lateinit var rootView: View
