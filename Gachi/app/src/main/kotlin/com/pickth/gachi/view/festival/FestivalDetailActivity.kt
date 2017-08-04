@@ -40,6 +40,7 @@ class FestivalDetailActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_festival_detail)
 
+        val intentValue = intent.getIntExtra("position",0)
 
 //        val icon = ContextCompat.getDrawable(this, R.drawable.ic_gachi)
         val icon = AppCompatResources.getDrawable(this, R.drawable.ic_gachi)!!
@@ -65,8 +66,10 @@ class FestivalDetailActivity: BaseActivity() {
         for(i in 0..4) adapter.addItem(Gachi("", 0))
 
 
+        val image = resources.getIdentifier("festival"+intentValue, "drawable", applicationContext.packageName)
+        iv_festival_detail.setBackgroundResource(image)
         Glide.with(this)
-                .load(R.drawable.festival0)
+                .load(image)
                 .apply(RequestOptions.bitmapTransform(MyBlurTransformation(this)))
                 .into(object: SimpleTarget<Drawable>() {
                     override fun onResourceReady(resource: Drawable?, transition: Transition<in Drawable>?) {

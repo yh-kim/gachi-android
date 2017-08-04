@@ -48,7 +48,7 @@ class GachiPresenter: GachiContract.Presenter, OnItemClickListener {
     override fun getItemCount(): Int = mGachiModel.getItemCount()
 
     fun addTest() {
-        for(i in 0..10) {
+        for(i in 0..0) {
             mGachiModel.addItem(Gachi("${i}번째 가치입니다.", i*10))
         }
     }

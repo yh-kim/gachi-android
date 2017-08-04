@@ -70,7 +70,7 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
     }
 
     override fun intentToFestivalDetailActivity(position: Int) {
-        activity.startActivity<FestivalDetailActivity>()
+        activity.startActivity<FestivalDetailActivity>("position" to position)
     }
 
     override fun clickAgain() {

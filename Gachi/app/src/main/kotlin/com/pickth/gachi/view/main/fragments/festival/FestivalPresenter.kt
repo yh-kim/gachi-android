@@ -29,6 +29,6 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        mView.intentToFestivalDetailActivity(0)
+        mView.intentToFestivalDetailActivity(position)
     }
 }

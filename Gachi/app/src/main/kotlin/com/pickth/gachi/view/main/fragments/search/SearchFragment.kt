@@ -70,7 +70,7 @@ class SearchFragment : TapBaseFragment(), SearchContract.View {
                     Handler().postDelayed({
                         dialog.dismiss()
                         rootView.ll_search_result_screen.visibility = View.VISIBLE
-                    }, 3000)
+                    }, 2000)
                     true
                 }
             }
