@@ -73,7 +73,7 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
 
         // actionbar
         setSupportActionBar(main_toolbar)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_gachi)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         title = resources.getStringArray(R.array.page_title)[0]
 
         // presenter

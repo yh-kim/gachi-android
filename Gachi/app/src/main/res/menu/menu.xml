@@ -5,7 +5,7 @@
         <item
             android:id="@+id/menu_change_fragment"
             android:icon="@drawable/ic_search"
-            android:title="@string/title_change_fragment"
+            android:title="@string/title_search"
             gachi:showAsAction="always" />
     </group>
 </menu>
