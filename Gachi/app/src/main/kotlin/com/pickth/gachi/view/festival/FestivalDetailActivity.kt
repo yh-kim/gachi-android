@@ -42,7 +42,7 @@ class FestivalDetailActivity: BaseActivity() {
 
 
 //        val icon = ContextCompat.getDrawable(this, R.drawable.ic_gachi)
-        val icon = AppCompatResources.getDrawable(this, R.drawable.ic_gachi)!!
+        val icon = AppCompatResources.getDrawable(this, R.drawable.ic_back)!!
         DrawableCompat.setTint(icon, ContextCompat.getColor(this, R.color.colorWhite))
 
         setSupportActionBar(festival_toolbar)

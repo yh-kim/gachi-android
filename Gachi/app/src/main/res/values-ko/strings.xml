@@ -9,7 +9,7 @@
     <string name="title_chat">채팅</string>
     <string name="title_alarm">알람</string>
     <string name="title_myinfo">내정보</string>
-    <string name="title_change_fragment">프래그먼트 변경</string>
+    <string name="title_search">검색</string>
 
     <!-- signup -->
     <string name="email">이메일</string>

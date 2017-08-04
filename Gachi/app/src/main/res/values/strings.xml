@@ -24,7 +24,7 @@
     <string name="title_chat">Chat</string>
     <string name="title_alarm">Alarm</string>
     <string name="title_myinfo">Myinfo</string>
-    <string name="title_change_fragment">Change fragment</string>
+    <string name="title_search">Search</string>
 
     <!-- signup -->
     <string name="email">email</string>
