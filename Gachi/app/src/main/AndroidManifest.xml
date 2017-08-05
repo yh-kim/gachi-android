@@ -48,6 +48,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.festival.FestivalDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.festival.FestivalDetailActivity2"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
