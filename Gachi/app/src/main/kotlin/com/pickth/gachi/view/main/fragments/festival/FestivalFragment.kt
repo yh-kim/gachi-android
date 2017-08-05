@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.festival.FestivalDetailActivity
+import com.pickth.gachi.view.festival.FestivalDetailActivity2
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
@@ -70,7 +71,12 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
     }
 
     override fun intentToFestivalDetailActivity(position: Int) {
-        activity.startActivity<FestivalDetailActivity>("position" to position)
+        if(position > 0) {
+            activity.startActivity<FestivalDetailActivity2>("position" to position)
+        } else {
+            activity.startActivity<FestivalDetailActivity>("position" to position)
+        }
+
     }
 
     override fun clickAgain() {

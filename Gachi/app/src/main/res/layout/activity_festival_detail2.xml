@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_festival2_background"
+            android:layout_width="match_parent"
+            android:layout_height="173dp"/>
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar_festival2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/festival2_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@android:color/transparent"
+                android:minHeight="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appbar_festival2"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="22dp">
+
+            <ImageView
+                android:id="@+id/iv_festival2_detail"
+                android:layout_width="86dp"
+                android:layout_height="125dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="22dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rock"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="인천 펜타포트 락 페스티벌"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="2016.07.08 ~ 2016.0.19"
+                    android:textColor="#a4aab3"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="29dp"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="정보"
+            android:textColor="#292929"
+            android:textSize="22sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="올해로 12회째를 맞은 인천 펜타포트는 명실상부한 인천의 대표 문화축제로 국카스텐, ZION.T, 악동뮤지션, 볼빨간사춘기, 형돈이와대준이X장미여관, 몽니, 장기하와 얼굴들 등 화려한 라인업을 공개하며 오픈 전부터 화제를 모은 바 있다. 인천 시민이라면 금요일 50%, 토요일/일요일 20%의 할인 혜택도 받아볼 수 있다."
+            android:textColor="#040404"
+            android:textSize="16sp"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="라인업"
+            android:textColor="#292929"
+            android:textSize="22sp"
+            android:layout_marginTop="21dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="올해로 12회째를 맞은 인천 펜타포트는 명실상부한 인천의 대표 문화축제로 국카스텐, ZION.T, 악동뮤지션, 볼빨간사춘기, 형돈이와대준이X장미여관, 몽니, 장기하와 얼굴들 등 화려한 라인업을 공개하며 오픈 전부터 화제를 모은 바 있다. 인천 시민이라면 금요일 50%, 토요일/일요일 20%의 할인 혜택도 받아볼 수 있다."
+            android:textColor="#040404"
+            android:textSize="16sp"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="대화방"
+                android:textColor="#222222"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="전체보기 >"
+                android:textColor="#222222"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_festival2_gachi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:overScrollMode="never" />
+    </LinearLayout>
+</LinearLayout>
