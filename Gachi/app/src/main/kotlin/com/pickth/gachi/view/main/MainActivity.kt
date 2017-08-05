@@ -1,10 +1,12 @@
 package com.pickth.gachi.view.main
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
+import com.pickth.commons.extensions.hideKeyboard
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerAdapter
 import com.pickth.gachi.base.BaseActivity
@@ -74,7 +76,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         // actionbar
         setSupportActionBar(main_toolbar)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
-        title = resources.getStringArray(R.array.page_title)[0]
+//        title = resources.getStringArray(R.array.page_title)[0]
+        title = "GACHI"
 
         // presenter
         mMainPresenter = MainPresenter()
@@ -129,13 +132,10 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         prevBottomNavigation = mNavigation.menu.getItem(position)
         prevBottomNavigation.isChecked = true
 
-        (position == 0 && isSearch()).let {
-            supportActionBar?.setDisplayShowTitleEnabled(!it)
-            supportActionBar?.setDisplayHomeAsUpEnabled(it)
-        }
-
+        supportActionBar?.setDisplayShowTitleEnabled((position == 0 && !isSearch()))
+        supportActionBar?.setDisplayHomeAsUpEnabled((position == 0 && isSearch()))
         mMenuItem.isVisible = (position == 0 && !isSearch())
-        title = resources.getStringArray(R.array.page_title)[position]
+//        title = resources.getStringArray(R.array.page_title)[position]
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -152,7 +152,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
             }
 
             android.R.id.home -> {
-                changeFestivalAndSearch()
+                hideKeyboard()
+                Handler().postDelayed({changeFestivalAndSearch()}, 100)
             }
         }
 
