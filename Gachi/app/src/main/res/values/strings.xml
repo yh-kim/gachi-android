@@ -26,6 +26,10 @@
     <string name="title_myinfo">Myinfo</string>
     <string name="title_search">Search</string>
 
+    <!-- main festival -->
+    <string name="title_popular_festivals">Popular festivals</string>
+    <string name="title_immediate_festivals">Immediate festivals</string>
+
     <!-- signup -->
     <string name="email">email</string>
     <string name="password">password</string>
