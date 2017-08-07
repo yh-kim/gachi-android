@@ -51,9 +51,10 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
 
         // test input
         for(i in 0..4) {
-            mPopularAdapter.addItem(Festival("", "", ""))
-            mImmediateAdapter.addItem(Festival("", "", ""))
+//            mPopularAdapter.addItem(Festival("", "", ""))
+            mImmediateAdapter.addItem(Festival("06.08 ~ 07.09", "", "마티하리"))
         }
+        mPresenter.getFestivalList()
 
         return rootView
     }

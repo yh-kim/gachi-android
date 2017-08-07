@@ -16,6 +16,7 @@ interface FestivalContract {
     interface Presenter: BasePresenter {
         fun setPopularAdapter(adapter: FestivalAdapter)
         fun setImmediateAdapter(adapter: FestivalAdapter)
+        fun getFestivalList()
         // TODO: Set view and model in adapter
     }
 }

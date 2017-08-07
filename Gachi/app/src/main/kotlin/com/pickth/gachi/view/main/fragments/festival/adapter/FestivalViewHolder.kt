@@ -18,10 +18,20 @@ package com.pickth.gachi.view.main.fragments.festival.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.bumptech.glide.Glide
 import com.pickth.gachi.util.OnItemClickListener
+import kotlinx.android.synthetic.main.item_main_festival.view.*
 
 class FestivalViewHolder(view: View, val listener: OnItemClickListener?): RecyclerView.ViewHolder(view) {
     fun onBind(item: Festival, position: Int) {
+        with(itemView) {
+            if(item.imageUrl != "") Glide.with(itemView.context)
+                    .load(item.imageUrl)
+                    .into(iv_main_festival)
+
+            tv_main_festival_title.text = item.title
+            tv_main_festival_date.text = item.date
+        }
         itemView.setOnClickListener {
             listener?.onItemClick(position)
         }
