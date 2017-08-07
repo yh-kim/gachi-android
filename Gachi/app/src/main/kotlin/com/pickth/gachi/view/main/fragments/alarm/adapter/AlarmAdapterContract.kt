@@ -13,9 +13,7 @@ interface AlarmAdapterContract {
 
     interface Model {
         fun getItem(position: Int): Alarm
-
         fun addItem(item: Alarm)
-
         fun getItemCount(): Int
     }
 }

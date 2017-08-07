@@ -10,7 +10,6 @@ import com.pickth.commons.mvp.BaseView
 interface MainContract {
     interface View: BaseView<Presenter> {
         fun changeFestivalAndSearch()
-
         fun isSearch(): Boolean
     }
 

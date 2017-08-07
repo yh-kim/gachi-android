@@ -13,9 +13,7 @@ interface ChatAdapterContract {
 
     interface Model {
         fun getItem(position: Int): Chat
-
         fun addItem(item: Chat)
-
         fun getItemCount(): Int
     }
 }

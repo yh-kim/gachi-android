@@ -21,7 +21,7 @@ import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
 
-class GachiPresenter: GachiContract.Presenter, OnItemClickListener {
+class GachiPresenter: GachiContract.Presenter {
 
     lateinit private var mView: GachiContract.View
     lateinit private var mGachiView: GachiAdapterContract.View
@@ -33,20 +33,21 @@ class GachiPresenter: GachiContract.Presenter, OnItemClickListener {
 
     override fun setGachiAdapterView(gachiView: GachiAdapterContract.View) {
         mGachiView = gachiView
-        mGachiView.setItemClickListener(this)
+        mGachiView.setItemClickListener(object: OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                mView.intentToGachiDetailActivity(position)
+            }
+
+        })
     }
 
     override fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model) {
         mGachiModel = gachiModel
     }
 
-
-    override fun onItemClick(position: Int) {
-        mView.intentToGachiDetailActivity(position)
-    }
-
     override fun getItemCount(): Int = mGachiModel.getItemCount()
 
+    // TODO: Remove test case
     fun addTest() {
         for(i in 0..10) {
             mGachiModel.addItem(Gachi("${i}번째 가치입니다.", i*10))

@@ -25,9 +25,7 @@ interface GachiAdapterContract {
 
     interface Model {
         fun getItem(position: Int): Gachi
-
         fun addItem(item: Gachi)
-
         fun getItemCount(): Int
     }
 }

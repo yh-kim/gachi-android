@@ -36,6 +36,7 @@ class AlarmPresenter: AlarmContract.Presenter, OnItemClickListener {
 
     override fun getItemCount(): Int = mAlarmModel.getItemCount()
 
+    // TODO: Remove test case
     fun addTest() {
         for(i in 0..10) {
             mAlarmModel.addItem(Alarm("알림$i"))

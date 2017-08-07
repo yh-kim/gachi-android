@@ -11,15 +11,12 @@ import com.pickth.gachi.view.main.fragments.alarm.adapter.AlarmAdapterContract
 interface AlarmContract {
     interface View: BaseView<Presenter> {
         fun intentToAlarmDetailActivity(position: Int)
-
         fun scrollToTop()
     }
 
     interface Presenter: BasePresenter {
         fun setAlarmAdapterView(alarmView: AlarmAdapterContract.View)
-
         fun setAlarmAdapterModel(alarmModel: AlarmAdapterContract.Model)
-
         fun getItemCount(): Int
     }
 }

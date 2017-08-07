@@ -23,15 +23,12 @@ import com.pickth.gachi.view.main.fragments.gachi.adapter.GachiAdapterContract
 interface GachiContract {
     interface View: BaseView<Presenter> {
         fun intentToGachiDetailActivity(position: Int)
-
         fun scrollToTop()
     }
 
     interface Presenter: BasePresenter {
         fun setGachiAdapterView(gachiView: GachiAdapterContract.View)
-
         fun setGachiAdapterModel(gachiModel: GachiAdapterContract.Model)
-
         fun getItemCount(): Int
     }
 }

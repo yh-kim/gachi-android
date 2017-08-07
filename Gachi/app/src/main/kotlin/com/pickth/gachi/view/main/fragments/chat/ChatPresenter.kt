@@ -34,6 +34,7 @@ class ChatPresenter: ChatContract.Presenter, OnItemClickListener {
         mView.intentToChatDetailActivity(position)
     }
 
+    // TODO: Remove test case
     fun addTest() {
         for(i in 0..10) {
             mChatModel.addItem(Chat("${i}번째 대화방입니다."))
