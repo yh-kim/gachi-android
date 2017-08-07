@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.commons.extensions.intent
 import com.pickth.gachi.R
+import com.pickth.gachi.base.BaseAddInfoFragment
 import com.pickth.gachi.view.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_signup_add_genre.view.*
 

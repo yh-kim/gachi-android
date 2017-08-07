@@ -25,7 +25,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.pickth.gachi.R
-import com.pickth.gachi.view.signup.fragment.BaseAddInfoFragment
+import com.pickth.gachi.base.BaseAddInfoFragment
 import kotlinx.android.synthetic.main.view_pager_add_info.view.*
 
 class AddInfoViewPager : LinearLayout {
@@ -117,8 +117,9 @@ class AddInfoViewPager : LinearLayout {
 
         updateIndexes()
     }
+
+    interface ChangeFragmentListener {
+        fun onChange()
+    }
 }
 
-interface ChangeFragmentListener {
-    fun onChange()
-}

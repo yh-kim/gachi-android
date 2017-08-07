@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.signup.fragment
+package com.pickth.gachi.base
 
-import com.pickth.gachi.base.BaseFragment
-import com.pickth.gachi.view.custom.ChangeFragmentListener
+import com.pickth.gachi.view.custom.AddInfoViewPager
 
 abstract class BaseAddInfoFragment : BaseFragment() {
-    var mListener: ChangeFragmentListener? = null
+    var mListener: AddInfoViewPager.ChangeFragmentListener? = null
 
-    fun setChangeFragmentListener(listener: ChangeFragmentListener) {
+    fun setChangeFragmentListener(listener: AddInfoViewPager.ChangeFragmentListener) {
         mListener = listener
     }
 }
