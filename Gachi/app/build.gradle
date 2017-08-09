@@ -16,39 +16,31 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled false
+            minifyEnabled true
             useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt')
-            proguardFiles 'proguard-rules.pro'
-            proguardFiles 'proguard-kakao.pro'
-            proguardFiles 'proguard-retrofit2.pro'
-            proguardFiles 'proguard-gson.pro'
-            proguardFiles 'proguard-picasso.pro'
-            proguardFiles 'proguard-glide.pro'
+            proguardFiles 'proguard-rules.pro',
+                    'proguard-kakao.pro',
+                    'proguard-retrofit2.pro',
+                    'proguard-gson.pro',
+                    'proguard-picasso.pro',
+                    'proguard-glide.pro'
         }
 
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
-            proguardFiles 'proguard-rules.pro'
-            proguardFiles 'proguard-kakao.pro'
-            proguardFiles 'proguard-retrofit2.pro'
-            proguardFiles 'proguard-gson.pro'
-            proguardFiles 'proguard-picasso.pro'
-            proguardFiles 'proguard-glide.pro'
+            proguardFiles 'proguard-rules.pro',
+                    'proguard-kakao.pro',
+                    'proguard-retrofit2.pro',
+                    'proguard-gson.pro',
+                    'proguard-picasso.pro',
+                    'proguard-glide.pro'
 
-            applicationVariants.all { variant ->
-                variant.outputs.each {
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
                     output ->
-                        def file = output.outputFile
-                        output.outputFile = new File(file.parent,
-                                file.name.replace("app", "Gachi" + defaultConfig.versionName))
-
-                        def date = new Date();
-                        def formattedDate = date.format('yyyy_MM_dd_HH_mm_ss')
-                        output.outputFile = new File(output.outputFile.parent,
-                                output.outputFile.name.replace("-release", "-release-" + formattedDate)
-                        )
+                        outputFileName = "gachi-${propVersionName}.apk"
                 }
             }
         }
@@ -58,7 +50,12 @@ android {
     }
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin' // src/main/kotlin 디렉터리를 소스 디렉터리에 추가합니다.
+        // src/main/kotlin 디렉터리를 소스 디렉터리에 추가합니다.
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    lintOptions {
+        // Void lint error -> 다국어 번역에서 누락된 항목이 있을 때 에러
+        checkReleaseBuilds false
     }
 }
 
