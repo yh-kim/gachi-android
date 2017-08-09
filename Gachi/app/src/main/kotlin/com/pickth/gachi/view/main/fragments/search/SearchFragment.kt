@@ -24,12 +24,11 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerModel
-import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.util.GridSpacingItemDecoration
+import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.search.adapter.SearchAdapter
 import kotlinx.android.synthetic.main.fragment_main_search.view.*
-import org.jetbrains.anko.toast
 
 class SearchFragment : TapBaseFragment(), SearchContract.View {
 
@@ -60,7 +59,11 @@ class SearchFragment : TapBaseFragment(), SearchContract.View {
         rootView.et_search_festival.setOnEditorActionListener { textView, i, keyEvent ->
             when(i) {
                 EditorInfo.IME_ACTION_SEARCH -> {
-                    activity.toast("search ${textView.text.toString().trim()}")
+                    val input = textView.text.toString().trim()
+                    rootView.tv_search_result_title.text = input
+
+                    // TODO: Connect server. Get list of result
+                    rootView.ll_search_festival_result.visibility = View.VISIBLE
                     true
                 }
             }

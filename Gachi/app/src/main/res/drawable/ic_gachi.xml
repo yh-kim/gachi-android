@@ -6,12 +6,12 @@
     android:viewportHeight="26">
     <path
         android:fillType="evenOdd"
-        android:strokeColor="#A4AAB3"
+        android:strokeColor="@color/colorBrightGray"
         android:strokeWidth="1"
         android:pathData="M16.678 9.302a8.072 8.072 0 0 1-8.073 8.073 8.073 8.073 0 1 1 8.073-8.073z" />
     <path
         android:fillType="evenOdd"
-        android:strokeColor="#A4AAB3"
+        android:strokeColor="@color/colorBrightGray"
         android:strokeWidth="1"
         android:pathData="M23.865 16.49a8.074 8.074 0 1 1-16.148-.002 8.074 8.074 0 0 1 16.148 .002 z" />
 </vector>

@@ -9,9 +9,10 @@
         android:layout_height="152dp" />
 
     <TextView
+        style="@style/FontTheme.M"
         android:text="마티하리"
         android:textSize="14sp"
-        android:textColor="#4a4a4a"
+        android:textColor="@color/colorDarkBlack"
         android:layout_marginTop="7dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -19,7 +20,7 @@
     <TextView
         android:text="06.08 ~ 07.09"
         android:textSize="12sp"
-        android:textColor="#b4b4b4"
+        android:textColor="@color/colorBrightGray"
         android:layout_marginTop="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

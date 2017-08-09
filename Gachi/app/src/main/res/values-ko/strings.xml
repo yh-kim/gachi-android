@@ -18,6 +18,9 @@
     <string name="title_popular_festivals">인기 페스티벌</string>
     <string name="title_immediate_festivals">임박 페스티벌</string>
 
+    <!-- search -->
+    <string name="search_festival_hint">어떤 공연을 찾으시나요?</string>
+
     <!-- signup -->
     <string name="email">이메일</string>
     <string name="password">비밀번호</string>

@@ -14,37 +14,48 @@
 
         <TextView
             android:id="@+id/tv_search_test"
+            style="@style/FontTheme.B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="search"
-            android:textColor="#222222"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:text="@string/title_search"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/et_search_festival"
+            style="@style/FontTheme.L"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="34dp"
-            android:hint="What is the festival to look for?"
+            android:hint="@string/search_festival_hint"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:textColorHint="#c8c8c8" />
+            android:textColorHint="@color/colorBrightGray"
+            android:textSize="18sp" />
 
-        <TextView
-            android:text="Search Results"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:textColor="#222222"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_search_festival"
+        <LinearLayout
+            android:id="@+id/ll_search_festival_result"
+            android:visibility="gone"
+            android:layout_marginTop="53dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:layout_marginTop="17dp" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_search_result_title"
+                style="@style/FontTheme.B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search Results"
+                android:textColor="@color/colorDarkBlack"
+                android:textSize="22sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_search_festival"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="21dp"
+                android:overScrollMode="never" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
