@@ -17,14 +17,14 @@ android {
     buildTypes {
         debug {
             minifyEnabled true
-            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt')
             proguardFiles 'proguard-rules.pro',
                     'proguard-kakao.pro',
                     'proguard-retrofit2.pro',
                     'proguard-gson.pro',
                     'proguard-picasso.pro',
-                    'proguard-glide.pro'
+                    'proguard-glide.pro',
+                    'proguard-debug.pro'
         }
 
         release {

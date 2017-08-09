@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FontTheme" />
+
+    <style name="FontTheme.M">
+        <item name="android:fontFamily">@font/noto_medium</item>
+    </style>
+
+    <style name="FontTheme.B">
+        <item name="android:fontFamily">@font/noto_bold</item>
+    </style>
+</resources>
