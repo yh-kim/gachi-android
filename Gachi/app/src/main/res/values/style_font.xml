@@ -9,4 +9,12 @@
     <style name="FontTheme.B">
         <item name="android:fontFamily">@font/noto_bold</item>
     </style>
+
+    <style name="FontTheme.L">
+        <item name="android:fontFamily">@font/noto_light</item>
+    </style>
+
+    <style name="FontTheme.R">
+        <item name="android:fontFamily">@font/noto_regular</item>
+    </style>
 </resources>

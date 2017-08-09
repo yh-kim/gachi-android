@@ -8,4 +8,5 @@
     
     <color name="colorDarkBlack">#292929</color>
     <color name="colorBrightGray">#a4aab3</color>
+    <color name="colorBrightTextGray">#4a4a4a</color>
 </resources>

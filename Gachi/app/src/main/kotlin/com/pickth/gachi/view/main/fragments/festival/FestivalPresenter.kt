@@ -49,8 +49,10 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
                             retArr.getJSONObject(position).let {
                                 val title = it.getString("title")
                                 val image = it.getString("image")
-                                val date = it.getString("until")
+                                val from = it.getString("from").split("T")[0].replace("-",".")
+                                val until = it.getString("until").split("T")[0].replace("-",".")
 
+                                var date = "$from - $until"
                                 mPopularAdapter.addItem(Festival(date, image, title))
                             }
                         }

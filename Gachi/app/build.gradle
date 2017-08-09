@@ -19,11 +19,6 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt')
             proguardFiles 'proguard-rules.pro',
-                    'proguard-kakao.pro',
-                    'proguard-retrofit2.pro',
-                    'proguard-gson.pro',
-                    'proguard-picasso.pro',
-                    'proguard-glide.pro',
                     'proguard-debug.pro'
         }
 
@@ -54,7 +49,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
     lintOptions {
-        // Void lint error -> 다국어 번역에서 누락된 항목이 있을 때 에러
+        // Void lint error -> 다국어 번역에서 누락된 항목이 있을 때 에러 피하기
         checkReleaseBuilds false
     }
 }
