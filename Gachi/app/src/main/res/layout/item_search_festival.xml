@@ -20,7 +20,7 @@
     <TextView
         android:text="06.08 ~ 07.09"
         android:textSize="12sp"
-        android:textColor="@color/colorBrightGray"
+        android:textColor="@color/colorBrightGray00"
         android:layout_marginTop="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

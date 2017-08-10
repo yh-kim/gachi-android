@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -15,8 +16,12 @@
 
         <TextView
             android:id="@+id/tv_add_info_title"
+            style="@style/FontTheme.B"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.02"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="22sp" />
 
         <Spinner
             android:layout_width="wrap_content"
@@ -29,12 +34,14 @@
 
     <TextView
         android:id="@+id/btn_add_info_next"
-        android:layout_width="100dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="16dp"
+        style="@style/FontTheme.M"
+        android:layout_width="145dp"
+        android:layout_height="49dp"
         android:background="@drawable/background_text_rectangle"
         android:gravity="center"
+        android:letterSpacing="-0.44"
         android:text="@string/next"
-        android:textSize="20sp" />
+        android:textColor="@color/colorBrightGray00"
+        android:textSize="18sp" />
 
 </LinearLayout>

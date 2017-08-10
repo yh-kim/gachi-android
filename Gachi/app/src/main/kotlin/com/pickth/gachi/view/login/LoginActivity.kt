@@ -39,6 +39,7 @@ class LoginActivity : BaseActivity() {
 
         fl_login_with_email.setOnClickListener {
             startActivity<SignupActivity>()
+            finish()
         }
 
         // kakao login

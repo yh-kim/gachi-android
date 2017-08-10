@@ -30,7 +30,7 @@
             android:hint="@string/search_festival_hint"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:textColorHint="@color/colorBrightGray"
+            android:textColorHint="@color/colorBrightGray00"
             android:textSize="18sp" />
 
         <LinearLayout

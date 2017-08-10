@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.signup.fragment
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,11 @@ class GenreAddFragment : BaseAddInfoFragment() {
 
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
 
-        rootView.btn_add_info_next.text = resources.getString(R.string.apply)
+        rootView.btn_add_info_next.run {
+            isSelected = true
+            setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
+            text = resources.getString(R.string.apply)
+        }
 
         rootView.btn_add_info_next.setOnClickListener {
             intent(MainActivity::class.java)
@@ -49,4 +54,5 @@ class GenreAddFragment : BaseAddInfoFragment() {
 
         return rootView
     }
+
 }

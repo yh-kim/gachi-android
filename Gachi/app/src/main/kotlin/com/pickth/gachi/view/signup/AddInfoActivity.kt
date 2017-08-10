@@ -17,15 +17,28 @@
 package com.pickth.gachi.view.signup
 
 import android.os.Bundle
+import android.view.MenuItem
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import com.pickth.gachi.view.custom.AddInfoViewPager
 import com.pickth.gachi.view.signup.fragment.*
 import kotlinx.android.synthetic.main.activity_add_info.*
 
 class AddInfoActivity: BaseActivity() {
+
+    private lateinit var mViewPager: AddInfoViewPager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_info)
+
+        // actionbar
+        setSupportActionBar(addinfo_toolbar)
+        supportActionBar?.run {
+            setHomeAsUpIndicator(R.drawable.ic_back)
+            setDisplayShowTitleEnabled(false)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         val test1 = NicknameAddFragment.getInstance()
         val test2 = AgeAddFragment.getInstance()
@@ -33,8 +46,7 @@ class AddInfoActivity: BaseActivity() {
         val test4 = RegionAddFragment.getInstance()
         val test5 = GenreAddFragment.getInstance()
 
-        vf_add_info.setFragmentManager(supportFragmentManager)
-        vf_add_info.run {
+        mViewPager = vf_add_info.apply {
             setFragmentManager(supportFragmentManager)
 
             addItemView(test1)
@@ -45,5 +57,16 @@ class AddInfoActivity: BaseActivity() {
             notifyDataSetChanged()
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                if(mViewPager.currentIndex == 0) finish()
+                else mViewPager.changePreFragment()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

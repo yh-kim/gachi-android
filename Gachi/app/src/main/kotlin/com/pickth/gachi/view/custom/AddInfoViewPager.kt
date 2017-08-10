@@ -26,6 +26,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
+import com.pickth.gachi.extensions.convertDpToPixel
 import kotlinx.android.synthetic.main.view_pager_add_info.view.*
 
 class AddInfoViewPager : LinearLayout {
@@ -71,9 +72,12 @@ class AddInfoViewPager : LinearLayout {
 
         mFrameLayout = rootView.fl_view_pager
 
-        var params = LinearLayout.LayoutParams(40, 40)
-        params.topMargin = 30
-        params.bottomMargin = 100
+        val size = rootView.context.convertDpToPixel(5)
+        var params = LinearLayout.LayoutParams(size, size)
+        params.leftMargin = rootView.context.convertDpToPixel(2)
+        params.rightMargin = rootView.context.convertDpToPixel(2)
+        params.topMargin = rootView.context.convertDpToPixel(39)
+        params.bottomMargin = rootView.context.convertDpToPixel(50)
 
 
         for(i in 0..ITEM_COUNT-1) {
@@ -82,7 +86,7 @@ class AddInfoViewPager : LinearLayout {
             mIndexButtons[i].run {
                 setImageResource(R.drawable.selector_reliability_circle)
                 isSelected = (i == currentIndex)
-                setPadding(10, 10, 10, 10)
+//                setPadding(10, 10, 10, 10)
             }
 
             rootView.ll_view_pager_buttons.addView(mIndexButtons[i], params)
@@ -97,6 +101,21 @@ class AddInfoViewPager : LinearLayout {
         if(mFragmentManager != null) {
             mFragmentManager?.beginTransaction()?.run {
                 setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
+                replace(mFrameLayout!!.id, mViews[currentIndex])?.commit()
+            }
+        }
+
+        updateIndexes()
+    }
+
+    fun changePreFragment() {
+        if(currentIndex == 0) return
+
+        currentIndex--
+
+        if(mFragmentManager != null) {
+            mFragmentManager?.beginTransaction()?.run {
+                setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
                 replace(mFrameLayout!!.id, mViews[currentIndex])?.commit()
             }
         }
