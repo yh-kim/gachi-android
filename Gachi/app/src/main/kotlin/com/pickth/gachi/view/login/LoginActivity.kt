@@ -37,9 +37,8 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        tv_login_with_email.setOnClickListener {
+        fl_login_with_email.setOnClickListener {
             startActivity<SignupActivity>()
-            finish()
         }
 
         // kakao login

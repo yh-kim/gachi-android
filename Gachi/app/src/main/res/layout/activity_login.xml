@@ -1,23 +1,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@color/colorPrimary"
+    android:gravity="center|bottom"
     android:orientation="vertical"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
-    <TextView
-        android:id="@+id/tv_login_with_email"
+    <ImageView
+        android:layout_width="97dp"
+        android:layout_height="97dp"
+        android:tint="@color/colorWhite"
+        app:srcCompat="@drawable/ic_gachi" />
+
+    <FrameLayout
+        android:id="@+id/fl_login_with_email"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="sign in with email"
-        android:textColor="@color/colorWhite" />
+        android:layout_height="47dp"
+        android:layout_marginTop="159dp"
+        android:background="@color/colorWhite">
 
-    <com.kakao.usermgmt.LoginButton
-        android:id="@+id/kakao_sign_in_button"
+        <TextView
+            style="@style/FontTheme.R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="sign in with email"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_login_button">
+
+        <com.kakao.usermgmt.LoginButton
+            android:id="@+id/kakao_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
+
+        <TextView
+            style="@style/FontTheme.R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="sign in with kakao"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+    </FrameLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        android:layout_marginBottom="48dp"
+        android:layout_marginTop="27dp">
+
+        <TextView
+            style="@style/FontTheme.R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sign up"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+        <TextView
+            style="@style/FontTheme.R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="skip"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+    </RelativeLayout>
 </LinearLayout>
