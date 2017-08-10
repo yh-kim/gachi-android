@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.signup
 
 import android.os.Bundle
+import android.view.MenuItem
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -27,6 +28,14 @@ class SignupActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+
+        // actionbar
+        setSupportActionBar(signup_toolbar)
+        supportActionBar?.run {
+            setHomeAsUpIndicator(R.drawable.ic_back)
+            setDisplayShowTitleEnabled(false)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         tv_signup_submit.setOnClickListener {
             val email = et_signup_email.text.toString().trim()
@@ -44,6 +53,16 @@ class SignupActivity: BaseActivity() {
             startActivity<AddInfoActivity>()
             finish()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun isEmailValid(email: String): Boolean {

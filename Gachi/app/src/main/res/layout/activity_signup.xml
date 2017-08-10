@@ -3,45 +3,85 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp">
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/et_signup_email"
+    <!-- app bar -->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/signup_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite"
+            android:minHeight="?attr/actionBarSize"
+            app:subtitleTextColor="@color/colorDarkBlack" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:inputType="textEmailAddress"
-        app:met_baseColor="@android:color/black"
-        app:met_floatingLabel="highlight"
-        app:met_floatingLabelAlwaysShown="true"
-        app:met_floatingLabelPadding="10dp"
-        app:met_floatingLabelText="@string/email"
-        app:met_primaryColor="@android:color/holo_green_dark" />
+        android:orientation="vertical"
+        android:layout_marginTop="19dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/et_signup_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:inputType="textPassword"
-        app:met_baseColor="@android:color/black"
-        app:met_floatingLabel="highlight"
-        app:met_floatingLabelAlwaysShown="true"
-        app:met_floatingLabelPadding="10dp"
-        app:met_floatingLabelText="@string/password"
-        app:met_primaryColor="@android:color/holo_green_dark" />
+        <TextView
+            style="@style/FontTheme.B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:textColor="@color/colorDarkBlack"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/tv_signup_submit"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="가입하기"
-        android:textColor="@color/colorWhite" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_signup_email"
+            style="@style/FontTheme.L"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            app:met_textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelAlwaysShown="false"
+            app:met_floatingLabelPadding="10dp"
+            app:met_floatingLabelText="@string/email"
+            app:met_primaryColor="@color/colorPrimary" />
 
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_signup_password"
+            style="@style/FontTheme.L"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelAlwaysShown="false"
+            app:met_floatingLabelPadding="10dp"
+            app:met_floatingLabelText="@string/password"
+            app:met_primaryColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_signup_submit"
+            style="@style/FontTheme.R"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="sign up"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 </LinearLayout>
