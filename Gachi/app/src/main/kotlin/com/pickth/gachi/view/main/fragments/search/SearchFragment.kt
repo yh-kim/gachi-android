@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.main.fragments.search
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import com.pickth.gachi.R
 import com.pickth.gachi.adapter.pager.MainPagerModel
+import com.pickth.gachi.extensions.showProgressDialog
 import com.pickth.gachi.util.GridSpacingItemDecoration
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
@@ -59,11 +61,18 @@ class SearchFragment : TapBaseFragment(), SearchContract.View {
         rootView.et_search_festival.setOnEditorActionListener { textView, i, keyEvent ->
             when(i) {
                 EditorInfo.IME_ACTION_SEARCH -> {
-                    val input = textView.text.toString().trim()
-                    rootView.tv_search_result_title.text = input
 
-                    // TODO: Connect server. Get list of result
-                    rootView.ll_search_festival_result.visibility = View.VISIBLE
+                    val dialog = activity.showProgressDialog()
+                    Handler().postDelayed({
+                        dialog.dismiss()
+
+                        val input = textView.text.toString().trim()
+                        rootView.tv_search_result_title.text = input
+
+                        // TODO: Connect server. Get list of result
+                        rootView.ll_search_festival_result.visibility = View.VISIBLE
+                    }, 3 * 1000)
+
                     true
                 }
             }

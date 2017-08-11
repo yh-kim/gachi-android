@@ -10,6 +10,7 @@ import com.kakao.usermgmt.response.model.UserProfile
 import com.kakao.util.exception.KakaoException
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import com.pickth.gachi.view.main.MainActivity
 import com.pickth.gachi.view.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
@@ -38,7 +39,19 @@ class LoginActivity : BaseActivity() {
         setContentView(R.layout.activity_login)
 
         fl_login_with_email.setOnClickListener {
+        }
+
+        fl_login_with_kakao.setOnClickListener {
+            kakao_sign_in_button.performClick()
+        }
+
+        tv_signup.setOnClickListener {
             startActivity<SignupActivity>()
+            finish()
+        }
+
+        tv_skip.setOnClickListener {
+            startActivity<MainActivity>()
             finish()
         }
 
