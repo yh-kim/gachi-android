@@ -8,8 +8,7 @@
         android:id="@+id/iv_main_festival"
         android:layout_width="120dp"
         android:layout_height="126dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/test" />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tv_main_festival_title"

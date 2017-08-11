@@ -35,7 +35,7 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
         mImmediateAdapter.setItemClickListener(this)
     }
 
-    override fun getFestivalList() {
+    override fun getPopularFestivalList() {
         FestivalService().getFestivalList()
                 .enqueue(object: Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
@@ -54,6 +54,32 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
 
                                 var date = "$from - $until"
                                 mPopularAdapter.addItem(Festival(date, image, title))
+                            }
+                        }
+                    }
+
+                })
+    }
+
+    override fun getImmediateFestivalList() {
+        FestivalService().getFestivalList()
+                .enqueue(object: Callback<ResponseBody> {
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                    }
+
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                        if(response?.code() != 200) return
+
+                        val retArr = JSONArray(response.body()!!.string())
+                        for(position in 0..retArr.length() - 1) {
+                            retArr.getJSONObject(position).let {
+                                val title = it.getString("title")
+                                val image = it.getString("image")
+                                val from = it.getString("from").split("T")[0].replace("-",".")
+                                val until = it.getString("until").split("T")[0].replace("-",".")
+
+                                var date = "$from - $until"
+                                mImmediateAdapter.addItem(Festival(date, image, title))
                             }
                         }
                     }

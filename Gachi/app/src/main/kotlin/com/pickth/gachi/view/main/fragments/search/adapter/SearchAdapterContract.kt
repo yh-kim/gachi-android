@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.search
+package com.pickth.gachi.view.main.fragments.search.adapter
 
-import com.pickth.commons.mvp.BasePresenter
-import com.pickth.commons.mvp.BaseView
-import com.pickth.gachi.view.main.fragments.search.adapter.SearchAdapterContract
+import com.pickth.gachi.util.OnItemClickListener
+import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 
-interface SearchContract {
-    interface View: BaseView<Presenter> {
-        fun intentToFestivalDetailActivity(position: Int)
-        fun showDialog()
+/**
+ * Created by yonghoon on 2017-08-11
+ */
+
+interface SearchAdapterContract {
+    interface View {
+        fun setItemClickListener(listener: OnItemClickListener)
     }
 
-    interface Presenter: BasePresenter {
-        fun setAdapterView(view: SearchAdapterContract.View)
-        fun setAdapterModel(adapter: SearchAdapterContract.Model)
-        fun searchFestivalList(text: String)
-        fun clearList()
+    interface Model {
+        fun addItem(item: Festival)
+        fun clearItems()
     }
 }

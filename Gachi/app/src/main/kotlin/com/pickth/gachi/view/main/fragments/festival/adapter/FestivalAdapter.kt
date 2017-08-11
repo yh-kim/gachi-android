@@ -22,7 +22,7 @@ import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.util.OnItemClickListener
 
-class FestivalAdapter: RecyclerView.Adapter<FestivalViewHolder>() {
+class FestivalAdapter: RecyclerView.Adapter<FestivalViewHolder>(), FestivalAdapterContract.View, FestivalAdapterContract.Model {
 
     private var items = ArrayList<Festival>()
     var mOnItemClickListener: OnItemClickListener?= null
@@ -41,11 +41,11 @@ class FestivalAdapter: RecyclerView.Adapter<FestivalViewHolder>() {
         holder?.onBind(items[position], position)
     }
 
-    fun setItemClickListener(clickListener: OnItemClickListener) {
+    override fun setItemClickListener(clickListener: OnItemClickListener) {
         mOnItemClickListener = clickListener
     }
 
-    fun addItem(item: Festival) {
+    override fun addItem(item: Festival) {
         items.add(item)
         notifyItemInserted(itemCount - 1)
     }

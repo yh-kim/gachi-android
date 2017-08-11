@@ -18,13 +18,16 @@ package com.pickth.gachi.view.main.fragments.search.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
+import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
+import com.pickth.gachi.view.main.fragments.festival.adapter.SearchViewHolder
 
-class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
+class SearchAdapter: RecyclerView.Adapter<SearchViewHolder>(), SearchAdapterContract.View, SearchAdapterContract.Model {
+
     private var items = ArrayList<Festival>()
+    var mOnItemClickListener: OnItemClickListener?= null
 
     override fun getItemCount(): Int = items.size
 
@@ -32,21 +35,24 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
         val itemView = LayoutInflater
                 .from(parent?.context)
                 .inflate(R.layout.item_search_festival, parent, false)
-        return SearchViewHolder(itemView)
+        return SearchViewHolder(itemView, mOnItemClickListener)
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder?, position: Int) {
-        holder?.onBInd()
+        holder?.onBind(items[position], position)
     }
 
-    fun addItem(item: Festival) {
+    override fun setItemClickListener(clickListener: OnItemClickListener) {
+        mOnItemClickListener = clickListener
+    }
+
+    override fun addItem(item: Festival) {
         items.add(item)
         notifyItemInserted(itemCount - 1)
     }
 
-    class SearchViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun onBInd() {
-
-        }
+    override fun clearItems() {
+        items.clear()
+        notifyDataSetChanged()
     }
 }

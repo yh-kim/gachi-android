@@ -49,12 +49,8 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
             addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
         }
 
-        // test input
-        for(i in 0..4) {
-//            mPopularAdapter.addItem(Festival("", "", ""))
-            mImmediateAdapter.addItem(Festival("06.08 ~ 07.09", "", "마티하리"))
-        }
-        mPresenter.getFestivalList()
+        mPresenter.getPopularFestivalList()
+        mPresenter.getImmediateFestivalList()
 
         return rootView
     }
