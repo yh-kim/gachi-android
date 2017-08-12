@@ -17,6 +17,7 @@ import org.jetbrains.anko.startActivity
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
+
 class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

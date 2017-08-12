@@ -36,7 +36,7 @@
                 android:layout_marginRight="19dp"
                 android:letterSpacing="-0.04"
                 android:text="View all >"
-                android:textColor="@color/colorBrightGray02"
+                android:textColor="@color/colorBrightGray03"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -79,7 +79,7 @@
                 android:layout_marginRight="19dp"
                 android:letterSpacing="-0.04"
                 android:text="View all >"
-                android:textColor="@color/colorBrightGray02"
+                android:textColor="@color/colorBrightGray03"
                 android:textSize="12sp" />
         </LinearLayout>
 

@@ -44,7 +44,7 @@
             android:layout_marginTop="15dp"
             android:letterSpacing="-0.02"
             android:text="필수 입력사항입니다"
-            android:textColor="@color/colorBrightGray01"
+            android:textColor="@color/colorBrightGray02"
             android:textSize="14sp" />
     </LinearLayout>
 

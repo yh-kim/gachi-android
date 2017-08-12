@@ -64,13 +64,12 @@ class FestivalDetailActivity: BaseActivity() {
         // test input
         for(i in 0..4) adapter.addItem(Gachi("", 0))
 
-
         Glide.with(this)
                 .load(R.drawable.test)
                 .apply(RequestOptions.bitmapTransform(MyBlurTransformation(this)))
                 .into(object: SimpleTarget<Drawable>() {
                     override fun onResourceReady(resource: Drawable?, transition: Transition<in Drawable>?) {
-                        ll_festival_blur_background.background = resource
+                        iv_festival_blur_background.background = resource
                     }
                 })
     }

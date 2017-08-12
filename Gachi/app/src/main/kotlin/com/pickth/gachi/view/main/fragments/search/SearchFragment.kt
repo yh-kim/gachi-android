@@ -93,4 +93,7 @@ class SearchFragment : TapBaseFragment(), SearchContract.View {
 
     override fun showDialog() {
     }
+
+    override fun setIsScroll() {
+    }
 }
