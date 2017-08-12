@@ -36,21 +36,6 @@ android {
             proguardFiles 'proguard-gson.pro'
             proguardFiles 'proguard-picasso.pro'
             proguardFiles 'proguard-glide.pro'
-
-            applicationVariants.all { variant ->
-                variant.outputs.each {
-                    output ->
-                        def file = output.outputFile
-                        output.outputFile = new File(file.parent,
-                                file.name.replace("app", "Gachi" + defaultConfig.versionName))
-
-                        def date = new Date();
-                        def formattedDate = date.format('yyyy_MM_dd_HH_mm_ss')
-                        output.outputFile = new File(output.outputFile.parent,
-                                output.outputFile.name.replace("-release", "-release-" + formattedDate)
-                        )
-                }
-            }
         }
     }
     packagingOptions {
