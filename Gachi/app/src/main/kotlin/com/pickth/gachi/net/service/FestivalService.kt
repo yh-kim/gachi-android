@@ -29,15 +29,18 @@ import retrofit2.http.Query
 class FestivalService {
     val service = RetrofitManager.getService(FestivalAPI::class.java) as FestivalAPI
 
-    fun getFestivalList() = service.getFestivalList()
-
-    fun searchFestival(term: String) = service.searchFestival(term)
+    fun getFestivalList(page: Int, type: String = "default") = service.getFestivalList(page = page, type = type)
+    /**
+     * @param term keyword for search
+     * @param page page number of getting items. first page is 1
+     */
+    fun searchFestival(term: String, page: Int) = service.searchFestival(term, page)
 
     interface FestivalAPI {
         @GET("festival/list")
-        fun getFestivalList(): Call<ResponseBody>
+        fun getFestivalList(@Query("page") page: Int, @Query("type") type: String): Call<ResponseBody>
 
         @GET("festival/search")
-        fun searchFestival(@Query("term") term: String): Call<ResponseBody>
+        fun searchFestival(@Query("term") term: String, @Query("page") page: Int): Call<ResponseBody>
     }
 }

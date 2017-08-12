@@ -24,12 +24,13 @@ interface SearchContract {
     interface View: BaseView<Presenter> {
         fun intentToFestivalDetailActivity(position: Int)
         fun showDialog()
+        fun setIsScroll()
     }
 
     interface Presenter: BasePresenter {
         fun setAdapterView(view: SearchAdapterContract.View)
         fun setAdapterModel(adapter: SearchAdapterContract.Model)
-        fun searchFestivalList(text: String)
+        fun searchFestivalList(text: String, page: Int = 1)
         fun clearList()
     }
 }

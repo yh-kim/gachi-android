@@ -36,7 +36,7 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
     }
 
     override fun getPopularFestivalList() {
-        FestivalService().getFestivalList()
+        FestivalService().getFestivalList(1)
                 .enqueue(object: Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
                     }
@@ -62,7 +62,7 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
     }
 
     override fun getImmediateFestivalList() {
-        FestivalService().getFestivalList()
+        FestivalService().getFestivalList(1)
                 .enqueue(object: Callback<ResponseBody> {
                     override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
                     }

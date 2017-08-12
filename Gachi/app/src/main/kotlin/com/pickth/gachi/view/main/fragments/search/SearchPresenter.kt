@@ -45,8 +45,8 @@ class SearchPresenter: SearchContract.Presenter, OnItemClickListener {
         mAdapterModel = model
     }
 
-    override fun searchFestivalList(text: String) {
-        FestivalService().searchFestival(text)
+    override fun searchFestivalList(text: String, page: Int) {
+        FestivalService().searchFestival(text, page)
                 .enqueue(object: retrofit2.Callback<ResponseBody> {
                     override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                         if(response?.code() != 200) return
