@@ -23,6 +23,7 @@ import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
@@ -31,15 +32,21 @@ import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.util.MyBlurTransformation
 import com.pickth.gachi.util.MyDividerItemDecoration
+import com.pickth.gachi.util.StringFormat
+import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
 import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 import kotlinx.android.synthetic.main.activity_festival_detail.*
+import org.json.JSONObject
 
-class FestivalDetailActivity: BaseActivity() {
+class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
 
+    private lateinit var mPresenter: FestivalDetailContract.Presenter
+
+    private lateinit var ivFestivalBlurBackground: ImageView
+    private lateinit var ivFestivalDetail: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_festival_detail)
-
 
 //        val icon = ContextCompat.getDrawable(this, R.drawable.ic_gachi)
         val icon = AppCompatResources.getDrawable(this, R.drawable.ic_back)!!
@@ -52,6 +59,12 @@ class FestivalDetailActivity: BaseActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
+        // presenter
+        mPresenter = FestivalDetailPresenter().apply {
+            attachView(this@FestivalDetailActivity)
+            getFestivalInfo(getFid())
+        }
+
         val adapter = FestivalDetailAdapter()
         rv_festival_gachi.run {
             layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
@@ -59,19 +72,9 @@ class FestivalDetailActivity: BaseActivity() {
             addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 15, false))
         }
 
-
-
         // test input
         for(i in 0..4) adapter.addItem(Gachi("", 0))
 
-        Glide.with(this)
-                .load(R.drawable.test)
-                .apply(RequestOptions.bitmapTransform(MyBlurTransformation(this)))
-                .into(object: SimpleTarget<Drawable>() {
-                    override fun onResourceReady(resource: Drawable?, transition: Transition<in Drawable>?) {
-                        iv_festival_blur_background.background = resource
-                    }
-                })
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -81,7 +84,36 @@ class FestivalDetailActivity: BaseActivity() {
             }
         }
 
-
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun getFid(): String = intent.getStringExtra("fid")
+
+    override fun bindFestivalInfo(info: String) {
+        JSONObject(info).let {
+            val title = it.getString("title")
+            val from = it.getString("from")
+            val until = it.getString("until")
+            val image = it.getString("image")
+            val detail = it.getString("detail")
+            val location = it.getString("location")
+
+            tv_festival_detail_title.text = title
+            tv_festival_detail_date.text = StringFormat.formatFestivalDate(from, until)
+            tv_festival_detail_detail.text = detail
+
+            Glide.with(this)
+                    .load(image)
+                    .into(iv_festival_detail)
+
+            Glide.with(this)
+                    .load(image)
+                    .apply(RequestOptions.bitmapTransform(MyBlurTransformation(this)))
+                    .into(object: SimpleTarget<Drawable>() {
+                        override fun onResourceReady(resource: Drawable?, transition: Transition<in Drawable>?) {
+                            iv_festival_blur_background.background = resource
+                        }
+                    })
+        }
     }
 }

@@ -20,6 +20,7 @@ import com.pickth.gachi.net.RetrofitManager
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -36,11 +37,16 @@ class FestivalService {
      */
     fun searchFestival(term: String, page: Int) = service.searchFestival(term, page)
 
+    fun getFestivalInfo(fid: String) = service.getFestivalInfo(fid)
+
     interface FestivalAPI {
         @GET("festival/list")
         fun getFestivalList(@Query("page") page: Int, @Query("type") type: String): Call<ResponseBody>
 
         @GET("festival/search")
         fun searchFestival(@Query("term") term: String, @Query("page") page: Int): Call<ResponseBody>
+
+        @GET("festival/{fid}")
+        fun getFestivalInfo(@Path("fid") fid: String): Call<ResponseBody>
     }
 }

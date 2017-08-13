@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:focusable="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="true">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -22,8 +22,7 @@
                 <ImageView
                     android:id="@+id/iv_festival_blur_background"
                     android:layout_width="match_parent"
-                    android:layout_height="165dp"
-                    android:scaleType="centerInside" />
+                    android:layout_height="165dp" />
                 <!-- 블러 끝 -->
 
                 <LinearLayout
@@ -35,13 +34,14 @@
                     android:layout_marginTop="74dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingLeft="20dp">
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
 
                     <ImageView
                         android:id="@+id/iv_festival_detail"
                         android:layout_width="86dp"
                         android:layout_height="125dp"
-                        android:background="@drawable/test" />
+                        android:scaleType="fitXY" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -50,20 +50,22 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tv_festival_detail_date"
                             style="@style/FontTheme.M"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2016.07.08~2016.08.19"
                             android:textColor="@color/colorWhite"
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/tv_festival_detail_title"
                             style="@style/FontTheme.M"
-                            android:letterSpacing="-0.84"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="인천 펜타포트 페스티벌"
+                            android:letterSpacing="-0.84"
+                            android:lineSpacingExtra="6sp"
+                            android:layout_marginBottom="13dp"
                             android:textColor="@color/colorWhite"
                             android:textSize="20sp" />
                     </LinearLayout>
@@ -84,7 +86,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingRight="20dp">
 
                     <TextView
                         style="@style/FontTheme.B"
@@ -96,29 +99,30 @@
                         android:textSize="22sp" />
 
                     <TextView
+                        android:id="@+id/tv_festival_detail_detail"
                         style="@style/FontTheme.L"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:letterSpacing="-0.39"
-                        android:text="@string/test"
                         android:textColor="@color/colorBrightGray01"
                         android:textSize="16sp" />
                 </LinearLayout>
                 <!-- 정보 -->
 
                 <ImageView
-                    android:background="@drawable/line_divider"
-                    android:layout_marginTop="27dp"
-                    android:layout_marginBottom="27dp"
-                    android:paddingRight="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="27dp"
+                    android:layout_marginTop="27dp"
+                    android:background="@drawable/line_divider"
+                    android:layout_marginRight="20dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingRight="20dp">
 
                     <TextView
                         style="@style/FontTheme.B"
@@ -130,6 +134,7 @@
                         android:textSize="22sp" />
 
                     <TextView
+                        android:id="@+id/tv_festival_detail_lineup"
                         style="@style/FontTheme.L"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -142,11 +147,12 @@
                 <!-- 라인업 -->
 
                 <ImageView
-                    android:background="@drawable/line_divider"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginBottom="24dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="28dp"
+                    android:background="@drawable/line_divider"
+                    android:layout_marginRight="20dp" />
 
 
                 <LinearLayout
@@ -182,12 +188,12 @@
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/rv_festival_gachi"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
                         android:layout_marginBottom="32dp"
+                        android:layout_marginTop="32dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:overScrollMode="never" />
                 </LinearLayout>
                 <!-- 대화방 -->

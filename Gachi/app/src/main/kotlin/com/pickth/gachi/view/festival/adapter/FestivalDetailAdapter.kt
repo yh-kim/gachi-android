@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.festival
+package com.pickth.gachi.view.festival.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

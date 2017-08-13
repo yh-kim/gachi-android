@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.festival.adapter
+package com.pickth.gachi.util
 
-data class Festival(var fid: String, var date: String, var imageUrl: String, var title: String, var type: String = "default")
+/**
+ * Created by yonghoon on 2017-08-13
+ */
+
+object StringFormat {
+    fun formatFestivalDate(from: String, until: String): String = "${from.split("T")[0].replace("-",".")} - ${until.split("T")[0].replace("-",".")}"
+}

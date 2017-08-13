@@ -16,7 +16,7 @@
 
 package com.pickth.gachi.view.main.fragments.festival.adapter
 
-import com.pickth.gachi.util.OnItemClickListener
+import com.pickth.gachi.util.OnFestivalClickListener
 
 /**
  * Created by yonghoon on 2017-08-11
@@ -24,10 +24,11 @@ import com.pickth.gachi.util.OnItemClickListener
 
 interface FestivalAdapterContract {
     interface View {
-        fun setItemClickListener(listener: OnItemClickListener)
+        fun setItemClickListener(listener: OnFestivalClickListener)
     }
 
     interface Model {
         fun addItem(item: Festival)
+        fun getItem(position: Int): Festival
     }
 }

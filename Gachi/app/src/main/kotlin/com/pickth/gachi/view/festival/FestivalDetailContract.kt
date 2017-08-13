@@ -14,6 +14,22 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.festival.adapter
+package com.pickth.gachi.view.festival
 
-data class Festival(var fid: String, var date: String, var imageUrl: String, var title: String, var type: String = "default")
+import com.pickth.commons.mvp.BasePresenter
+import com.pickth.commons.mvp.BaseView
+
+/**
+ * Created by yonghoon on 2017-08-13
+ */
+
+interface FestivalDetailContract {
+    interface View: BaseView<Presenter> {
+        fun getFid(): String
+        fun bindFestivalInfo(info: String)
+    }
+
+    interface Presenter: BasePresenter {
+        fun getFestivalInfo(fid: String)
+    }
+}

@@ -60,7 +60,7 @@ class SearchPresenter: SearchContract.Presenter, OnItemClickListener {
                                 val until = it.getString("until").split("T")[0].replace("-",".")
 
                                 var date = "$from - $until"
-                                mAdapterModel.addItem(Festival(date, image, title))
+                                mAdapterModel.addItem(Festival("fid", date, image, title))
                             }
                         }
                     }

@@ -20,19 +20,19 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.pickth.gachi.R
-import com.pickth.gachi.util.OnItemClickListener
+import com.pickth.gachi.util.OnFestivalClickListener
 
 class FestivalAdapter: RecyclerView.Adapter<FestivalViewHolder>(), FestivalAdapterContract.View, FestivalAdapterContract.Model {
 
     private var items = ArrayList<Festival>()
-    var mOnItemClickListener: OnItemClickListener?= null
+    var mOnFestivalClickListener: OnFestivalClickListener?= null
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FestivalViewHolder {
         val itemView = LayoutInflater
                 .from(parent?.context)
                 .inflate(R.layout.item_main_festival, parent, false)
 
-        return FestivalViewHolder(itemView, mOnItemClickListener)
+        return FestivalViewHolder(itemView, mOnFestivalClickListener)
     }
 
     override fun getItemCount(): Int = items.size
@@ -41,12 +41,14 @@ class FestivalAdapter: RecyclerView.Adapter<FestivalViewHolder>(), FestivalAdapt
         holder?.onBind(items[position], position)
     }
 
-    override fun setItemClickListener(clickListener: OnItemClickListener) {
-        mOnItemClickListener = clickListener
+    override fun setItemClickListener(clickListener: OnFestivalClickListener) {
+        mOnFestivalClickListener = clickListener
     }
 
     override fun addItem(item: Festival) {
         items.add(item)
         notifyItemInserted(itemCount - 1)
     }
+
+    override fun getItem(position: Int): Festival = items[position]
 }

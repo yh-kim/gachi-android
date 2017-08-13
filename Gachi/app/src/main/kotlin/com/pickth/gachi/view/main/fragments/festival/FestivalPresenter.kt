@@ -2,7 +2,8 @@ package com.pickth.gachi.view.main.fragments.festival
 
 import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.net.service.FestivalService
-import com.pickth.gachi.util.OnItemClickListener
+import com.pickth.gachi.util.OnFestivalClickListener
+import com.pickth.gachi.util.StringFormat
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
 import okhttp3.ResponseBody
@@ -15,7 +16,7 @@ import retrofit2.Response
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
-class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
+class FestivalPresenter: FestivalContract.Presenter, OnFestivalClickListener {
 
     private lateinit var mView: FestivalContract.View
     private lateinit var mPopularAdapter: FestivalAdapter
@@ -35,6 +36,10 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
         mImmediateAdapter.setItemClickListener(this)
     }
 
+    override fun getPopularFestivalItem(position: Int): Festival = mPopularAdapter.getItem(position)
+
+    override fun getImmediateFestivalItem(position: Int): Festival = mImmediateAdapter.getItem(position)
+
     override fun getPopularFestivalList() {
         FestivalService().getFestivalList(1)
                 .enqueue(object: Callback<ResponseBody> {
@@ -47,13 +52,15 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
                         val retArr = JSONArray(response.body()!!.string())
                         for(position in 0..retArr.length() - 1) {
                             retArr.getJSONObject(position).let {
+                                val fid = it.getString("fid")
                                 val title = it.getString("title")
                                 val image = it.getString("image")
                                 val from = it.getString("from").split("T")[0].replace("-",".")
                                 val until = it.getString("until").split("T")[0].replace("-",".")
+                                val type = "popular"
 
                                 var date = "$from - $until"
-                                mPopularAdapter.addItem(Festival(date, image, title))
+                                mPopularAdapter.addItem(Festival(fid, date, image, title, type))
                             }
                         }
                     }
@@ -73,13 +80,15 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
                         val retArr = JSONArray(response.body()!!.string())
                         for(position in 0..retArr.length() - 1) {
                             retArr.getJSONObject(position).let {
+                                val fid = it.getString("fid")
                                 val title = it.getString("title")
                                 val image = it.getString("image")
-                                val from = it.getString("from").split("T")[0].replace("-",".")
-                                val until = it.getString("until").split("T")[0].replace("-",".")
+                                val from = it.getString("from")
+                                val until = it.getString("until")
+                                val type = "immediate"
 
-                                var date = "$from - $until"
-                                mImmediateAdapter.addItem(Festival(date, image, title))
+                                var date = StringFormat.formatFestivalDate(from, until)
+                                mImmediateAdapter.addItem(Festival(fid, date, image, title, type))
                             }
                         }
                     }
@@ -87,7 +96,14 @@ class FestivalPresenter: FestivalContract.Presenter, OnItemClickListener {
                 })
     }
 
-    override fun onItemClick(position: Int) {
-        mView.intentToFestivalDetailActivity(0)
+    override fun onPopularFestivalClick(position: Int) {
+        val fid = mPopularAdapter.getItem(position).fid
+        mView.intentToFestivalDetailActivity(fid)
     }
+
+    override fun onImmediateFestivalClick(position: Int) {
+        val fid = mImmediateAdapter.getItem(position).fid
+        mView.intentToFestivalDetailActivity(fid)
+    }
+
 }
