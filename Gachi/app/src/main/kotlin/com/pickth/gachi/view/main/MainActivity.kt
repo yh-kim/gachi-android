@@ -37,7 +37,15 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
 
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_gachi -> {
+//            R.id.navigation_gachi -> {
+//                if(mViewPager?.currentItem == 1) {
+//                    mMainPagerAdapter?.getItem(1)?.clickAgain()
+//                } else {
+//                    mViewPager?.currentItem = 1
+//                }
+//                return@OnNavigationItemSelectedListener true
+//            }
+            R.id.navigation_chat -> {
                 if(mViewPager?.currentItem == 1) {
                     mMainPagerAdapter?.getItem(1)?.clickAgain()
                 } else {
@@ -45,7 +53,7 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
                 }
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_chat -> {
+            R.id.navigation_alarm -> {
                 if(mViewPager?.currentItem == 2) {
                     mMainPagerAdapter?.getItem(2)?.clickAgain()
                 } else {
@@ -53,16 +61,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
                 }
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_alarm -> {
-                if(mViewPager?.currentItem == 3) {
-                    mMainPagerAdapter?.getItem(3)?.clickAgain()
-                } else {
-                    mViewPager?.currentItem = 3
-                }
-                return@OnNavigationItemSelectedListener true
-            }
             R.id.navigation_myinfo -> {
-                mViewPager!!.currentItem = 4
+                mViewPager!!.currentItem = 3
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -92,14 +92,15 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
             setListItem(1)
             setListItem(2)
             setListItem(3)
-            setListItem(4)
+//            setListItem(4)
             notifyDataSetChanged()
         }
 
         mViewPager = view_pager.apply {
             adapter = mMainPagerAdapter
             currentItem = 0
-            offscreenPageLimit = 5
+//            offscreenPageLimit = 5
+            offscreenPageLimit = 4
             addOnPageChangeListener(this@MainActivity)
 //            setOnTouchListener { view, motionEvent -> true }
         }

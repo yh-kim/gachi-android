@@ -6,10 +6,10 @@
         android:icon="@drawable/ic_festival"
         android:title="@string/title_festival" />
 
-    <item
-        android:id="@+id/navigation_gachi"
-        android:icon="@drawable/ic_gachi"
-        android:title="@string/title_gachi" />
+    <!--<item-->
+        <!--android:id="@+id/navigation_gachi"-->
+        <!--android:icon="@drawable/ic_gachi"-->
+        <!--android:title="@string/title_gachi" />-->
 
     <item
         android:id="@+id/navigation_chat"

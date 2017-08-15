@@ -7,7 +7,6 @@ import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.alarm.AlarmFragment
 import com.pickth.gachi.view.main.fragments.chat.ChatFragment
 import com.pickth.gachi.view.main.fragments.festival.FestivalFragment
-import com.pickth.gachi.view.main.fragments.gachi.GachiFragment
 import com.pickth.gachi.view.main.fragments.myinfo.MyinfoFragment
 import com.pickth.gachi.view.main.fragments.search.SearchFragment
 
@@ -17,7 +16,7 @@ import com.pickth.gachi.view.main.fragments.search.SearchFragment
 class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager), MainPagerModel {
 
     private val mFestivalFragment = FestivalFragment.getInstance()
-    private val mGachiFragment = GachiFragment.getInstance()
+//    private val mGachiFragment = GachiFragment.getInstance()
     private val mChatFragment = ChatFragment.getInstance()
     private val mAlarmFragment = AlarmFragment.getInstance()
     private val mMyinfoFragment = MyinfoFragment.getInstance()
@@ -29,10 +28,10 @@ class MainPagerAdapter(val fragmentManager: FragmentManager): FragmentStatePager
     private val itemList = ArrayList<Int>()
 
     override fun getItem(position: Int): TapBaseFragment = when(position) {
-        1 -> mGachiFragment
-        2 -> mChatFragment
-        3 -> mAlarmFragment
-        4 -> mMyinfoFragment
+//        1 -> mGachiFragment
+        1 -> mChatFragment
+        2 -> mAlarmFragment
+        3 -> mMyinfoFragment
         else -> {
             if(mSwitchFragment == null) {
                 mSwitchFragment = mFestivalFragment
