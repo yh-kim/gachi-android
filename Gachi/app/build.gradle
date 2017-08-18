@@ -27,7 +27,6 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
             proguardFiles 'proguard-rules.pro',
-                    'proguard-kakao.pro',
                     'proguard-retrofit2.pro',
                     'proguard-gson.pro',
                     'proguard-picasso.pro',
@@ -91,13 +90,6 @@ dependencies {
     // UI
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
     implementation 'jp.wasabeef:glide-transformations:2.0.2'
-
-    // kakao login
-    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
-    // kakao link
-    implementation group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
-    // kakao talk
-    implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
 
     // facebook login
     implementation 'com.google.firebase:firebase-auth:9.0.0'

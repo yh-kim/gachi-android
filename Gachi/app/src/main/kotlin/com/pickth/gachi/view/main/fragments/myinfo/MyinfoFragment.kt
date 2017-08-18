@@ -6,10 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kakao.network.ErrorResult
-import com.kakao.usermgmt.UserManagement
-import com.kakao.usermgmt.callback.MeResponseCallback
-import com.kakao.usermgmt.response.model.UserProfile
 import com.pickth.gachi.R
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import kotlinx.android.synthetic.main.fragment_main_myinfo.view.*
@@ -34,24 +30,11 @@ class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
         mPresenter = MyinfoPresenter()
         mPresenter.attachView(this)
 
-        UserManagement.requestMe(object: MeResponseCallback() {
-            override fun onSessionClosed(errorResult: ErrorResult?) {
-            }
-
-            override fun onNotSignedUp() {
-            }
-
-            override fun onSuccess(result: UserProfile?) {
-
-                Glide.with(rootView.context)
-                        .load(result?.profileImagePath)
-                        .apply(RequestOptions().circleCrop())
-                        .into(rootView.iv_myinfo_photo)
-                rootView.tv_myinfo_name.text = result?.nickname
-
-            }
-
-        })
+        Glide.with(rootView.context)
+                .load(R.drawable.test)
+                .apply(RequestOptions().circleCrop())
+                .into(rootView.iv_myinfo_photo)
+        rootView.tv_myinfo_name.text = "test"
 
         setMyReliability(86)
 
