@@ -1,11 +1,14 @@
 package com.pickth.gachi.view.main.fragments.myinfo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.facebook.login.LoginManager
+import com.google.firebase.auth.FirebaseAuth
 import com.pickth.gachi.R
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import kotlinx.android.synthetic.main.fragment_main_myinfo.view.*
@@ -14,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_main_myinfo.view.*
  * Created by yonghoon on 2017-07-20.
  * Mail   : yonghoon.kim@pickth.com
  */
+
 class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
 
     private lateinit var mPresenter: MyinfoPresenter
@@ -37,6 +41,13 @@ class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
         rootView.tv_myinfo_name.text = "test"
 
         setMyReliability(86)
+
+        rootView.tv_myinfo_logout.setOnClickListener {
+            Log.d(TAG, "onCreateView:signOut")
+            LoginManager.getInstance().logOut()
+            FirebaseAuth.getInstance().signOut()
+            activity.finish()
+        }
 
         return rootView
     }

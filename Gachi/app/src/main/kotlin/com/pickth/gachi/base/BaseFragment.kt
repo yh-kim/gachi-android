@@ -20,4 +20,5 @@ import android.support.v4.app.Fragment
 import org.jetbrains.anko.AnkoLogger
 
 open class BaseFragment: Fragment(), AnkoLogger {
+    val TAG = "Gachi-${javaClass.simpleName}"
 }

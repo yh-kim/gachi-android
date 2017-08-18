@@ -23,16 +23,13 @@ import org.jetbrains.anko.toast
  * Created by yonghoon on 2017-07-09.
  * Mail   : yonghoon.kim@pickth.com
  */
+
 class LoginActivity : BaseActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
 
     private lateinit var mCallbackManager: CallbackManager
-
-    companion object {
-        val TAG = "GACHI_LoginActivity"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
