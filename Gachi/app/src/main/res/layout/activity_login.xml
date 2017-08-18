@@ -31,6 +31,30 @@
             android:textSize="16sp" />
     </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/fl_login_with_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_login_button">
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/lb_facebook_login"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            style="@style/FontTheme.R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="sign in with facebook"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+    </FrameLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
