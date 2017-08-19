@@ -17,7 +17,6 @@
 package com.pickth.gachi.view.custom
 
 import android.content.Context
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -33,7 +32,7 @@ class AddInfoViewPager : LinearLayout {
     private var mFrameLayout: FrameLayout? = null
     private var mFragmentManager: FragmentManager? = null
     private val mIndexButtons = ArrayList<ImageView>()
-    private val mViews = ArrayList<Fragment>()
+    private val mViews = ArrayList<BaseAddInfoFragment>()
     var currentIndex = 0
 
     companion object {
@@ -65,6 +64,8 @@ class AddInfoViewPager : LinearLayout {
         })
         mViews.add(fragment)
     }
+
+    fun getFragments(position: Int) = mViews[position]
 
     private fun initializeView() {
         var mLayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

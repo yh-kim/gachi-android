@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.signup.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,4 +48,9 @@ class NicknameAddFragment : BaseAddInfoFragment() {
         return rootView
     }
 
+    override fun clickNextButton(): Boolean {
+        Log.d(TAG, "click next button")
+        mListener?.onChange()
+        return true
+    }
 }

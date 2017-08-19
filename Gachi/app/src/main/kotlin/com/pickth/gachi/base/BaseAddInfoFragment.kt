@@ -24,4 +24,6 @@ abstract class BaseAddInfoFragment : BaseFragment() {
     fun setChangeFragmentListener(listener: AddInfoViewPager.ChangeFragmentListener) {
         mListener = listener
     }
+
+    abstract fun clickNextButton(): Boolean
 }

@@ -49,6 +49,7 @@
     </LinearLayout>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/btn_add_info_next"
         style="@style/FontTheme.M"
         android:layout_width="145dp"

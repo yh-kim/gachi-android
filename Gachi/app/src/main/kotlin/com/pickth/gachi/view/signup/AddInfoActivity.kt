@@ -23,6 +23,7 @@ import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.view.custom.AddInfoViewPager
 import com.pickth.gachi.view.signup.fragment.*
 import kotlinx.android.synthetic.main.activity_add_info.*
+import kotlinx.android.synthetic.main.view_pager_add_info.*
 
 class AddInfoActivity: BaseActivity() {
 
@@ -57,13 +58,26 @@ class AddInfoActivity: BaseActivity() {
             notifyDataSetChanged()
         }
 
+        btn_add_info_next_bottom.setOnClickListener {
+            mViewPager.getFragments(mViewPager.currentIndex).clickNextButton()
+
+            if (mViewPager.currentIndex == 4) {
+                btn_add_info_next_bottom.text = "submit"
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             android.R.id.home -> {
                 if(mViewPager.currentIndex == 0) finish()
-                else mViewPager.changePreFragment()
+                else {
+                    mViewPager.changePreFragment()
+
+                    if(mViewPager.currentIndex == 3) {
+                        btn_add_info_next_bottom.text = resources.getString(R.string.next)
+                    }
+                }
             }
         }
 
