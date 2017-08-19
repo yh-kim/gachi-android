@@ -37,7 +37,7 @@
         style="@style/FontTheme.M"
         android:layout_width="145dp"
         android:layout_height="49dp"
-        android:background="@drawable/background_text_rectangle"
+        android:background="@drawable/selector_text_rectangle"
         android:gravity="center"
         android:letterSpacing="-0.44"
         android:text="@string/next"

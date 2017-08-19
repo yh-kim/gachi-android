@@ -33,7 +33,7 @@
             android:paddingLeft="6dp"
             android:paddingBottom="3dp"
             android:paddingTop="3dp"
-            android:background="@drawable/background_text_rectangle"
+            android:background="@drawable/selector_text_rectangle"
             android:text="2명 모집중" />
 
         <TextView
@@ -91,7 +91,7 @@
     <!--android:paddingLeft="6dp"-->
     <!--android:paddingBottom="3dp"-->
     <!--android:paddingTop="3dp"-->
-    <!--android:background="@drawable/background_text_rectangle"-->
+    <!--android:background="@drawaselector_text_rectanglengle"-->
     <!--android:text="모집중" />-->
 
     <!--</LinearLayout>-->

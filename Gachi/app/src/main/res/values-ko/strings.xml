@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="test">페퍼톤스, 검정치마, 루시아(심규선), 데이브레이크,
-        박원, 10cm, 스탠딩에그, 어반자카파, 소란, 슈가볼, 치즈, 멜로망스, 윤딴딴, 샘김, 은혜, 도희, 집에가고싶다 …"</string>
     <string name="app_name">가치</string>
     <string name="title_activity_login">로그인</string>
 

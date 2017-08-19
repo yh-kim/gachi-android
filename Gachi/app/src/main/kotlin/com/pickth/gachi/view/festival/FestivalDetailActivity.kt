@@ -23,6 +23,7 @@ import android.support.v4.graphics.drawable.DrawableCompat
 import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -92,6 +93,7 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
     override fun bindFestivalInfo(info: String) {
         JSONObject(info).let {
             val title = it.getString("title")
+            val starring = it.getString("starring")
             val from = it.getString("from")
             val until = it.getString("until")
             val image = it.getString("image")
@@ -99,8 +101,21 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
             val location = it.getString("location")
 
             tv_festival_detail_title.text = title
+            tv_festival_detail_lineup.text = starring
             tv_festival_detail_date.text = StringFormat.formatFestivalDate(from, until)
+
             tv_festival_detail_detail.text = detail
+            tv_festival_detail_detail.onPreDraw()
+            if(tv_festival_detail_detail.lineCount > 3) {
+                tv_festival_detail_info_more.visibility = View.VISIBLE
+                tv_festival_detail_detail.maxLines = 3
+
+                tv_festival_detail_info_more.setOnClickListener {
+                    tv_festival_detail_info_more.ellipsize = null
+                    tv_festival_detail_detail.maxLines = Integer.MAX_VALUE
+                    tv_festival_detail_info_more.visibility = View.GONE
+                }
+            }
 
             Glide.with(this)
                     .load(image)
