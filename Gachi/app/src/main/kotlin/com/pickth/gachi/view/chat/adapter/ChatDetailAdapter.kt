@@ -23,7 +23,13 @@ import com.pickth.gachi.R
 
 class ChatDetailAdapter: RecyclerView.Adapter<ChatDetailViewHolder>(), ChatDetailAdapterContract.View, ChatDetailAdapterContract.Model {
 
+    companion object {
+        val CHAT_TYPE_ME = 0
+        val CHAT_TYPE_OTHER = 1
+    }
+
     private var mItems = ArrayList<ChatMessage>()
+    private var mArrRow = listOf<Int>(R.layout.item_chat_message0, R.layout.item_chat_message1)
 
     override fun onBindViewHolder(holder: ChatDetailViewHolder?, position: Int) {
         holder?.onBind(mItems[position], position)
@@ -34,10 +40,12 @@ class ChatDetailAdapter: RecyclerView.Adapter<ChatDetailViewHolder>(), ChatDetai
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ChatDetailViewHolder {
         val itemView = LayoutInflater
                 .from(parent?.context)
-                .inflate(R.layout.item_chat_message, parent, false)
+                .inflate(mArrRow[viewType], parent, false)
 
         return ChatDetailViewHolder(itemView)
     }
+
+    override fun getItemViewType(position: Int): Int = mItems[position].type
 
     override fun getItem(position: Int): ChatMessage = mItems[position]
 

@@ -45,6 +45,9 @@ class ChatDetailPresenter: ChatDetailContract.Presenter {
     override fun sendMessage(msg: String) {
         val date = SimpleDateFormat("hh : mm a").format(Date(System.currentTimeMillis())).toString()
         mAdapterModel.addItem(ChatMessage(msg, date ,0))
+
+        // test input
+        mAdapterModel.addItem(ChatMessage("test", date ,1))
         mView.scrollToPosition(getItemCount())
     }
 }

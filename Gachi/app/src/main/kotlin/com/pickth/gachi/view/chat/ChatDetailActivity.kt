@@ -17,9 +17,12 @@
 package com.pickth.gachi.view.chat
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.content.ContextCompat
+import android.support.v4.graphics.drawable.DrawableCompat
+import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
+import com.pickth.commons.extensions.hideKeyboard
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.view.chat.adapter.ChatDetailAdapter
@@ -30,13 +33,23 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
 
     private lateinit var mPresenter: ChatDetailPresenter
     private lateinit var mAdapter: ChatDetailAdapter
-    private lateinit var mRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_detail)
 
-        mRecyclerView = rv_chat_detail
+        val icon = AppCompatResources.getDrawable(this, R.drawable.ic_back)!!
+        DrawableCompat.setTint(icon, ContextCompat.getColor(this, R.color.colorWhite))
+
+        // actionbar
+        setSupportActionBar(chat_toolbar)
+        supportActionBar?.run {
+            setHomeAsUpIndicator(icon)
+            setDisplayShowTitleEnabled(false)
+            setDisplayHomeAsUpEnabled(true)
+        }
+
+//        title = resources.getStringArray(R.array.page_title)[0]
 
         // adpater
         mAdapter = ChatDetailAdapter()
@@ -53,7 +66,7 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
             setChatDetailAdapterModel(mAdapter)
         }
 
-        iv_chat_detail_send.setOnClickListener {
+        btn_chat_detail_send.setOnClickListener {
             var msg = et_chat_detail_msg.text.toString().trim()
 
             if(msg.length < 1) {
@@ -70,6 +83,18 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
     override fun scrollToPosition(position: Int) {
         if(mPresenter.getItemCount() < 0) return
 
-        mRecyclerView.smoothScrollToPosition(position)
+        rv_chat_detail.smoothScrollToPosition(position)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                hideKeyboard()
+                finish()
+//                Handler().postDelayed({changeFestivalAndSearch()}, 100)
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -42,7 +42,7 @@ class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
                 .into(rootView.iv_myinfo_photo)
         rootView.tv_myinfo_name.text = "test"
 
-        setMyReliability(86)
+//        setMyReliability(86)
 
         // logout
         rootView.tv_myinfo_logout.setOnClickListener {
@@ -57,7 +57,7 @@ class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
     }
 
     override fun setMyReliability(reliability: Int) {
-        rootView.rv_myinfo_reliability.setReliability(reliability)
+//        rootView.rv_myinfo_reliability.setReliability(reliability)
     }
 
     override fun onResume() {

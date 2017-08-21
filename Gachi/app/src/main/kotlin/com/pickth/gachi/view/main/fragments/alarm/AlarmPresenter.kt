@@ -38,7 +38,7 @@ class AlarmPresenter: AlarmContract.Presenter, OnItemClickListener {
 
     // TODO: Remove test case
     fun addTest() {
-        for(i in 0..10) {
+        for(i in 0..0) {
             mAlarmModel.addItem(Alarm("알림$i"))
         }
     }

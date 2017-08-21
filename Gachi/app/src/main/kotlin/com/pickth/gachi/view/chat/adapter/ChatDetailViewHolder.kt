@@ -18,13 +18,15 @@ package com.pickth.gachi.view.chat.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import kotlinx.android.synthetic.main.item_chat_message.view.*
+import android.widget.TextView
+import com.pickth.gachi.R
 
 class ChatDetailViewHolder(view: View): RecyclerView.ViewHolder(view) {
     fun onBind(item: ChatMessage, position: Int) {
-        with(itemView) {
-            tv_chat_message_day.text = item.date
-            tv_chat_message_msg.text= item.msg
-        }
+        val tvDay = itemView.findViewById<TextView>(R.id.tv_chat_message_day)
+        val tvMessage = itemView.findViewById<TextView>(R.id.tv_chat_message_msg)
+
+        tvDay.text = item.date
+        tvMessage.text= item.msg
     }
 }
