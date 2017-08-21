@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.view.main.MainActivity
-import com.pickth.gachi.view.signup.SignupActivity
+import com.pickth.gachi.view.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -70,6 +70,8 @@ class LoginActivity : BaseActivity() {
 
 
         fl_login_with_email.setOnClickListener {
+            startActivity<SignInWithEmailActivity>()
+            finish()
         }
 
         fl_login_with_facebook.setOnClickListener {
@@ -77,7 +79,7 @@ class LoginActivity : BaseActivity() {
         }
 
         tv_signup.setOnClickListener {
-            startActivity<SignupActivity>()
+            startActivity<SignUpActivity>()
             finish()
         }
 

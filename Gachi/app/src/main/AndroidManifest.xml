@@ -37,7 +37,7 @@
         <activity
             android:name=".view.login.LoginActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.signup.SignupActivity"
+        <activity android:name=".view.signup.SignUpActivity"
             android:screenOrientation="portrait">
 
         </activity>
@@ -49,6 +49,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".view.festival.FestivalDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.login.SignInWithEmailActivity"
+            android:screenOrientation="portrait" />
 
         <service android:name=".service.GachiFirebaseInstanceIDService">
             <intent-filter>

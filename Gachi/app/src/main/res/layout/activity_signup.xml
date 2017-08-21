@@ -30,6 +30,7 @@
         android:paddingRight="20dp">
 
         <TextView
+            android:id="@+id/tv_signup_title"
             style="@style/FontTheme.B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

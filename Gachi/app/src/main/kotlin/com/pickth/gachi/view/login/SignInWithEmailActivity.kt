@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.signup
+package com.pickth.gachi.view.login
 
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
+import com.pickth.commons.extensions.hideKeyboard
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.net.service.UserService
@@ -33,56 +33,47 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignupActivity: BaseActivity() {
+/**
+ * Created by yonghoon on 2017-08-21
+ */
+
+class SignInWithEmailActivity: BaseActivity() {
 
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        // actionbar
-        setSupportActionBar(signup_toolbar)
-        supportActionBar?.run {
-            setHomeAsUpIndicator(R.drawable.ic_back)
-            setDisplayShowTitleEnabled(false)
-            setDisplayHomeAsUpEnabled(true)
-        }
 
         // firebase
         mAuth = FirebaseAuth.getInstance()
-        mAuthListener = FirebaseAuth.AuthStateListener {
-            var user = it.currentUser
-            if(user != null) {
-                Log.d(TAG, "onAuthStateChanged:signed_in")
-                startActivity<MainActivity>()
-                finish()
-            } else {
-                Log.d(TAG, "onAuthStateChanged:signed_out")
-            }
-        }
+
+        tv_signup_title.text = "sign in with email"
+        tv_signup_submit.text = "sign in"
 
         tv_signup_submit.setOnClickListener {
+            hideKeyboard()
+
             val email = et_signup_email.text.toString().trim()
-            if(!isEmailValid(email)) {
-                toast("invalid email")
+            if(email.length == 0 ) {
+                toast("이메일을 입력해주세요")
                 return@setOnClickListener
             }
 
             val password = et_signup_password.text.toString().trim()
-            if(!isPasswordValid(password)) {
-                toast("invalid password")
+            if(password.length == 0 ) {
+                toast("비밀번호를 입력해주세요")
                 return@setOnClickListener
             }
 
-            mAuth.createUserWithEmailAndPassword(email, password)
+            mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + it.isSuccessful);
+                        Log.d(TAG, "signInWithEmailAndPassword:onComplete:" + it.isSuccessful);
 
                         if (!it.isSuccessful) {
-                            Log.d(TAG, "createUserWithEmailAndPassword: ${it.exception}")
-                            Log.d(TAG, "add user not successful " + it.isSuccessful);
+                            Log.d(TAG, "signInWithEmailAndPassword, : ${it.exception}")
+                            toast("유효하지 않은 정보입니다.")
                         } else {
                             it.result.user.getIdToken(true)
                                     .addOnCompleteListener {
@@ -95,6 +86,9 @@ class SignupActivity: BaseActivity() {
                                                         Log.d(TAG, "getUserId onResponse, code: ${response.code()}")
                                                         val uid = JSONObject(response.body()?.string()).getString("uid")
                                                         Log.d(TAG, "getUserId onResponse, uid: ${uid}")
+
+                                                        startActivity<MainActivity>()
+                                                        finish()
                                                     }
 
                                                     override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
@@ -107,35 +101,6 @@ class SignupActivity: BaseActivity() {
 
                         }
                     }
-
         }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId) {
-            android.R.id.home -> {
-                finish()
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun isEmailValid(email: String): Boolean {
-        return email.contains("@")
-    }
-
-    private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
-    }
-
-    override fun onStart() {
-        super.onStart()
-        mAuth.addAuthStateListener(mAuthListener)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        if(mAuthListener != null) mAuth.removeAuthStateListener(mAuthListener)
     }
 }
