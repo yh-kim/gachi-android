@@ -18,6 +18,7 @@ package com.pickth.gachi.view.login
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import com.pickth.commons.extensions.hideKeyboard
 import com.pickth.gachi.R
@@ -45,6 +46,13 @@ class SignInWithEmailActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
+        // actionbar
+        setSupportActionBar(signup_toolbar)
+        supportActionBar?.run {
+            setHomeAsUpIndicator(R.drawable.ic_back)
+            setDisplayShowTitleEnabled(false)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         // firebase
         mAuth = FirebaseAuth.getInstance()
@@ -102,5 +110,21 @@ class SignInWithEmailActivity: BaseActivity() {
                         }
                     }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                startActivity<LoginActivity>()
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        startActivity<LoginActivity>()
+        finish()
     }
 }

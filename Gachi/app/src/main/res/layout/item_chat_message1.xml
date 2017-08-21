@@ -7,19 +7,19 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/tv_chat_message_day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginRight="7dp"
-        android:textColor="#033A2F"
-        android:textSize="10sp" />
-
-    <TextView
         android:id="@+id/tv_chat_message_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#033A2F"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_chat_message_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="7dp"
+        android:textColor="#033A2F"
+        android:textSize="10sp" />
 </LinearLayout>

@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.net.service.UserService
+import com.pickth.gachi.view.login.LoginActivity
 import com.pickth.gachi.view.main.MainActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import okhttp3.ResponseBody
@@ -114,11 +115,17 @@ class SignUpActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             android.R.id.home -> {
+                startActivity<LoginActivity>()
                 finish()
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        startActivity<LoginActivity>()
+        finish()
     }
 
     private fun isEmailValid(email: String): Boolean {

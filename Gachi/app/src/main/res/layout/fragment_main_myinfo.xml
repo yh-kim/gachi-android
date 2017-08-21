@@ -3,7 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:paddingLeft="20dp"
     android:orientation="vertical">
+
+    <TextView
+        android:text="My Page"
+        style="@style/FontTheme.B"
+        android:textSize="22sp"
+        android:letterSpacing="-0.54"
+        android:textColor="@color/colorDarkBlack"
+        android:layout_marginTop="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/tv_myinfo_logout"
         android:text="logout"
@@ -35,17 +48,20 @@
 
     <ImageView
         android:id="@+id/iv_myinfo_photo"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="47dp" />
 
     <TextView
         android:id="@+id/tv_myinfo_name"
+        android:letterSpacing="-0.63"
+        android:textColor="@color/colorBrightGray03"
+        style="@style/FontTheme.B"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:textSize="30sp" />
+        android:layout_marginTop="9dp"
+        android:textSize="14sp" />
 
 </LinearLayout>
