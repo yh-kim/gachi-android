@@ -22,13 +22,18 @@ class SplashActivity : BaseActivity() {
 
         val user = FirebaseAuth.getInstance().currentUser
         if(user != null) {
-            Log.d(TAG, "onAuthStateChanged:signed_in: ${user.uid} ${user.photoUrl}")
+            Log.d(TAG, "onAuthStateChanged:signed_in: ${user.photoUrl}")
+            user.getIdToken(true)
+                    .addOnCompleteListener {
+                        if(it.isSuccessful) {
+                            Log.d(TAG, "user token: ${it.result.token.toString()}")
+                            startActivity<MainActivity>()
+                            finish()
+                        }
+                    }
 
-            startActivity<MainActivity>()
-            finish()
         } else {
             Log.d(TAG, "onAuthStateChanged:signed_out")
-
             startActivity<LoginActivity>()
             finish()
         }

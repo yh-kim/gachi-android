@@ -31,6 +31,7 @@ class FestivalService {
     val service = RetrofitManager.getService(FestivalAPI::class.java) as FestivalAPI
 
     fun getFestivalList(page: Int, type: String = "default") = service.getFestivalList(page = page, type = type)
+
     /**
      * @param term keyword for search
      * @param page page number of getting items. first page is 1

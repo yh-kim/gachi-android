@@ -17,14 +17,27 @@
 package com.pickth.gachi.view.signup
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import com.google.firebase.auth.FirebaseAuth
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import com.pickth.gachi.net.service.UserService
+import com.pickth.gachi.view.main.MainActivity
 import kotlinx.android.synthetic.main.activity_signup.*
+import okhttp3.ResponseBody
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignupActivity: BaseActivity() {
+
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -35,6 +48,19 @@ class SignupActivity: BaseActivity() {
             setHomeAsUpIndicator(R.drawable.ic_back)
             setDisplayShowTitleEnabled(false)
             setDisplayHomeAsUpEnabled(true)
+        }
+
+        // firebase
+        mAuth = FirebaseAuth.getInstance()
+        mAuthListener = FirebaseAuth.AuthStateListener {
+            var user = it.currentUser
+            if(user != null) {
+                Log.d(TAG, "onAuthStateChanged:signed_in")
+                startActivity<MainActivity>()
+                finish()
+            } else {
+                Log.d(TAG, "onAuthStateChanged:signed_out")
+            }
         }
 
         tv_signup_submit.setOnClickListener {
@@ -50,8 +76,38 @@ class SignupActivity: BaseActivity() {
                 return@setOnClickListener
             }
 
-            startActivity<AddInfoActivity>()
-            finish()
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener {
+                        Log.d(TAG, "createUserWithEmail:onComplete:" + it.isSuccessful);
+
+                        if (!it.isSuccessful) {
+                            Log.d(TAG, "createUserWithEmailAndPassword: ${it.exception}")
+                            Log.d(TAG, "add user not successful " + it.isSuccessful);
+                        } else {
+                            it.result.user.getIdToken(true)
+                                    .addOnCompleteListener {
+                                        val token = it.result.token
+                                        Log.d(TAG, "user token: ${token}")
+
+                                        UserService().getUserId(token!!)
+                                                .enqueue(object: Callback<ResponseBody> {
+                                                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                                                        Log.d(TAG, "getUserId onResponse, code: ${response.code()}")
+                                                        val uid = JSONObject(response.body()?.string()).getString("uid")
+                                                        Log.d(TAG, "getUserId onResponse, uid: ${uid}")
+                                                    }
+
+                                                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                                                        Log.d(TAG, "getUserId on Failure")
+                                                    }
+
+                                                })
+                                    }
+
+
+                        }
+                    }
+
         }
     }
 
@@ -70,6 +126,16 @@ class SignupActivity: BaseActivity() {
     }
 
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 4
+        return password.length > 5
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mAuth.addAuthStateListener(mAuthListener)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if(mAuthListener != null) mAuth.removeAuthStateListener(mAuthListener)
     }
 }

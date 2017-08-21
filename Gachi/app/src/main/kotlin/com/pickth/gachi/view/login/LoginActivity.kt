@@ -39,7 +39,7 @@ class LoginActivity : BaseActivity() {
         mAuthListener = FirebaseAuth.AuthStateListener {
             var user = it.currentUser
             if(user != null) {
-                Log.d(TAG, "onAuthStateChanged:signed_in: ${user.uid}")
+                Log.d(TAG, "onAuthStateChanged:signed_in")
                 startActivity<MainActivity>()
                 finish()
             } else {

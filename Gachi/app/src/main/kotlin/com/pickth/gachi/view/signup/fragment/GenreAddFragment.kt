@@ -27,6 +27,7 @@ import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
 import com.pickth.gachi.view.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_signup_add_genre.view.*
+import org.jetbrains.anko.startActivity
 
 class GenreAddFragment : BaseAddInfoFragment() {
 
@@ -58,6 +59,8 @@ class GenreAddFragment : BaseAddInfoFragment() {
 
     override fun clickNextButton(): Boolean {
         Log.d(TAG, "click next button")
+        activity.startActivity<MainActivity>()
+        activity.finish()
         return true
     }
 }
