@@ -13,7 +13,8 @@
     <string name="title_search">Search</string>
 
     <string name="title_signup">Sign up</string>
-    <string name="title_signin_with_email">Sign in with eail</string>
+    <string name="title_signin_with_email">Sign in with email</string>
+    <string name="title_signin_with_facebook">Sign in with facebook</string>
 
     <!-- main festival -->
     <string name="title_popular_festivals">Popular festivals</string>
@@ -25,6 +26,11 @@
     <!-- chat -->
     <string name="chat_input_message">Input message</string>
     <string name="chat_send">send</string>
+
+    <!-- login -->
+    <string name="login_skip">skip</string>
+    <string name="login_account_yet">Do not have an account yet?</string>
+    <string name="login_title">Go together\nwith gachi</string>
 
     <!-- signup -->
     <string name="email">email</string>

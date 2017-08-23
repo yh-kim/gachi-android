@@ -14,6 +14,7 @@
 
     <string name="title_signup">회원가입</string>
     <string name="title_signin_with_email">이메일로 로그인</string>
+    <string name="title_signin_with_facebook">페이스북으로 로그인</string>
 
     <!-- main festival -->
     <string name="title_popular_festivals">인기 페스티벌</string>
@@ -25,6 +26,11 @@
     <!-- chat -->
     <string name="chat_input_message">메세지를 입력해주세요</string>
     <string name="chat_send">전송</string>
+
+    <!-- login -->
+    <string name="login_skip">건너뛰기</string>
+    <string name="login_account_yet">아직 계정이 없으신가요?</string>
+    <string name="login_title">우리, 같이 가요\n가치에서</string>
 
     <!-- signup -->
     <string name="email">이메일</string>

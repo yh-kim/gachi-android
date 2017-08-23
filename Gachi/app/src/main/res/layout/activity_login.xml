@@ -2,24 +2,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorWhite"
     android:gravity="center|bottom"
     android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
+
+    <TextView
+        android:id="@+id/tv_skip"
+        style="@style/FontTheme.R"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:text="@string/login_skip"
+        android:textColor="@color/colorBrightGray00"
+        android:textSize="13sp" />
 
     <ImageView
-        android:layout_width="97dp"
-        android:layout_height="97dp"
-        android:tint="@color/colorWhite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="45dp"
+        android:tint="@color/colorPrimary"
         app:srcCompat="@drawable/ic_gachi" />
+
+    <TextView
+        style="@style/FontTheme.R"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="16dp"
+        android:lineSpacingExtra="10sp"
+        android:text="@string/login_title"
+        android:textColor="@color/colorPrimary"
+        android:textSize="36sp" />
 
     <FrameLayout
         android:id="@+id/fl_login_with_email"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_marginTop="159dp"
-        android:background="@color/colorWhite">
+        android:background="@drawable/background_login_email_button">
 
         <TextView
             style="@style/FontTheme.R"
@@ -35,8 +59,8 @@
         android:id="@+id/fl_login_with_facebook"
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/background_login_button">
+        android:layout_marginTop="18dp"
+        android:background="@drawable/background_login_facebook_button">
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/lb_facebook_login"
@@ -50,36 +74,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="sign in with facebook"
+            android:text="@string/title_signin_with_facebook"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
     </FrameLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:layout_marginTop="27dp">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="59dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/FontTheme.R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_account_yet"
+            android:textColor="@color/colorBrightGray00"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tv_signup"
-            style="@style/FontTheme.R"
-            android:layout_width="60dp"
-            android:layout_height="47dp"
+            style="@style/FontTheme.M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:gravity="center"
             android:text="@string/title_signup"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textColor="@color/colorBrightGray02"
+            android:textSize="13sp" />
 
-        <TextView
-            android:id="@+id/tv_skip"
-            style="@style/FontTheme.R"
-            android:layout_width="60dp"
-            android:layout_height="47dp"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:text="skip"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>
