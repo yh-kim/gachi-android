@@ -22,7 +22,6 @@ class ChatViewHolder(val view: View, val clickListener: OnItemClickListener?): R
                     .into(image_chat_thumbnail)
 
             tv_chat_title.text = item.title
-            tv_chat_title.setTypeface(null, Typeface.BOLD)
         }
 
         itemView.setOnClickListener {
