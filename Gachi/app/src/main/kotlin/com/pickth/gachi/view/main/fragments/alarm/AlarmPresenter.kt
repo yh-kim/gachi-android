@@ -38,8 +38,7 @@ class AlarmPresenter: AlarmContract.Presenter, OnItemClickListener {
 
     // TODO: Remove test case
     fun addTest() {
-        for(i in 0..0) {
-            mAlarmModel.addItem(Alarm("알림$i"))
-        }
+        mAlarmModel.addItem(Alarm("김도희님께서\n 펜타포트 같이 갈 사람 괌… 방에서\n 참여대기 중입니다.", 1))
+        mAlarmModel.addItem(Alarm("백예진님께서\n 펜타포트 같이 갈 사람 괌… 방에서\n 참여수락을 하셨습니다.", 0))
     }
 }

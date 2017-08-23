@@ -13,17 +13,23 @@ import com.pickth.gachi.util.OnItemClickListener
 class AlarmAdapter: RecyclerView.Adapter<AlarmViewHolder>()
         , AlarmAdapterContract.View, AlarmAdapterContract.Model{
 
-    val itemList: ArrayList<Alarm> = ArrayList()
+    companion object {
+        val ALARM_TYPE_BASE = 0
+        val ALARM_TYPE_BUTTON = 1
+    }
+
+    val mItems: ArrayList<Alarm> = ArrayList()
+    private var mArrRow = listOf<Int>(R.layout.item_alarm0, R.layout.item_alarm1)
     var onItemClickListener: OnItemClickListener ?= null
 
     override fun setOnClickListener(clickListener: OnItemClickListener) {
         this.onItemClickListener = clickListener
     }
 
-    override fun getItem(position: Int) = itemList[position]
+    override fun getItem(position: Int) = mItems[position]
 
     override fun addItem(item: Alarm) {
-        itemList.add(item)
+        mItems.add(item)
         notifyItemInserted(itemCount - 1)
     }
 
@@ -31,7 +37,7 @@ class AlarmAdapter: RecyclerView.Adapter<AlarmViewHolder>()
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): AlarmViewHolder {
         val itemView = LayoutInflater
                 .from(parent?.context)
-                .inflate(R.layout.item_alarm, parent, false)
+                .inflate(mArrRow[viewType], parent, false)
         return AlarmViewHolder(itemView, onItemClickListener)
     }
 
@@ -39,5 +45,7 @@ class AlarmAdapter: RecyclerView.Adapter<AlarmViewHolder>()
         holder?.onBind(getItem(position), position)
     }
 
-    override fun getItemCount(): Int = itemList.size
+    override fun getItemViewType(position: Int): Int = mItems[position].type
+
+    override fun getItemCount(): Int = mItems.size
 }
