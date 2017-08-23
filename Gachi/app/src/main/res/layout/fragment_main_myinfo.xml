@@ -4,64 +4,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    android:paddingLeft="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="20dp">
 
     <TextView
-        android:text="My Page"
-        style="@style/FontTheme.B"
-        android:textSize="22sp"
-        android:letterSpacing="-0.54"
-        android:textColor="@color/colorDarkBlack"
-        android:layout_marginTop="19dp"
+        style="@style/Gachi.Title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
+        android:text="@string/title_myinfo" />
 
     <TextView
         android:id="@+id/tv_myinfo_logout"
-        android:text="logout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="logout" />
 
     <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="right"-->
-        <!--android:layout_marginRight="15dp"-->
-        <!--android:layout_marginTop="30dp"-->
-        <!--android:gravity="center_vertical"-->
-        <!--android:orientation="horizontal">-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="right"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:orientation="horizontal">-->
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="신뢰도"-->
-            <!--android:textSize="15sp" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="신뢰도"-->
+    <!--android:textSize="15sp" />-->
 
-        <!--<com.pickth.gachi.view.custom.ReliabilityView-->
-            <!--android:id="@+id/rv_myinfo_reliability"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="6dp"-->
-            <!--app:size="20" />-->
+    <!--<com.pickth.gachi.view.custom.ReliabilityView-->
+    <!--android:id="@+id/rv_myinfo_reliability"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="6dp"-->
+    <!--app:size="20" />-->
     <!--</LinearLayout>-->
 
     <ImageView
         android:id="@+id/iv_myinfo_photo"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="47dp" />
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/tv_myinfo_name"
-        android:letterSpacing="-0.63"
-        android:textColor="@color/colorBrightGray03"
         style="@style/FontTheme.B"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="9dp"
+        android:letterSpacing="-0.63"
+        android:textColor="@color/colorBrightGray03"
         android:textSize="14sp" />
 
 </LinearLayout>

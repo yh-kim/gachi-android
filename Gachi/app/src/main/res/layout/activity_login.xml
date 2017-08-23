@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="sign in with email"
+            android:text="@string/title_signin_with_email"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
     </FrameLayout>
@@ -66,7 +66,7 @@
             style="@style/FontTheme.R"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sign up"
+            android:text="@string/title_signup"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
 

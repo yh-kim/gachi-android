@@ -5,6 +5,19 @@
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
+    <TextView
+        style="@style/Gachi.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/title_alarm" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@drawable/line_divider" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_alarm"
         android:layout_width="match_parent"

@@ -25,18 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="19dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
         <TextView
             android:id="@+id/tv_signup_title"
-            style="@style/FontTheme.B"
+            style="@style/Gachi.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up"
-            android:textColor="@color/colorDarkBlack"
-            android:textSize="22sp" />
+            android:text="@string/title_signup" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_signup_email"

@@ -57,7 +57,7 @@ class SignInWithEmailActivity: BaseActivity() {
         // firebase
         mAuth = FirebaseAuth.getInstance()
 
-        tv_signup_title.text = "sign in with email"
+        tv_signup_title.text = resources.getString(R.string.title_signin_with_email)
         tv_signup_submit.text = "sign in"
 
         tv_signup_submit.setOnClickListener {

@@ -17,9 +17,6 @@
 package com.pickth.gachi.view.chat
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.drawable.DrawableCompat
-import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import com.pickth.commons.extensions.hideKeyboard
@@ -38,13 +35,13 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_detail)
 
-        val icon = AppCompatResources.getDrawable(this, R.drawable.ic_back)!!
-        DrawableCompat.setTint(icon, ContextCompat.getColor(this, R.color.colorWhite))
+//        val icon = AppCompatResources.getDrawable(this, R.drawable.ic_back)!!
+//        DrawableCompat.setTint(icon, ContextCompat.getColor(this, R.color.colorWhite))
 
         // actionbar
         setSupportActionBar(chat_toolbar)
         supportActionBar?.run {
-            setHomeAsUpIndicator(icon)
+            setHomeAsUpIndicator(R.drawable.ic_back)
             setDisplayShowTitleEnabled(false)
             setDisplayHomeAsUpEnabled(true)
         }

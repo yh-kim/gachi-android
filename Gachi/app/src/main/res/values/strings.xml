@@ -12,6 +12,9 @@
     <string name="title_myinfo">Myinfo</string>
     <string name="title_search">Search</string>
 
+    <string name="title_signup">Sign up</string>
+    <string name="title_signin_with_email">Sign in with eail</string>
+
     <!-- main festival -->
     <string name="title_popular_festivals">Popular festivals</string>
     <string name="title_immediate_festivals">Immediate festivals</string>
