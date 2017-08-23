@@ -45,6 +45,10 @@
 
     <string name="next">next</string>
     <string name="apply">apply</string>
+
+    <string name="nickname_is_required">This is a required field</string>
+    <string name="region_select">Please select the area you live in</string>
+    <string name="genre_select">Please select your preferred genre</string>
     
     <string name="region_seoul">Seoul</string>
     <string name="region_gyeonggi">Gyeong-gi</string>

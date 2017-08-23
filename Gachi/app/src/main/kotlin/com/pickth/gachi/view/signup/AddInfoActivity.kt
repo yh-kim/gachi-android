@@ -62,7 +62,7 @@ class AddInfoActivity: BaseActivity() {
             mViewPager.getFragments(mViewPager.currentIndex).clickNextButton()
 
             if (mViewPager.currentIndex == 4) {
-                btn_add_info_next_bottom.text = "submit"
+                btn_add_info_next_bottom.text = resources.getString(R.string.apply)
             }
         }
     }

@@ -46,6 +46,10 @@
     <string name="next">다음</string>
     <string name="apply">적용</string>
 
+    <string name="nickname_is_required">필수 입력사항입니다</string>
+    <string name="region_select">사는 지역을 선택해주세요</string>
+    <string name="genre_select">선호 장르를 선택해주세요</string>
+
     <string name="region_seoul">서울특별시</string>
     <string name="region_gyeonggi">경기도</string>
 

@@ -75,10 +75,10 @@ class AddInfoViewPager : LinearLayout {
 
         val size = rootView.context.convertDpToPixel(5)
         var params = LinearLayout.LayoutParams(size, size)
-        params.leftMargin = rootView.context.convertDpToPixel(2)
-        params.rightMargin = rootView.context.convertDpToPixel(2)
-        params.topMargin = rootView.context.convertDpToPixel(39)
-        params.bottomMargin = rootView.context.convertDpToPixel(50)
+        params.leftMargin = rootView.context.convertDpToPixel(4)
+        params.rightMargin = rootView.context.convertDpToPixel(4)
+//        params.topMargin = rootView.context.convertDpToPixel(39)
+        params.bottomMargin = rootView.context.convertDpToPixel(40)
 
 
         for(i in 0..ITEM_COUNT-1) {

@@ -39,10 +39,6 @@ class GenderAddFragment : BaseAddInfoFragment() {
 
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
 
-        rootView.btn_add_info_next.setOnClickListener {
-            mListener?.onChange()
-        }
-
         return rootView
     }
 

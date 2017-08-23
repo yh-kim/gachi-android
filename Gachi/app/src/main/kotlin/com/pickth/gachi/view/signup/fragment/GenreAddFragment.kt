@@ -17,12 +17,10 @@
 package com.pickth.gachi.view.signup.fragment
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pickth.commons.extensions.intent
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
 import com.pickth.gachi.view.main.MainActivity
@@ -42,17 +40,6 @@ class GenreAddFragment : BaseAddInfoFragment() {
         val rootView = inflater!!.inflate(R.layout.fragment_signup_add_genre, container, false)
 
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
-
-        rootView.btn_add_info_next.run {
-            isSelected = true
-            setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
-            text = resources.getString(R.string.apply)
-        }
-
-        rootView.btn_add_info_next.setOnClickListener {
-            intent(MainActivity::class.java)
-            activity.finish()
-        }
 
         return rootView
     }

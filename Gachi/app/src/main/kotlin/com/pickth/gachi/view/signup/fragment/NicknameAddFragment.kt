@@ -38,12 +38,8 @@ class NicknameAddFragment : BaseAddInfoFragment() {
         val rootView = inflater!!.inflate(R.layout.fragment_signup_add_text, container, false)
 
         rootView.tv_add_info_title.text = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
-        rootView.et_add_info_input.hint = "닉네임"
-        rootView.tv_add_info_explanation.text = "필수 입력사항입니다"
-
-        rootView.btn_add_info_next.setOnClickListener {
-            mListener?.onChange()
-        }
+        rootView.et_add_info_input.hint = resources.getStringArray(R.array.add_info_title)[PAGE_INDEX]
+        rootView.tv_add_info_explanation.text = resources.getString(R.string.nickname_is_required)
 
         return rootView
     }

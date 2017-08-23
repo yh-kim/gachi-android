@@ -48,10 +48,6 @@ class AgeAddFragment : BaseAddInfoFragment() {
 
         rootView.tv_add_info_explanation.text = "연령대로 표시됩니다"
 
-        rootView.btn_add_info_next.setOnClickListener {
-            mListener?.onChange()
-        }
-
         return rootView
     }
 
