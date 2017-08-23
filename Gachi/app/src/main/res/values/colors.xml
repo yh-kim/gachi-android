@@ -11,4 +11,7 @@
     <color name="colorBrightGray01">#9f9f9f</color>
     <color name="colorBrightGray02">#545454</color>
     <color name="colorBrightGray03">#4a4a4a</color>
+
+    <color name="colorChatMsg">#727272</color>
+    <color name="colorChatDate">#adadad</color>
 </resources>

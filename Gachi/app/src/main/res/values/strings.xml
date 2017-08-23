@@ -22,6 +22,10 @@
     <!-- search -->
     <string name="search_festival_hint">What is the festival to look for?</string>
 
+    <!-- chat -->
+    <string name="chat_input_message">Input message</string>
+    <string name="chat_send">send</string>
+
     <!-- signup -->
     <string name="email">email</string>
     <string name="password">password</string>

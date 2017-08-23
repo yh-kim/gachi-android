@@ -40,10 +40,10 @@
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/lb_facebook_login"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone" />
 
         <TextView
             style="@style/FontTheme.R"
@@ -64,8 +64,9 @@
         <TextView
             android:id="@+id/tv_signup"
             style="@style/FontTheme.R"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="47dp"
+            android:gravity="center"
             android:text="@string/title_signup"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
@@ -73,9 +74,10 @@
         <TextView
             android:id="@+id/tv_skip"
             style="@style/FontTheme.R"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="47dp"
             android:layout_alignParentRight="true"
+            android:gravity="center"
             android:text="skip"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />

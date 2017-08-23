@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
     android:orientation="vertical">
 
     <!-- app bar -->
@@ -10,40 +11,98 @@
         android:id="@+id/main_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/chat_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:titleTextAppearance="@style/TitleText"
             android:background="@color/colorWhite"
+            android:minHeight="?attr/actionBarSize"
             app:subtitleTextColor="@color/colorWhite"
-            android:minHeight="?attr/actionBarSize" />
+            app:titleTextAppearance="@style/TitleText">
+
+            <TextView
+                style="@style/FontTheme.B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="title"
+                android:textColor="@color/colorDarkBlack" />
+
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@drawable/line_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp">
+
+        <TextView
+            style="@style/FontTheme.B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.39"
+            android:text="D - 30"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@drawable/line_divider" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_chat_detail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_marginTop="7dp"
+        android:layout_weight="1"
+        android:paddingEnd="18dp"
+        android:paddingStart="18dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@drawable/line_divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/et_chat_detail_msg"
+            style="@style/FontTheme.R"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/chat_input_message"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:textColorHint="@color/colorBrightGray00"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_chat_detail_send"
-            android:text="send"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorWhite"
+            style="@style/FontTheme.R"
             android:layout_width="54dp"
-            android:layout_height="48dp" />
+            android:layout_height="48dp"
+            android:background="@color/colorWhite"
+            android:text="@string/chat_send"
+            android:textColor="@color/colorBrightGray00"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

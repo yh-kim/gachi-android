@@ -22,6 +22,10 @@
     <!-- search -->
     <string name="search_festival_hint">어떤 공연을 찾으시나요?</string>
 
+    <!-- chat -->
+    <string name="chat_input_message">메세지를 입력해주세요</string>
+    <string name="chat_send">전송</string>
+
     <!-- signup -->
     <string name="email">이메일</string>
     <string name="password">비밀번호</string>
