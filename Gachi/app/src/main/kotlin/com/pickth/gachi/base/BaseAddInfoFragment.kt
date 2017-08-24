@@ -25,5 +25,8 @@ abstract class BaseAddInfoFragment : BaseFragment() {
         mListener = listener
     }
 
-    abstract fun clickNextButton(): Boolean
+    /**
+     * @param isSkip if click skip button, isSkip is true.
+     */
+    abstract fun clickNextButton(isSkip: Boolean)
 }

@@ -21,6 +21,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 
 /**
  * Created by yonghoon on 2017-08-21
@@ -31,8 +32,13 @@ class UserService {
 
     fun getUserId(token: String) = service.getUserID(token)
 
+    fun getUser(token: String, uid: String) = service.getUser(token, uid)
+
     interface UserAPI {
         @GET("user/login")
         fun getUserID(@Header("authorization") token: String): Call<ResponseBody>
+
+        @GET("user/{uid}")
+        fun getUser(@Header("authorization") token: String, @Path("uid") uid: String): Call<ResponseBody>
     }
 }

@@ -5,8 +5,10 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.login.LoginActivity
 import com.pickth.gachi.view.main.MainActivity
+import com.pickth.gachi.view.signup.AddInfoActivity
 import org.jetbrains.anko.startActivity
 
 /**
@@ -27,8 +29,16 @@ class SplashActivity : BaseActivity() {
                     .addOnCompleteListener {
                         if(it.isSuccessful) {
                             Log.d(TAG, "user token: ${it.result.token.toString()}")
-                            startActivity<MainActivity>()
-                            finish()
+
+                            Log.d(TAG, "user info: ${UserInfoManager.getUser(this).toString()}")
+                            val user = UserInfoManager.getUser(this)
+                            if(user?.isAddInfo == false) {
+                                startActivity<AddInfoActivity>()
+                                finish()
+                            } else {
+                                startActivity<MainActivity>()
+                                finish()
+                            }
                         }
                     }
 

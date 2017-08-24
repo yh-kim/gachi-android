@@ -24,7 +24,9 @@ import com.pickth.commons.extensions.hideKeyboard
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.net.service.UserService
+import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.main.MainActivity
+import com.pickth.gachi.view.signup.AddInfoActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import okhttp3.ResponseBody
 import org.jetbrains.anko.startActivity
@@ -95,8 +97,7 @@ class SignInWithEmailActivity: BaseActivity() {
                                                         val uid = JSONObject(response.body()?.string()).getString("uid")
                                                         Log.d(TAG, "getUserId onResponse, uid: ${uid}")
 
-                                                        startActivity<MainActivity>()
-                                                        finish()
+                                                        getUser(token, uid)
                                                     }
 
                                                     override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
@@ -126,5 +127,52 @@ class SignInWithEmailActivity: BaseActivity() {
     override fun onBackPressed() {
         startActivity<LoginActivity>()
         finish()
+    }
+
+    fun getUser(token: String, uid: String) {
+        UserService().getUser(token, uid)
+                .enqueue(object: Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                        Log.d(TAG, "getUser onResponse, code: ${response.code()}")
+                        val json = response.body()?.string()
+                        Log.d(TAG, "getUser onResponse, json: ${json}")
+
+                        val init_step = JSONObject(json).getInt("init_step")
+                        val fbid = JSONObject(json).getString("fbid")
+                        val profileImage = JSONObject(json).getString("profile_image")
+                        val nickname = JSONObject(json).getString("nickname")
+                        val age = JSONObject(json).getString("age")
+                        val gender = JSONObject(json).getString("gender")
+                        val location = JSONObject(json).getString("location")
+
+                        val user = UserInfoManager.User(uid)
+
+                        user.isAddInfo = init_step != 0
+                        if(fbid != "null") user.fbid = fbid
+                        if(profileImage != "") user.profileImage = profileImage
+                        if(nickname != "null") user.nickname = nickname
+                        if(age != "null") user.age = age.toInt()
+                        if(gender != "null") user.gender = gender
+                        if(location != "null") user.region = location
+
+                        UserInfoManager.setUser(applicationContext, user)
+                        Log.d(TAG, "user info: ${UserInfoManager.getUser(applicationContext).toString()}")
+
+                        if(user.isAddInfo == true) {
+                            startActivity<MainActivity>()
+                            finish()
+                        } else {
+                            startActivity<AddInfoActivity>()
+                            finish()
+                        }
+
+                    }
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                        Log.d(TAG, "getUser on Failure")
+                    }
+
+
+                })
+
     }
 }

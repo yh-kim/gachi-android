@@ -23,8 +23,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.net.service.UserService
+import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.login.LoginActivity
-import com.pickth.gachi.view.main.MainActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import okhttp3.ResponseBody
 import org.jetbrains.anko.startActivity
@@ -57,8 +57,16 @@ class SignUpActivity : BaseActivity() {
             var user = it.currentUser
             if(user != null) {
                 Log.d(TAG, "onAuthStateChanged:signed_in")
-                startActivity<MainActivity>()
-                finish()
+
+                Log.d(TAG, "user info: ${UserInfoManager.getUser(this).toString()}")
+
+                user.getIdToken(true)
+                        .addOnCompleteListener {
+                            val token = it.result.token
+                            Log.d(TAG, "user token: ${token}")
+                            getUid(token)
+                        }
+
             } else {
                 Log.d(TAG, "onAuthStateChanged:signed_out")
             }
@@ -84,28 +92,6 @@ class SignUpActivity : BaseActivity() {
                         if (!it.isSuccessful) {
                             Log.d(TAG, "createUserWithEmailAndPassword: ${it.exception}")
                             Log.d(TAG, "add user not successful " + it.isSuccessful);
-                        } else {
-                            it.result.user.getIdToken(true)
-                                    .addOnCompleteListener {
-                                        val token = it.result.token
-                                        Log.d(TAG, "user token: ${token}")
-
-                                        UserService().getUserId(token!!)
-                                                .enqueue(object: Callback<ResponseBody> {
-                                                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
-                                                        Log.d(TAG, "getUserId onResponse, code: ${response.code()}")
-                                                        val uid = JSONObject(response.body()?.string()).getString("uid")
-                                                        Log.d(TAG, "getUserId onResponse, uid: ${uid}")
-                                                    }
-
-                                                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
-                                                        Log.d(TAG, "getUserId on Failure")
-                                                    }
-
-                                                })
-                                    }
-
-
                         }
                     }
 
@@ -144,5 +130,60 @@ class SignUpActivity : BaseActivity() {
     override fun onStop() {
         super.onStop()
         if(mAuthListener != null) mAuth.removeAuthStateListener(mAuthListener)
+    }
+
+    fun getUid(userToken: String?) {
+        UserService().getUserId(userToken!!)
+                .enqueue(object: Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                        Log.d(TAG, "getUserId onResponse, code: ${response.code()}")
+                        val uid = JSONObject(response.body()?.string()).getString("uid")
+                        Log.d(TAG, "getUserId onResponse, uid: ${uid}")
+
+                        UserService().getUser(userToken, uid)
+                                .enqueue(object: Callback<ResponseBody> {
+                                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                                        Log.d(TAG, "getUser onResponse, code: ${response.code()}")
+                                        val json = response.body()?.string()
+                                        Log.d(TAG, "getUser onResponse, json: ${json}")
+
+                                        val init_step = JSONObject(json).getInt("init_step")
+                                        val fbid = JSONObject(json).getString("fbid")
+                                        val profileImage = JSONObject(json).getString("profile_image")
+                                        val nickname = JSONObject(json).getString("nickname")
+                                        val age = JSONObject(json).getString("age")
+                                        val gender = JSONObject(json).getString("gender")
+                                        val location = JSONObject(json).getString("location")
+
+                                        val user = UserInfoManager.User(uid)
+
+                                        user.isAddInfo = init_step != 0
+                                        if(fbid != "null") user.fbid = fbid
+                                        if(profileImage != "") user.profileImage = profileImage
+                                        if(nickname != "null") user.nickname = nickname
+                                        if(age != "null") user.age = age.toInt()
+                                        if(gender != "null") user.gender = gender
+                                        if(location != "null") user.region = location
+
+                                        UserInfoManager.setUser(applicationContext, user)
+                                        Log.d(TAG, "user info: ${UserInfoManager.getUser(applicationContext).toString()}")
+
+                                        startActivity<AddInfoActivity>()
+                                        finish()
+                                    }
+                                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                                        Log.d(TAG, "getUser on Failure")
+                                    }
+
+
+                                })
+
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                        Log.d(TAG, "getUserId on Failure")
+                    }
+
+                })
     }
 }

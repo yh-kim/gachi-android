@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 import com.pickth.gachi.R
+import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.login.LoginActivity
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import kotlinx.android.synthetic.main.fragment_main_myinfo.view.*
@@ -47,6 +48,7 @@ class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
         // logout
         rootView.tv_myinfo_logout.setOnClickListener {
             Log.d(TAG, "onCreateView:signOut")
+            UserInfoManager.clearUserInfo(context)
             LoginManager.getInstance().logOut()
             FirebaseAuth.getInstance().signOut()
             activity.startActivity<LoginActivity>()

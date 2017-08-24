@@ -23,6 +23,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
+import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_signup_add_genre.view.*
 import org.jetbrains.anko.startActivity
@@ -44,10 +45,14 @@ class GenreAddFragment : BaseAddInfoFragment() {
         return rootView
     }
 
-    override fun clickNextButton(): Boolean {
-        Log.d(TAG, "click next button")
+    override fun clickNextButton(isSkip: Boolean) {
+        Log.d(TAG, "click next button, isSkip: $isSkip")
+
+        Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
+        UserInfoManager.notifyDataSetChanged(context)
+
+
         activity.startActivity<MainActivity>()
         activity.finish()
-        return true
     }
 }

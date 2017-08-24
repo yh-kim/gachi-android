@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.signup
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
@@ -28,6 +29,7 @@ import kotlinx.android.synthetic.main.view_pager_add_info.*
 class AddInfoActivity: BaseActivity() {
 
     private lateinit var mViewPager: AddInfoViewPager
+    private lateinit var mMenuItem: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +61,8 @@ class AddInfoActivity: BaseActivity() {
         }
 
         btn_add_info_next_bottom.setOnClickListener {
-            mViewPager.getFragments(mViewPager.currentIndex).clickNextButton()
+            mMenuItem.isVisible = true
+            mViewPager.getFragments(mViewPager.currentIndex).clickNextButton(false)
 
             if (mViewPager.currentIndex == 4) {
                 btn_add_info_next_bottom.text = resources.getString(R.string.apply)
@@ -67,10 +70,11 @@ class AddInfoActivity: BaseActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
             android.R.id.home -> {
                 if(mViewPager.currentIndex == 0) finish()
+                else if(mViewPager.currentIndex == 1) mMenuItem.isVisible = false
                 else {
                     mViewPager.changePreFragment()
 
@@ -79,8 +83,24 @@ class AddInfoActivity: BaseActivity() {
                     }
                 }
             }
+
+            R.id.add_info_skip -> {
+                mViewPager.getFragments(mViewPager.currentIndex).clickNextButton(true)
+
+                if (mViewPager.currentIndex == 4) {
+                    btn_add_info_next_bottom.text = resources.getString(R.string.apply)
+                }
+            }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.add_info_menu, menu)
+
+        mMenuItem = menu.findItem(R.id.add_info_skip)
+        mMenuItem.isVisible = false
+        return super.onCreateOptionsMenu(menu)
     }
 }

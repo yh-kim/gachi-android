@@ -23,6 +23,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
+import com.pickth.gachi.util.UserInfoManager
 import kotlinx.android.synthetic.main.fragment_signup_add_gender.view.*
 
 class GenderAddFragment : BaseAddInfoFragment() {
@@ -42,9 +43,12 @@ class GenderAddFragment : BaseAddInfoFragment() {
         return rootView
     }
 
-    override fun clickNextButton(): Boolean {
-        Log.d(TAG, "click next button")
+    override fun clickNextButton(isSkip: Boolean) {
+        Log.d(TAG, "click next button, isSkip: $isSkip")
+
+        UserInfoManager.getUser(context)?.gender = "male"
+        Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
+
         mListener?.onChange()
-        return true
     }
 }
