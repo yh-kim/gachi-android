@@ -122,6 +122,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         prevBottomNavigation.isChecked = true
 
 //        mMenuItem.isVisible = (position == 0 && !isSearch())
+        supportActionBar?.setDisplayShowTitleEnabled(!(position == 0 && isSearch()))
+        supportActionBar?.setDisplayHomeAsUpEnabled(position == 0 && isSearch())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

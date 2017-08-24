@@ -104,14 +104,14 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
             tv_festival_detail_title.text = title
             tv_festival_detail_lineup.text = starring
             tv_festival_detail_date.text = StringFormat.formatFestivalDate(from, until)
-
             tv_festival_detail_detail.text = detail
-            tv_festival_detail_detail.post {
-                Log.d(TAG, "length of detail: ${detail.length}, festival detail line count: ${tv_festival_detail_detail.lineCount}")
-                if(tv_festival_detail_detail.lineCount > 3) {
-                    tv_festival_detail_info_more.visibility = View.VISIBLE
-                    tv_festival_detail_detail.maxLines = 3
 
+            tv_festival_detail_detail.post {
+                Log.d(TAG, "festival detail line count: ${tv_festival_detail_detail.lineCount}")
+                if(tv_festival_detail_detail.lineCount > 2) {
+                    Log.d(TAG, "is ellipsis?  ${tv_festival_detail_detail.layout.getEllipsisCount(2) > 0}  ${tv_festival_detail_detail.layout.getEllipsisCount(2)}")
+
+                    tv_festival_detail_info_more.visibility = View.VISIBLE
                     tv_festival_detail_info_more.setOnClickListener {
                         tv_festival_detail_info_more.ellipsize = null
                         tv_festival_detail_detail.maxLines = Integer.MAX_VALUE

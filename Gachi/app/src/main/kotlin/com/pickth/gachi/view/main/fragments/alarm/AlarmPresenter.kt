@@ -31,7 +31,6 @@ class AlarmPresenter: AlarmContract.Presenter, OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        mView.intentToAlarmDetailActivity(position)
     }
 
     override fun getItemCount(): Int = mAlarmModel.getItemCount()

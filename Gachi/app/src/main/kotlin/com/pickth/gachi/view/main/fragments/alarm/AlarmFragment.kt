@@ -8,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
-import com.pickth.gachi.view.alarm.AlarmDetailActivity
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.alarm.adapter.AlarmAdapter
 import kotlinx.android.synthetic.main.fragment_main_alarm.view.*
-import org.jetbrains.anko.startActivity
 
 class AlarmFragment : TapBaseFragment(), AlarmContract.View {
 
@@ -51,10 +49,6 @@ class AlarmFragment : TapBaseFragment(), AlarmContract.View {
 
     override fun onResume() {
         super.onResume()
-    }
-
-    override fun intentToAlarmDetailActivity(position: Int) {
-        activity.startActivity<AlarmDetailActivity>()
     }
 
     override fun clickAgain() {

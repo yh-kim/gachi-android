@@ -37,8 +37,6 @@
             android:screenOrientation="portrait" />
         <activity android:name=".view.chat.ChatDetailActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.alarm.AlarmDetailActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".view.gachi.GachiDetailActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".view.festival.FestivalDetailActivity"
