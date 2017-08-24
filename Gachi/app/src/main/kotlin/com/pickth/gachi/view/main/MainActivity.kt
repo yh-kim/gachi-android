@@ -23,7 +23,7 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
     private var mMainPagerAdapter: MainPagerAdapter? = null
     private var mViewPager: ViewPager? = null
     private lateinit var mNavigation: MyBottomNavigationView
-    private lateinit var mMenuItem: MenuItem
+//    private lateinit var mMenuItem: MenuItem
     private lateinit var prevBottomNavigation: MenuItem
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -34,17 +34,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
                 } else {
                     mViewPager?.currentItem = 0
                 }
-
                 return@OnNavigationItemSelectedListener true
             }
-//            R.id.navigation_gachi -> {
-//                if(mViewPager?.currentItem == 1) {
-//                    mMainPagerAdapter?.getItem(1)?.clickAgain()
-//                } else {
-//                    mViewPager?.currentItem = 1
-//                }
-//                return@OnNavigationItemSelectedListener true
-//            }
             R.id.navigation_chat -> {
                 if(mViewPager?.currentItem == 1) {
                     mMainPagerAdapter?.getItem(1)?.clickAgain()
@@ -78,7 +69,6 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         supportActionBar?.setDisplayShowTitleEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-//        title = resources.getStringArray(R.array.page_title)[0]
         title = "GACHI"
 
         // presenter
@@ -94,21 +84,17 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
             setListItem(1)
             setListItem(2)
             setListItem(3)
-//            setListItem(4)
             notifyDataSetChanged()
         }
 
         mViewPager = view_pager.apply {
             adapter = mMainPagerAdapter
             currentItem = 0
-//            offscreenPageLimit = 5
             offscreenPageLimit = 4
             addOnPageChangeListener(this@MainActivity)
-//            setOnTouchListener { view, motionEvent -> true }
         }
 
         prevBottomNavigation = mNavigation.menu.getItem(0)
-
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
@@ -121,7 +107,7 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         mMainPagerAdapter?.changeBetweenFragment()
 
         isSearch().let {
-            mMenuItem.isVisible = !it
+//            mMenuItem.isVisible = !it
             supportActionBar?.setDisplayShowTitleEnabled(!it)
             supportActionBar?.setDisplayHomeAsUpEnabled(it)
         }
@@ -135,14 +121,13 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         prevBottomNavigation = mNavigation.menu.getItem(position)
         prevBottomNavigation.isChecked = true
 
-        mMenuItem.isVisible = (position == 0 && !isSearch())
-//        title = resources.getStringArray(R.array.page_title)[position]
+//        mMenuItem.isVisible = (position == 0 && !isSearch())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
+//        menuInflater.inflate(R.menu.menu, menu)
 
-        mMenuItem = menu?.findItem(R.id.menu_change_fragment)!!
+//        mMenuItem = menu?.findItem(R.id.menu_change_fragment)!!
         return super.onCreateOptionsMenu(menu)
     }
 

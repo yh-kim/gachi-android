@@ -22,7 +22,7 @@ import com.pickth.gachi.view.main.fragments.search.adapter.SearchAdapterContract
 
 interface SearchContract {
     interface View: BaseView<Presenter> {
-        fun intentToFestivalDetailActivity(position: Int)
+        fun intentToFestivalDetailActivity(fid: String)
         fun showDialog()
         fun setIsScroll()
     }

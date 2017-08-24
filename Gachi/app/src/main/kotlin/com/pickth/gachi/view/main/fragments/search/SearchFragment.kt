@@ -87,8 +87,8 @@ class SearchFragment : TapBaseFragment(), SearchContract.View {
 //        if(mAdapter != null) mAdapter.changeBetweenFragment()
     }
 
-    override fun intentToFestivalDetailActivity(position: Int) {
-        activity.startActivity<FestivalDetailActivity>()
+    override fun intentToFestivalDetailActivity(fid: String) {
+        activity.startActivity<FestivalDetailActivity>("fid" to fid)
     }
 
     override fun showDialog() {

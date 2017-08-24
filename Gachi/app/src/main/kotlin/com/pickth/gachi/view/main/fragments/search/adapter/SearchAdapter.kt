@@ -55,4 +55,6 @@ class SearchAdapter: RecyclerView.Adapter<SearchViewHolder>(), SearchAdapterCont
         items.clear()
         notifyDataSetChanged()
     }
+
+    override fun getItem(position: Int): Festival = items[position]
 }

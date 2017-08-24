@@ -31,5 +31,6 @@ interface SearchAdapterContract {
     interface Model {
         fun addItem(item: Festival)
         fun clearItems()
+        fun getItem(position: Int): Festival
     }
 }

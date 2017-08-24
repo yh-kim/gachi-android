@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.main.fragments.gachi.adapter
+package com.pickth.gachi.view.gachi
 
 data class Gachi(var title: String, var reliability: Int)

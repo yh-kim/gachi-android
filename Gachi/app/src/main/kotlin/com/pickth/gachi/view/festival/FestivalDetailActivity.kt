@@ -36,7 +36,7 @@ import com.pickth.gachi.util.MyBlurTransformation
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.util.StringFormat
 import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
-import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
+import com.pickth.gachi.view.gachi.Gachi
 import kotlinx.android.synthetic.main.activity_festival_detail.*
 import org.json.JSONObject
 

@@ -4,9 +4,9 @@ import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.net.service.FestivalService
 import com.pickth.gachi.util.OnFestivalClickListener
 import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
+import com.pickth.gachi.view.gachi.Gachi
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
-import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import retrofit2.Call

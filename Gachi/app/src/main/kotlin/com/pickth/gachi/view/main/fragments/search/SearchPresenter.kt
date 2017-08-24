@@ -54,13 +54,14 @@ class SearchPresenter: SearchContract.Presenter, OnItemClickListener {
                         val retArr = JSONArray(response.body()!!.string())
                         for(position in 0..retArr.length() - 1) {
                             retArr.getJSONObject(position).let {
+                                val fid = it.getString("fid")
                                 val title = it.getString("title")
                                 val image = it.getString("image")
                                 val from = it.getString("from").split("T")[0].replace("-",".")
                                 val until = it.getString("until").split("T")[0].replace("-",".")
 
                                 var date = "$from - $until"
-                                mAdapterModel.addItem(Festival("fid", date, image, title))
+                                mAdapterModel.addItem(Festival(fid, date, image, title))
                             }
                         }
                     }
@@ -76,6 +77,6 @@ class SearchPresenter: SearchContract.Presenter, OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        mView.intentToFestivalDetailActivity(0)
+        mView.intentToFestivalDetailActivity(mAdapterModel.getItem(position).fid)
     }
 }

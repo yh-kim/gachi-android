@@ -23,7 +23,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pickth.gachi.R
-import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
+import com.pickth.gachi.view.gachi.Gachi
 import kotlinx.android.synthetic.main.item_festival_gachi.view.*
 
 class FestivalDetailAdapter: RecyclerView.Adapter<FestivalDetailAdapter.FestivalDetailViewHolder>() {

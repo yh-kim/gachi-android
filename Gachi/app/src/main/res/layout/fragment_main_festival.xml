@@ -5,7 +5,8 @@
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
-    <EditText
+    <TextView
+        android:id="@+id/tv_main_festival_search"
         style="@style/FontTheme.R"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -13,6 +14,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="7dp"
         android:background="@drawable/background_search_rectangle"
+        android:gravity="center_vertical"
         android:hint="@string/search_festival_hint"
         android:imeOptions="actionSearch"
         android:inputType="text"
