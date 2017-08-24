@@ -27,6 +27,9 @@
     <string name="chat_input_message">Input message</string>
     <string name="chat_send">send</string>
 
+    <!-- alarm -->
+    <string name="alarm_accept">accept</string>
+
     <!-- login -->
     <string name="login_skip">skip</string>
     <string name="login_account_yet">Do not have an account yet?</string>

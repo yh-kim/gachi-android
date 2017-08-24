@@ -27,6 +27,9 @@
     <string name="chat_input_message">메세지를 입력해주세요</string>
     <string name="chat_send">전송</string>
 
+    <!-- alarm -->
+    <string name="alarm_accept">수락</string>
+
     <!-- login -->
     <string name="login_skip">건너뛰기</string>
     <string name="login_account_yet">아직 계정이 없으신가요?</string>

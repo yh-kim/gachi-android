@@ -14,6 +14,7 @@
 
     <color name="colorSearchBoxGray">#f2f2f2</color>
 
+    <color name="colorChatNumRed">#ff164f</color>
     <color name="colorChatMsg">#727272</color>
     <color name="colorChatDate">#adadad</color>
     <color name="colorChatBack0">#ededed</color>

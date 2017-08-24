@@ -37,14 +37,13 @@
         style="@style/FontTheme.R"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/background_text_rectangle"
         android:gravity="center"
-        android:lineSpacingExtra="4sp"
-        android:paddingBottom="4dp"
+        android:paddingBottom="6dp"
         android:paddingEnd="14dp"
         android:paddingStart="14dp"
-        android:paddingTop="4dp"
-        android:text="accept"
+        android:paddingTop="6dp"
+        android:text="@string/alarm_accept"
         android:textColor="@color/colorWhite"
         android:textSize="14sp" />
 </LinearLayout>

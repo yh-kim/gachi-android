@@ -47,13 +47,13 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
         rootView.rv_main_festival_popular.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = mPopularAdapter
-            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, -10, false))
         }
 
         rootView.rv_main_festival_popular_gachi.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = mPopularGachiAdapter
-            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 30, false))
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
         }
 
         mPresenter.getPopularFestivalList()

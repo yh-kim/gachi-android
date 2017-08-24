@@ -71,7 +71,7 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
         rv_festival_gachi.run {
             layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
             this.adapter = adapter
-            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 30, false))
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
         }
 
         // test input
