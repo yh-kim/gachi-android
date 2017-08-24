@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
@@ -48,13 +49,45 @@
 
         <TextView
             style="@style/FontTheme.B"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:letterSpacing="-0.39"
             android:text="D - 30"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_chat_participant"
+            style="@style/FontTheme.L"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:text="Participants list"
+            android:textColor="@color/colorBrightGray03"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_chat_show"
+            style="@style/FontTheme.L"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:text="hide"
+            android:textColor="@color/colorBrightGray03"
+            android:textSize="12sp"
+            android:visibility="gone" />
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_chat_participant_list"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginBottom="12dp"
+        android:overScrollMode="never"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
@@ -65,7 +98,6 @@
         android:id="@+id/rv_chat_detail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="7dp"
         android:layout_weight="1"
         android:overScrollMode="never"
         android:paddingEnd="18dp"

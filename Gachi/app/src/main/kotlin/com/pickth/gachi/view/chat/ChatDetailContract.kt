@@ -28,7 +28,9 @@ interface ChatDetailContract {
     interface Presenter: BasePresenter {
         fun setChatDetailAdapterView(view: ChatDetailAdapterContract.View)
         fun setChatDetailAdapterModel(model: ChatDetailAdapterContract.Model)
+        fun setParticipantAdapter(adapter: ParticipantAdapter)
         fun getItemCount(): Int
         fun sendMessage(msg: String)
+        fun getParticipant()
     }
 }

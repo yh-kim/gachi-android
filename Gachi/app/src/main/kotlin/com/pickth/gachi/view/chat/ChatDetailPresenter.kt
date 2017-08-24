@@ -27,6 +27,7 @@ class ChatDetailPresenter: ChatDetailContract.Presenter {
     private lateinit var mView: ChatDetailContract.View
     private lateinit var mAdapterView: ChatDetailAdapterContract.View
     private lateinit var mAdapterModel: ChatDetailAdapterContract.Model
+    private lateinit var mParticipantAdapter: ParticipantAdapter
 
     override fun attachView(view: BaseView<*>) {
         mView = view as ChatDetailContract.View
@@ -40,6 +41,10 @@ class ChatDetailPresenter: ChatDetailContract.Presenter {
         mAdapterModel = model
     }
 
+    override fun setParticipantAdapter(adapter: ParticipantAdapter) {
+        mParticipantAdapter = adapter
+    }
+
     override fun getItemCount(): Int = mAdapterModel.getItemCount()
 
     override fun sendMessage(msg: String) {
@@ -49,5 +54,9 @@ class ChatDetailPresenter: ChatDetailContract.Presenter {
         // test input
         mAdapterModel.addItem(ChatMessage("test", date ,1))
         mView.scrollToPosition(getItemCount())
+    }
+
+    override fun getParticipant() {
+        for(i in 0..11) mParticipantAdapter.addItem(Participant("이름 $i", ""))
     }
 }

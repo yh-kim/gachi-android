@@ -16,4 +16,5 @@
 
     <color name="colorChatMsg">#727272</color>
     <color name="colorChatDate">#adadad</color>
+    <color name="colorChatBack0">#ededed</color>
 </resources>

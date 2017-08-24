@@ -14,12 +14,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="7dp"
         android:background="@drawable/background_search_rectangle"
-        android:gravity="center_vertical"
-        android:hint="@string/search_festival_hint"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:paddingStart="19dp"
-        android:textColorHint="@color/colorBrightGray00"
+        android:gravity="center"
+        android:text="@string/search_festival_hint"
+        android:textColor="@color/colorBrightGray00"
         android:textSize="18sp" />
 
     <LinearLayout

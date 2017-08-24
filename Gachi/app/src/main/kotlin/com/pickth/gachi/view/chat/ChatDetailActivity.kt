@@ -17,11 +17,15 @@
 package com.pickth.gachi.view.chat
 
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.pickth.commons.extensions.hideKeyboard
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import com.pickth.gachi.util.GridSpacingItemDecoration
 import com.pickth.gachi.view.chat.adapter.ChatDetailAdapter
 import kotlinx.android.synthetic.main.activity_chat_detail.*
 import org.jetbrains.anko.toast
@@ -30,6 +34,7 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
 
     private lateinit var mPresenter: ChatDetailPresenter
     private lateinit var mAdapter: ChatDetailAdapter
+    private lateinit var mParticipantAdapter: ParticipantAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,11 +61,21 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
             adapter = mAdapter
         }
 
+        mParticipantAdapter = ParticipantAdapter()
+
+        rv_chat_participant_list.run {
+            layoutManager = GridLayoutManager(context, 6)
+            this.adapter = mParticipantAdapter
+            addItemDecoration(GridSpacingItemDecoration(context,6, 12, false))
+        }
+
         // presenter
         mPresenter = ChatDetailPresenter().apply {
             attachView(this@ChatDetailActivity)
             setChatDetailAdapterView(mAdapter)
             setChatDetailAdapterModel(mAdapter)
+            setParticipantAdapter(mParticipantAdapter)
+            getParticipant()
         }
 
         btn_chat_detail_send.setOnClickListener {
@@ -73,6 +88,27 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
 
             et_chat_detail_msg.text = null
             mPresenter.sendMessage(msg)
+        }
+
+        tv_chat_participant.setOnClickListener {
+            tv_chat_participant.visibility = View.GONE
+            tv_chat_show.visibility = View.VISIBLE
+
+            rv_chat_participant_list.run {
+//                clearAnimation()
+                visibility = View.VISIBLE
+
+//                setShowVerticalTranslateAnimation(2000)
+            }
+        }
+
+        tv_chat_show.setOnClickListener {
+            tv_chat_show.visibility = View.GONE
+            tv_chat_participant.visibility = View.VISIBLE
+
+            rv_chat_participant_list.run {
+                visibility = View.GONE
+            }
         }
 
     }
@@ -88,10 +124,18 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
             android.R.id.home -> {
                 hideKeyboard()
                 finish()
-//                Handler().postDelayed({changeFestivalAndSearch()}, 100)
+            }
+
+            R.id.chat_menu_add -> {
+                // add
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.chat_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

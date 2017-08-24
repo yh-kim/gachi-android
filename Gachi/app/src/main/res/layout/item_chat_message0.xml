@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="18dp"
-    android:gravity="end|bottom"
+    android:layout_marginBottom="11dp"
+    android:layout_marginTop="7dp"
+    android:gravity="end"
     android:orientation="horizontal">
 
     <TextView
@@ -11,6 +12,7 @@
         style="@style/FontTheme.M"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_marginEnd="5dp"
         android:letterSpacing="-0.45"
         android:textColor="@color/colorChatDate"
@@ -21,10 +23,15 @@
         style="@style/FontTheme.M"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end"
+        android:background="@drawable/background_chat0_rectangle"
+        android:gravity="center_vertical"
         android:letterSpacing="-0.58"
         android:lineSpacingExtra="4sp"
         android:maxWidth="200dp"
+        android:paddingBottom="8dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
         android:textColor="@color/colorChatMsg"
         android:textSize="13sp" />
 </LinearLayout>
