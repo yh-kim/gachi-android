@@ -3,9 +3,10 @@ package com.pickth.gachi.view.main.fragments.festival
 import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.net.service.FestivalService
 import com.pickth.gachi.util.OnFestivalClickListener
-import com.pickth.gachi.util.StringFormat
+import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
+import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import retrofit2.Call
@@ -20,7 +21,7 @@ class FestivalPresenter: FestivalContract.Presenter, OnFestivalClickListener {
 
     private lateinit var mView: FestivalContract.View
     private lateinit var mPopularAdapter: FestivalAdapter
-    private lateinit var mImmediateAdapter: FestivalAdapter
+    private lateinit var mPopularGachiAdapter: FestivalDetailAdapter
 
     override fun attachView(view: BaseView<*>) {
         this.mView = view as FestivalContract.View
@@ -31,14 +32,14 @@ class FestivalPresenter: FestivalContract.Presenter, OnFestivalClickListener {
         mPopularAdapter.setItemClickListener(this)
     }
 
-    override fun setImmediateAdapter(adapter: FestivalAdapter) {
-        mImmediateAdapter = adapter
-        mImmediateAdapter.setItemClickListener(this)
+    override fun setPopularGachiAdapter(adapter: FestivalDetailAdapter) {
+        mPopularGachiAdapter = adapter
+//        mPopularGachiAdapter.setItemClickListener(this)
     }
 
     override fun getPopularFestivalItem(position: Int): Festival = mPopularAdapter.getItem(position)
 
-    override fun getImmediateFestivalItem(position: Int): Festival = mImmediateAdapter.getItem(position)
+    override fun getPopularGachiItem(position: Int): Gachi = mPopularGachiAdapter.getItem(position)
 
     override fun getPopularFestivalList() {
         FestivalService().getFestivalList(1)
@@ -68,32 +69,8 @@ class FestivalPresenter: FestivalContract.Presenter, OnFestivalClickListener {
                 })
     }
 
-    override fun getImmediateFestivalList() {
-        FestivalService().getFestivalList(1)
-                .enqueue(object: Callback<ResponseBody> {
-                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
-                    }
-
-                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
-                        if(response?.code() != 200) return
-
-                        val retArr = JSONArray(response.body()!!.string())
-                        for(position in 0..retArr.length() - 1) {
-                            retArr.getJSONObject(position).let {
-                                val fid = it.getString("fid")
-                                val title = it.getString("title")
-                                val image = it.getString("image")
-                                val from = it.getString("from")
-                                val until = it.getString("until")
-                                val type = "immediate"
-
-                                var date = StringFormat.formatFestivalDate(from, until)
-                                mImmediateAdapter.addItem(Festival(fid, date, image, title, type))
-                            }
-                        }
-                    }
-
-                })
+    override fun getPopularGachiList() {
+        for(i in 0..4) mPopularGachiAdapter.addItem(Gachi("a", 0))
     }
 
     override fun onPopularFestivalClick(position: Int) {
@@ -102,8 +79,8 @@ class FestivalPresenter: FestivalContract.Presenter, OnFestivalClickListener {
     }
 
     override fun onImmediateFestivalClick(position: Int) {
-        val fid = mImmediateAdapter.getItem(position).fid
-        mView.intentToFestivalDetailActivity(fid)
+//        val fid = mPopularGachiAdapter.getItem(position).fid
+//        mView.intentToFestivalDetailActivity(fid)
     }
 
 }

@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <ImageView
         android:id="@+id/iv_festival_gachi"
-        android:layout_width="84dp"
-        android:layout_height="84dp" />
+        android:layout_width="66dp"
+        android:layout_height="66dp" />
 
     <TextView
-        android:text="가치해요"
-        android:layout_marginTop="8dp"
-        android:maxWidth="84dp"
-        android:layout_gravity="center_horizontal"
+        android:id="@+id/tv_festival_gachi_title"
+        style="@style/FontTheme.B"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:maxWidth="77dp"
+        android:textSize="12sp" />
 </LinearLayout>

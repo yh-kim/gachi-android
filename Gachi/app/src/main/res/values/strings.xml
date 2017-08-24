@@ -18,7 +18,7 @@
 
     <!-- main festival -->
     <string name="title_popular_festivals">Popular festivals</string>
-    <string name="title_immediate_festivals">Immediate festivals</string>
+    <string name="title_popular_gachi">Popular gachi</string>
 
     <!-- search -->
     <string name="search_festival_hint">What is the festival to look for?</string>

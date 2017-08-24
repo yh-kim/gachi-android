@@ -31,7 +31,7 @@ class FestivalDetailAdapter: RecyclerView.Adapter<FestivalDetailAdapter.Festival
     private var items = ArrayList<Gachi>()
 
     override fun onBindViewHolder(holder: FestivalDetailViewHolder?, position: Int) {
-        holder?.onBInd()
+        holder?.onBInd(items[position], position)
     }
 
     override fun getItemCount(): Int = items.size
@@ -48,9 +48,13 @@ class FestivalDetailAdapter: RecyclerView.Adapter<FestivalDetailAdapter.Festival
         notifyItemInserted(itemCount - 1)
     }
 
+    fun getItem(position: Int) = items[position]
+
     class FestivalDetailViewHolder(val view: View): RecyclerView.ViewHolder(view) {
-        fun onBInd() {
+        fun onBInd(item: Gachi, position: Int) {
             with(itemView) {
+                tv_festival_gachi_title.text = item.title
+
                 Glide.with(view)
                         .load(R.drawable.test)
                         .apply(RequestOptions().circleCrop())

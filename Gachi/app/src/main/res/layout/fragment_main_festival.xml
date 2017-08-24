@@ -6,14 +6,17 @@
     android:orientation="vertical">
 
     <EditText
-        style="@style/FontTheme.L"
+        style="@style/FontTheme.R"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/background_search_rectangle"
         android:hint="@string/search_festival_hint"
         android:imeOptions="actionSearch"
         android:inputType="text"
+        android:paddingStart="19dp"
         android:textColorHint="@color/colorBrightGray00"
         android:textSize="18sp" />
 
@@ -22,8 +25,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:orientation="vertical"
-        android:paddingBottom="27dp"
-        android:paddingLeft="20dp">
+        android:paddingBottom="30dp"
+        android:paddingStart="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,11 +61,15 @@
             android:overScrollMode="never" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@drawable/line_divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="22dp"
         android:orientation="vertical"
         android:paddingLeft="20dp">
 
@@ -77,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:letterSpacing="-0.02"
-                android:text="@string/title_immediate_festivals"
+                android:text="@string/title_popular_gachi"
                 android:textColor="@color/colorDarkBlack"
                 android:textSize="22sp" />
 
@@ -94,10 +101,10 @@
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_main_festival_immediate"
+            android:id="@+id/rv_main_festival_popular_gachi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:overScrollMode="never" />
     </LinearLayout>
 

@@ -76,6 +76,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         // actionbar
         setSupportActionBar(main_toolbar)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 //        title = resources.getStringArray(R.array.page_title)[0]
         title = "GACHI"
 
@@ -133,8 +135,6 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         prevBottomNavigation = mNavigation.menu.getItem(position)
         prevBottomNavigation.isChecked = true
 
-        supportActionBar?.setDisplayShowTitleEnabled((position == 0 && !isSearch()))
-        supportActionBar?.setDisplayHomeAsUpEnabled((position == 0 && isSearch()))
         mMenuItem.isVisible = (position == 0 && !isSearch())
 //        title = resources.getStringArray(R.array.page_title)[position]
     }

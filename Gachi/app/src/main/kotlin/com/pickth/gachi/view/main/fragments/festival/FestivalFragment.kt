@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.view.festival.FestivalDetailActivity
+import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
 import kotlinx.android.synthetic.main.fragment_main_festival.view.*
@@ -17,7 +18,7 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
 
     private lateinit var mPresenter: FestivalPresenter
     private lateinit var mPopularAdapter: FestivalAdapter
-    private lateinit var mImmediateAdapter: FestivalAdapter
+    private lateinit var mPopularGachiAdapter: FestivalDetailAdapter
 
     companion object {
         private val mInstance = FestivalFragment()
@@ -28,12 +29,12 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
         val rootView = inflater!!.inflate(R.layout.fragment_main_festival, container, false)
 
         mPopularAdapter = FestivalAdapter()
-        mImmediateAdapter = FestivalAdapter()
+        mPopularGachiAdapter = FestivalDetailAdapter()
 
         mPresenter = FestivalPresenter().apply {
             attachView(this@FestivalFragment)
             setPopularAdapter(mPopularAdapter)
-            setImmediateAdapter(mImmediateAdapter)
+            setPopularGachiAdapter(mPopularGachiAdapter)
         }
 
         rootView.rv_main_festival_popular.run {
@@ -42,14 +43,14 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
             addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
         }
 
-        rootView.rv_main_festival_immediate.run {
+        rootView.rv_main_festival_popular_gachi.run {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = mImmediateAdapter
-            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
+            adapter = mPopularGachiAdapter
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 30, false))
         }
 
         mPresenter.getPopularFestivalList()
-        mPresenter.getImmediateFestivalList()
+        mPresenter.getPopularGachiList()
 
         return rootView
     }

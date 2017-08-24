@@ -13,5 +13,5 @@
         android:fillType="evenOdd"
         android:strokeColor="@color/colorBrightGray00"
         android:strokeWidth="1"
-        android:pathData="M23.865 16.49a8.074 8.074 0 1 1-16.148-.002 8.074 8.074 0 0 1 16.148 .002 z" />
+        android:pathData="M23.865 16.49a8.074 8.074 0 1 1-16.148-0.002 8.074 8.074 0 0 1 16.148 0.002 z" />
 </vector>

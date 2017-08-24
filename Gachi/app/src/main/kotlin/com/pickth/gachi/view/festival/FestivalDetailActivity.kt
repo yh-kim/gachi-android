@@ -71,11 +71,11 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
         rv_festival_gachi.run {
             layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
             this.adapter = adapter
-            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 15, false))
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 30, false))
         }
 
         // test input
-        for(i in 0..4) adapter.addItem(Gachi("", 0))
+        for(i in 0..4) adapter.addItem(Gachi("b", 0))
 
     }
 

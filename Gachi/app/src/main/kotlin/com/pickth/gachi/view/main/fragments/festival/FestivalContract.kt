@@ -2,8 +2,10 @@ package com.pickth.gachi.view.main.fragments.festival
 
 import com.pickth.commons.mvp.BasePresenter
 import com.pickth.commons.mvp.BaseView
+import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
 import com.pickth.gachi.view.main.fragments.festival.adapter.Festival
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
+import com.pickth.gachi.view.main.fragments.gachi.adapter.Gachi
 
 /**
  * Created by yonghoon on 2017-07-20.
@@ -16,11 +18,11 @@ interface FestivalContract {
 
     interface Presenter: BasePresenter {
         fun setPopularAdapter(adapter: FestivalAdapter)
-        fun setImmediateAdapter(adapter: FestivalAdapter)
+        fun setPopularGachiAdapter(adapter: FestivalDetailAdapter)
         fun getPopularFestivalItem(position: Int): Festival
-        fun getImmediateFestivalItem(position: Int): Festival
+        fun getPopularGachiItem(position: Int): Gachi
 
         fun getPopularFestivalList()
-        fun getImmediateFestivalList()
+        fun getPopularGachiList()
     }
 }

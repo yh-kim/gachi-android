@@ -39,7 +39,7 @@
     <com.pickth.gachi.view.custom.MyBottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:layout_gravity="bottom"
         android:background="@color/colorWhite"
         app:menu="@menu/navigation"
