@@ -23,11 +23,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
+import com.pickth.gachi.net.service.UserService
 import com.pickth.gachi.util.UserInfoManager
 import kotlinx.android.synthetic.main.fragment_signup_add_text.view.*
+import okhttp3.ResponseBody
+import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NicknameAddFragment : BaseAddInfoFragment() {
-
     companion object {
         val PAGE_INDEX = 0
 
@@ -48,10 +53,43 @@ class NicknameAddFragment : BaseAddInfoFragment() {
     override fun clickNextButton(isSkip: Boolean) {
         Log.d(TAG, "click next button, isSkip: $isSkip")
 
+        var input = view!!.et_add_info_input.text.toString()
 
-        UserInfoManager.getUser(context)?.nickname = "tt"
-        Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
+        // 유효성 체크
+        if(input.length < 1) {
+            activity.toast("올바른 값을 입력해주세요")
+            return
+        }
 
-        mListener?.onChange()
+        // TODO Check nickname duplication
+
+        initialUserInfo(input)
+
+    }
+
+    fun initialUserInfo(input: String) {
+        Log.d(TAG, "initialUserInfo, nickname input: $input")
+        var map = HashMap<String, String>()
+        map.set("nickname", input)
+        UserService()
+                .initialUserInfo(UserInfoManager.firebaseUserToken, UserInfoManager.getUser(context)?.uid!!, PAGE_INDEX + 1, map)
+                .enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                        Log.d(TAG, "initialUserInfo onResponse, code: ${response.code()}")
+
+                        if (response.code() == 200) {
+                            UserInfoManager.getUser(context)?.nickname = input
+                            UserInfoManager.notifyDataSetChanged(context)
+                            Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
+                            mListener?.onChange()
+                        }
+
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                        Log.d(TAG, "initialUserInfo on Failure ${t?.printStackTrace()}")
+                    }
+
+                })
     }
 }

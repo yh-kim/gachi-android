@@ -23,8 +23,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
+import com.pickth.gachi.net.service.UserService
 import com.pickth.gachi.util.UserInfoManager
 import kotlinx.android.synthetic.main.fragment_signup_add_region.view.*
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegionAddFragment : BaseAddInfoFragment() {
 
@@ -46,9 +51,39 @@ class RegionAddFragment : BaseAddInfoFragment() {
     override fun clickNextButton(isSkip: Boolean) {
         Log.d(TAG, "click next button, isSkip: $isSkip")
 
-        UserInfoManager.getUser(context)?.region = "seoul"
-        Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
+        if(isSkip) {
+            mListener?.onChange()
+            return
+        }
 
         mListener?.onChange()
+
+        // TODO get region
+    }
+
+    fun initialUserInfo(input: String) {
+        Log.d(TAG, "initialUserInfo, region input: $input")
+        var map = HashMap<String, String>()
+        map.set("location", input)
+        UserService()
+                .initialUserInfo(UserInfoManager.firebaseUserToken, UserInfoManager.getUser(context)?.uid!!, NicknameAddFragment.PAGE_INDEX + 1, map)
+                .enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                        Log.d(TAG, "initialUserInfo onResponse, code: ${response.code()}")
+
+                        if (response.code() == 200) {
+                            UserInfoManager.getUser(context)?.region = input
+                            UserInfoManager.notifyDataSetChanged(context)
+                            Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
+                            mListener?.onChange()
+                        }
+
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                        Log.d(TAG, "initialUserInfo on Failure ${t?.printStackTrace()}")
+                    }
+
+                })
     }
 }

@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken
  */
 
 object UserInfoManager {
+    var firebaseUserToken = ""
     private var mUser: User? = null
 
     fun getUser(context: Context): User? {

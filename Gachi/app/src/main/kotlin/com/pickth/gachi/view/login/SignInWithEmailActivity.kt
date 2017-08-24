@@ -96,6 +96,7 @@ class SignInWithEmailActivity: BaseActivity() {
                                                         Log.d(TAG, "getUserId onResponse, code: ${response.code()}")
                                                         val uid = JSONObject(response.body()?.string()).getString("uid")
                                                         Log.d(TAG, "getUserId onResponse, uid: ${uid}")
+                                                        UserInfoManager.firebaseUserToken = it.result.token.toString()
 
                                                         getUser(token, uid)
                                                     }

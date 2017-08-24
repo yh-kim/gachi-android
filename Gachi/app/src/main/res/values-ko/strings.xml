@@ -48,6 +48,11 @@
 
     <string name="next">다음</string>
     <string name="apply">적용</string>
+    
+    <string name="input_correctly">올바른 값을 입력하세요</string>
+
+    <string name="male">남자</string>
+    <string name="female">여자</string>
 
     <string name="nickname_is_required">필수 입력사항입니다</string>
     <string name="region_select">사는 지역을 선택해주세요</string>

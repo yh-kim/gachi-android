@@ -46,6 +46,11 @@
     <string name="title_region">region</string>
     <string name="title_genre">genre</string>
 
+    <string name="input_correctly">Please enter the correct value</string>
+
+    <string name="male">male</string>
+    <string name="female">female</string>
+
     <string name="next">next</string>
     <string name="apply">apply</string>
 

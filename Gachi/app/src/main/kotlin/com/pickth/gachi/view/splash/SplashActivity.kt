@@ -29,7 +29,7 @@ class SplashActivity : BaseActivity() {
                     .addOnCompleteListener {
                         if(it.isSuccessful) {
                             Log.d(TAG, "user token: ${it.result.token.toString()}")
-
+                            UserInfoManager.firebaseUserToken = it.result.token.toString()
                             Log.d(TAG, "user info: ${UserInfoManager.getUser(this).toString()}")
                             val user = UserInfoManager.getUser(this)
                             if(user?.isAddInfo == false) {

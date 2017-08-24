@@ -19,24 +19,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="106dp"
         android:clickable="true"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/selector_reliability_circle"
+            android:id="@+id/tv_gender_male"
+            style="@style/FontTheme.R"
+            android:layout_width="142dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/selector_gender_rectangle"
             android:gravity="center"
-            android:text="남" />
+            android:letterSpacing="-0.02"
+            android:text="@string/male"
+            android:textColor="@color/colorBrightGray00"
+            android:textSize="18sp" />
 
         <TextView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/selector_reliability_circle"
+            android:id="@+id/tv_gender_female"
+            style="@style/FontTheme.R"
+            android:layout_width="142dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/selector_gender_rectangle"
             android:gravity="center"
-            android:text="여" />
+            android:letterSpacing="-0.02"
+            android:text="@string/female"
+            android:textColor="@color/colorBrightGray00"
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

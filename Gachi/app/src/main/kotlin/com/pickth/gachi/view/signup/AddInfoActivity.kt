@@ -74,8 +74,9 @@ class AddInfoActivity: BaseActivity() {
         when(item.itemId) {
             android.R.id.home -> {
                 if(mViewPager.currentIndex == 0) finish()
-                else if(mViewPager.currentIndex == 1) mMenuItem.isVisible = false
                 else {
+                    if(mViewPager.currentIndex == 1) mMenuItem.isVisible = false
+
                     mViewPager.changePreFragment()
 
                     if(mViewPager.currentIndex == 3) {

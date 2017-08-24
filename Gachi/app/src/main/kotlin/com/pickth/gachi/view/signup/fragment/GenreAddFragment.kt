@@ -23,10 +23,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseAddInfoFragment
+import com.pickth.gachi.net.service.UserService
 import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_signup_add_genre.view.*
+import okhttp3.ResponseBody
 import org.jetbrains.anko.startActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GenreAddFragment : BaseAddInfoFragment() {
 
@@ -48,11 +53,40 @@ class GenreAddFragment : BaseAddInfoFragment() {
     override fun clickNextButton(isSkip: Boolean) {
         Log.d(TAG, "click next button, isSkip: $isSkip")
 
-        Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
-        UserInfoManager.notifyDataSetChanged(context)
+        if(isSkip) {
+            activity.startActivity<MainActivity>()
+            activity.finish()
+            return
+        }
 
-
+        // TODO get genres
         activity.startActivity<MainActivity>()
         activity.finish()
+    }
+
+    fun initialUserInfo(input: String) {
+        Log.d(TAG, "initialUserInfo, genre input: $input")
+        var map = HashMap<String, String>()
+        map.set("genre", input)
+        UserService()
+                .initialUserInfo(UserInfoManager.firebaseUserToken, UserInfoManager.getUser(context)?.uid!!, NicknameAddFragment.PAGE_INDEX + 1, map)
+                .enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                        Log.d(TAG, "initialUserInfo onResponse, code: ${response.code()}")
+
+                        if (response.code() == 200) {
+//                            UserInfoManager.getUser(context)?.genre = input
+                            UserInfoManager.notifyDataSetChanged(context)
+                            Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
+                            mListener?.onChange()
+                        }
+
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                        Log.d(TAG, "initialUserInfo on Failure ${t?.printStackTrace()}")
+                    }
+
+                })
     }
 }

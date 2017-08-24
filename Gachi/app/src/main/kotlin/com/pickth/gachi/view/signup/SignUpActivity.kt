@@ -64,6 +64,7 @@ class SignUpActivity : BaseActivity() {
                         .addOnCompleteListener {
                             val token = it.result.token
                             Log.d(TAG, "user token: ${token}")
+                            UserInfoManager.firebaseUserToken = it.result.token.toString()
                             getUid(token)
                         }
 
