@@ -86,7 +86,7 @@ class GenderAddFragment : BaseAddInfoFragment() {
             return
         }
 
-        initialUserInfo(if(isMale == true) "남자" else "여자")
+        initialUserInfo(if(isMale == true) "male" else "female")
     }
 
     fun initialUserInfo(input: String) {
