@@ -79,6 +79,7 @@ class NicknameAddFragment : BaseAddInfoFragment() {
 
                         if (response.code() == 200) {
                             UserInfoManager.getUser(context)?.nickname = input
+                            UserInfoManager.getUser(context)?.isAddInfo = true
                             UserInfoManager.notifyDataSetChanged(context)
                             Log.d(TAG, "user info: ${UserInfoManager.getUser(context).toString()}")
                             mListener?.onChange()

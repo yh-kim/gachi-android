@@ -34,15 +34,18 @@ import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.util.MyBlurTransformation
 import com.pickth.gachi.util.MyDividerItemDecoration
+import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.util.StringFormat
 import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
 import com.pickth.gachi.view.gachi.Gachi
 import kotlinx.android.synthetic.main.activity_festival_detail.*
+import org.jetbrains.anko.toast
 import org.json.JSONObject
 
 class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
 
     private lateinit var mPresenter: FestivalDetailContract.Presenter
+    private lateinit var mAdapter: FestivalDetailAdapter
 
     private lateinit var ivFestivalBlurBackground: ImageView
     private lateinit var ivFestivalDetail: ImageView
@@ -67,15 +70,16 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
             getFestivalInfo(getFid())
         }
 
-        val adapter = FestivalDetailAdapter()
+        mAdapter = FestivalDetailAdapter(object: OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                toast(mAdapter.getItem(position).lid)
+            }
+        })
         rv_festival_gachi.run {
             layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-            this.adapter = adapter
+            this.adapter = mAdapter
             addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
         }
-
-        // test input
-        for(i in 0..4) adapter.addItem(Gachi("b", 0))
 
     }
 
@@ -92,6 +96,7 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
     override fun getFid(): String = intent.getStringExtra("fid")
 
     override fun bindFestivalInfo(info: String) {
+        Log.d(TAG, "bindFestivalInfo fid: ${getFid()} info: ${info}")
         JSONObject(info).let {
             val title = it.getString("title")
             val starring = it.getString("starring")
@@ -132,6 +137,23 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
                             iv_festival_blur_background.background = resource
                         }
                     })
+
+
+            // gachi
+            var gachis = it.getJSONArray("leadrooms")
+            Log.d(TAG, "gachis: ${gachis.toString()}")
+            for(i in 0..gachis.length() - 1) {
+                var gachi = gachis.getJSONObject(i)
+                val lid = gachi.getString("leadroom_id")
+                val title = gachi.getString("title")
+
+                val leaderImage = gachi.getJSONObject("leader")
+                        .getString("profile_image")
+
+
+                mAdapter.addItem((Gachi(lid, title, leaderImage)))
+
+            }
         }
     }
 }

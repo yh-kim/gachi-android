@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.util.MyDividerItemDecoration
+import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.view.festival.FestivalDetailActivity
 import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
 import com.pickth.gachi.view.main.MainActivity
@@ -30,7 +31,11 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
         val rootView = inflater!!.inflate(R.layout.fragment_main_festival, container, false)
 
         mPopularAdapter = FestivalAdapter()
-        mPopularGachiAdapter = FestivalDetailAdapter()
+        mPopularGachiAdapter = FestivalDetailAdapter(object: OnItemClickListener {
+            override fun onItemClick(position: Int) {
+            }
+
+        })
 
         mPresenter = FestivalPresenter().apply {
             attachView(this@FestivalFragment)

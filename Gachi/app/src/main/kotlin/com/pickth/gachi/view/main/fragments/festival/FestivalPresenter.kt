@@ -70,7 +70,7 @@ class FestivalPresenter: FestivalContract.Presenter, OnFestivalClickListener {
     }
 
     override fun getPopularGachiList() {
-        for(i in 0..4) mPopularGachiAdapter.addItem(Gachi("a", 0))
+        for(i in 0..4) mPopularGachiAdapter.addItem(Gachi("a", "d", ""))
     }
 
     override fun onPopularFestivalClick(position: Int) {

@@ -30,6 +30,10 @@
     <!-- alarm -->
     <string name="alarm_accept">accept</string>
 
+    <!-- myinfo -->
+    <string name="info_modify">modify</string>
+    <string name="info_logout">logout</string>
+
     <!-- login -->
     <string name="login_skip">skip</string>
     <string name="login_account_yet">Do not have an account yet?</string>

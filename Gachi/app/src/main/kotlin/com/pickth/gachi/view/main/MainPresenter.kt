@@ -1,6 +1,7 @@
 package com.pickth.gachi.view.main
 
 import com.pickth.commons.mvp.BaseView
+import com.pickth.gachi.util.UserInfoManager
 
 /**
  * Created by yonghoon on 2017-07-09.
@@ -13,4 +14,6 @@ class MainPresenter(): MainContract.Presenter {
     override fun attachView(view: BaseView<*>) {
         this.mMainView =  view as MainContract.View
     }
+
+    override fun getUser(): UserInfoManager.User? = UserInfoManager.getUser(mMainView.getContext())
 }

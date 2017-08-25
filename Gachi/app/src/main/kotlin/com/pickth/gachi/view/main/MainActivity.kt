@@ -1,5 +1,6 @@
 package com.pickth.gachi.view.main
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.BottomNavigationView
@@ -23,8 +24,9 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
     private var mMainPagerAdapter: MainPagerAdapter? = null
     private var mViewPager: ViewPager? = null
     private lateinit var mNavigation: MyBottomNavigationView
-//    private lateinit var mMenuItem: MenuItem
+    private lateinit var mMenuItem: MenuItem
     private lateinit var prevBottomNavigation: MenuItem
+    private var isUser = false
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -75,6 +77,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         mMainPresenter = MainPresenter()
         mMainPresenter.attachView(this)
 
+        isUser = mMainPresenter.getUser() != null
+
         // navigation
         mNavigation = navigation
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -96,6 +100,8 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
 
         prevBottomNavigation = mNavigation.menu.getItem(0)
     }
+
+    override fun getContext(): Context = applicationContext
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
     }
@@ -121,22 +127,22 @@ class MainActivity : BaseActivity(), MainContract.View, ViewPager.OnPageChangeLi
         prevBottomNavigation = mNavigation.menu.getItem(position)
         prevBottomNavigation.isChecked = true
 
-//        mMenuItem.isVisible = (position == 0 && !isSearch())
+        mMenuItem.isVisible = (position == 3 && isUser)
         supportActionBar?.setDisplayShowTitleEnabled(!(position == 0 && isSearch()))
         supportActionBar?.setDisplayHomeAsUpEnabled(position == 0 && isSearch())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.menu, menu)
+        menuInflater.inflate(R.menu.menu, menu)
 
-//        mMenuItem = menu?.findItem(R.id.menu_change_fragment)!!
+        mMenuItem = menu?.findItem(R.id.menu_modify)!!
+        mMenuItem.isVisible = false
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
-            R.id.menu_change_fragment -> {
-                changeFestivalAndSearch()
+            R.id.menu_modify -> {
             }
 
             android.R.id.home -> {

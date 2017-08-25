@@ -17,16 +17,18 @@
 package com.pickth.gachi.view.festival.adapter
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.pickth.gachi.R
+import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.view.gachi.Gachi
 import kotlinx.android.synthetic.main.item_festival_gachi.view.*
 
-class FestivalDetailAdapter: RecyclerView.Adapter<FestivalDetailAdapter.FestivalDetailViewHolder>() {
+class FestivalDetailAdapter(val listener: OnItemClickListener): RecyclerView.Adapter<FestivalDetailAdapter.FestivalDetailViewHolder>() {
 
     private var items = ArrayList<Gachi>()
 
@@ -40,25 +42,42 @@ class FestivalDetailAdapter: RecyclerView.Adapter<FestivalDetailAdapter.Festival
         val itemView = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.item_festival_gachi, parent, false)
 
-        return FestivalDetailViewHolder(itemView)
+        return FestivalDetailViewHolder(itemView, listener)
     }
 
     fun addItem(item: Gachi) {
+        Log.d("Gachi__FestivalGachi", "addItem item: ${item}")
         items.add(item)
         notifyItemInserted(itemCount - 1)
     }
 
     fun getItem(position: Int) = items[position]
 
-    class FestivalDetailViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+    class FestivalDetailViewHolder(val view: View, val listener: OnItemClickListener): RecyclerView.ViewHolder(view) {
         fun onBInd(item: Gachi, position: Int) {
             with(itemView) {
-                tv_festival_gachi_title.text = item.title
+                setOnClickListener {
+                    listener.onItemClick(position)
+                }
 
-                Glide.with(view)
-                        .load(R.drawable.test)
-                        .apply(RequestOptions().circleCrop())
-                        .into(iv_festival_gachi)
+                if(item.title == "null") {
+                    tv_festival_gachi_title.text = "제목이 없습니다"
+                } else {
+                    tv_festival_gachi_title.text = item.title
+                }
+
+                if(item.userImagePath == "") {
+                    Glide.with(view)
+                            .load(R.drawable.test)
+                            .apply(RequestOptions().circleCrop())
+                            .into(iv_festival_gachi)
+                } else {
+                    Glide.with(view)
+                            .load(R.drawable.test)
+                            .apply(RequestOptions().circleCrop())
+                            .into(iv_festival_gachi)
+                }
+
             }
 
         }

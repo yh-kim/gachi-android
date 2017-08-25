@@ -21,7 +21,7 @@
     <string name="title_popular_gachi">인기 가치</string>
 
     <!-- search -->
-    <string name="search_festival_hint">어떤 공연을 찾으시나요?</string>
+    <string name="search_festival_hint">어느 공연을 찾으시나요?</string>
 
     <!-- chat -->
     <string name="chat_input_message">메세지를 입력해주세요</string>
@@ -29,6 +29,10 @@
 
     <!-- alarm -->
     <string name="alarm_accept">수락</string>
+
+    <!-- myinfo -->
+    <string name="info_modify">수정</string>
+    <string name="info_logout">로그아웃</string>
 
     <!-- login -->
     <string name="login_skip">건너뛰기</string>

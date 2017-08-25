@@ -14,6 +14,25 @@
  * limitations under the License.
  */
 
-package com.pickth.gachi.view.gachi
+package com.pickth.gachi.net.service
 
-data class Gachi(var lid: String, var title: String, var userImagePath: String = "", var reliability: Int = 0)
+import com.pickth.gachi.net.RetrofitManager
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Path
+
+/**
+ * Created by yonghoon on 2017-08-25
+ */
+
+class GachiService {
+    val service = RetrofitManager.getService(GachiAPI::class.java) as GachiAPI
+
+    fun getGachiInfo(lid: String) = service.getGachiInfo(lid)
+
+    interface GachiAPI {
+        @GET("leadroom/{lid}")
+        fun getGachiInfo(@Path("lid") lid: String): Call<ResponseBody>
+    }
+}

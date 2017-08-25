@@ -37,11 +37,28 @@ class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
         mPresenter = MyinfoPresenter()
         mPresenter.attachView(this)
 
-        Glide.with(rootView.context)
-                .load(R.drawable.test)
-                .apply(RequestOptions().circleCrop())
-                .into(rootView.iv_myinfo_photo)
-        rootView.tv_myinfo_name.text = "test"
+        return rootView
+    }
+
+    override fun initializeUserLayout(user: UserInfoManager.User) {
+        Log.d(TAG, "initializeUserLayout user: $user")
+
+        rootView.tv_myinfo_logout.visibility = View.VISIBLE
+
+        if(user.profileImage == null) {
+            Glide.with(rootView.context)
+                    .load(R.drawable.test)
+                    .apply(RequestOptions().circleCrop())
+                    .into(rootView.iv_myinfo_photo)
+        } else {
+            Glide.with(rootView.context)
+                    .load(user.profileImage)
+                    .apply(RequestOptions().circleCrop())
+                    .into(rootView.iv_myinfo_photo)
+        }
+
+
+        rootView.tv_myinfo_name.text = user.nickname
 
 //        setMyReliability(86)
 
@@ -54,8 +71,16 @@ class MyinfoFragment : TapBaseFragment(), MyinfoContract.View {
             activity.startActivity<LoginActivity>()
             activity.finish()
         }
+    }
 
-        return rootView
+    override fun initializeGuestLayout() {
+        Log.d(TAG, "initializeGuestLayout")
+        Glide.with(rootView.context)
+                .load(R.drawable.test)
+                .apply(RequestOptions().circleCrop())
+                .into(rootView.iv_myinfo_photo)
+        rootView.tv_myinfo_name.text = "손님"
+
     }
 
     override fun setMyReliability(reliability: Int) {
