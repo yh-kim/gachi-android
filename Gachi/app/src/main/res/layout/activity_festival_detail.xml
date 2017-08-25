@@ -102,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="-0.54"
-                        android:text="Info"
+                        android:text="@string/title_festival_detail_info"
                         android:textColor="@color/colorDarkBlack"
                         android:textSize="22sp" />
 
@@ -152,7 +152,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="-0.54"
-                        android:text="LINE UP"
+                        android:text="@string/title_festival_detail_lineup"
                         android:textColor="@color/colorDarkBlack"
                         android:textSize="22sp" />
 
@@ -194,7 +194,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:letterSpacing="-0.54"
-                            android:text="GACHI"
+                            android:text="@string/title_festival_detail_gachi"
                             android:textColor="@color/colorDarkBlack"
                             android:textSize="22sp" />
 

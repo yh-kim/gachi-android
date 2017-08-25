@@ -12,14 +12,19 @@
     <string name="title_myinfo">내 정보</string>
     <string name="title_search">검색</string>
     <string name="title_gachi_detail">가치 정보</string>
+    <string name="title_gachi_participant">참여자</string>
 
     <string name="title_signup">회원가입</string>
     <string name="title_signin_with_email">이메일로 로그인</string>
     <string name="title_signin_with_facebook">페이스북으로 로그인</string>
 
-    <!-- main festival -->
+    <!-- festival -->
     <string name="title_popular_festivals">인기 페스티벌</string>
     <string name="title_popular_gachi">인기 가치</string>
+
+    <string name="title_festival_detail_info">정보</string>
+    <string name="title_festival_detail_lineup">라인업</string>
+    <string name="title_festival_detail_gachi">가치방</string>
 
     <!-- search -->
     <string name="search_festival_hint">어느 공연을 찾으시나요?</string>

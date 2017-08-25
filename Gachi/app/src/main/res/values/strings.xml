@@ -12,14 +12,19 @@
     <string name="title_myinfo">My info</string>
     <string name="title_search">Search</string>
     <string name="title_gachi_detail">Gachi info</string>
+    <string name="title_gachi_participant">Participants</string>
 
     <string name="title_signup">Sign up</string>
     <string name="title_signin_with_email">Sign in with email</string>
     <string name="title_signin_with_facebook">Sign in with facebook</string>
 
-    <!-- main festival -->
+    <!-- festival -->
     <string name="title_popular_festivals">Popular festivals</string>
     <string name="title_popular_gachi">Popular gachi</string>
+
+    <string name="title_festival_detail_info">Info</string>
+    <string name="title_festival_detail_lineup">Line Up</string>
+    <string name="title_festival_detail_gachi">Gachis</string>
 
     <!-- search -->
     <string name="search_festival_hint">What is the festival to look for?</string>
