@@ -71,40 +71,11 @@
                             android:textSize="20sp" />
 
                         <LinearLayout
+                            android:id="@+id/ll_festival_detail_genres"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="13dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/FontTheme.M"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/background_text_rectangle"
-                                android:letterSpacing="-0.02"
-                                android:paddingBottom="3dp"
-                                android:paddingLeft="9dp"
-                                android:paddingRight="9dp"
-                                android:paddingTop="3dp"
-                                android:text="#ROCK"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                style="@style/FontTheme.M"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:background="@drawable/background_text_rectangle"
-                                android:letterSpacing="-0.02"
-                                android:paddingBottom="3dp"
-                                android:paddingLeft="9dp"
-                                android:paddingRight="9dp"
-                                android:paddingTop="3dp"
-                                android:text="#서울특별시"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="10sp" />
-                        </LinearLayout>
+                            android:orientation="horizontal" />
                     </LinearLayout>
                     <!-- 페스티벌 기간, 제목-->
 

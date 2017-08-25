@@ -11,6 +11,7 @@
     <string name="title_alarm">알림</string>
     <string name="title_myinfo">내 정보</string>
     <string name="title_search">검색</string>
+    <string name="title_gachi_detail">가치 정보</string>
 
     <string name="title_signup">회원가입</string>
     <string name="title_signin_with_email">이메일로 로그인</string>

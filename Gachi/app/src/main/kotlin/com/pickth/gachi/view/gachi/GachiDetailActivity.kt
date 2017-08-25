@@ -17,13 +17,32 @@
 package com.pickth.gachi.view.gachi
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_gachi_detail.*
 
 class GachiDetailActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gachi_detail)
+
+        // actionbar
+        setSupportActionBar(gachi_toolbar)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

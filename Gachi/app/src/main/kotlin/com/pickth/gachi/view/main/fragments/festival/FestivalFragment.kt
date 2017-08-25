@@ -10,6 +10,7 @@ import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.view.festival.FestivalDetailActivity
 import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
+import com.pickth.gachi.view.gachi.GachiDetailActivity
 import com.pickth.gachi.view.main.MainActivity
 import com.pickth.gachi.view.main.fragments.TapBaseFragment
 import com.pickth.gachi.view.main.fragments.festival.adapter.FestivalAdapter
@@ -33,6 +34,7 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
         mPopularAdapter = FestivalAdapter()
         mPopularGachiAdapter = FestivalDetailAdapter(object: OnItemClickListener {
             override fun onItemClick(position: Int) {
+                activity.startActivity<GachiDetailActivity>()
             }
 
         })

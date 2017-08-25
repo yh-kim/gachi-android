@@ -9,8 +9,9 @@
     <string name="title_gachi">Gachi</string>
     <string name="title_chat">Chat</string>
     <string name="title_alarm">Alarm</string>
-    <string name="title_myinfo">Myinfo</string>
+    <string name="title_myinfo">My info</string>
     <string name="title_search">Search</string>
+    <string name="title_gachi_detail">Gachi info</string>
 
     <string name="title_signup">Sign up</string>
     <string name="title_signin_with_email">Sign in with email</string>

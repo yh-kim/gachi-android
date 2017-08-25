@@ -26,12 +26,15 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import com.pickth.gachi.extensions.convertDpToPixel
 import com.pickth.gachi.util.MyBlurTransformation
 import com.pickth.gachi.util.MyDividerItemDecoration
 import com.pickth.gachi.util.OnItemClickListener
@@ -116,12 +119,15 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
                 if(tv_festival_detail_detail.lineCount > 2) {
                     Log.d(TAG, "is ellipsis?  ${tv_festival_detail_detail.layout.getEllipsisCount(2) > 0}  ${tv_festival_detail_detail.layout.getEllipsisCount(2)}")
 
-                    tv_festival_detail_info_more.visibility = View.VISIBLE
-                    tv_festival_detail_info_more.setOnClickListener {
-                        tv_festival_detail_info_more.ellipsize = null
-                        tv_festival_detail_detail.maxLines = Integer.MAX_VALUE
-                        tv_festival_detail_info_more.visibility = View.GONE
+                    if(tv_festival_detail_detail.layout.getEllipsisCount(2) > 0) {
+                        tv_festival_detail_info_more.visibility = View.VISIBLE
+                        tv_festival_detail_info_more.setOnClickListener {
+                            tv_festival_detail_info_more.ellipsize = null
+                            tv_festival_detail_detail.maxLines = Integer.MAX_VALUE
+                            tv_festival_detail_info_more.visibility = View.GONE
+                        }
                     }
+
                 }
             }
 
@@ -138,6 +144,22 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
                         }
                     })
 
+            val genres = it.getJSONArray("genres")
+            for(i in 0..genres.length() - 1) {
+                val genre = genres.getJSONObject(i)
+                val childView = layoutInflater.inflate(R.layout.item_festival_genre, null).apply {
+                    val tvGenre = findViewById<TextView>(R.id.tv_item_festival_genre)
+                    tvGenre.text = "#" + genre.getString("genre").trim()
+
+                    if(i > 0) {
+                        tvGenre.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                                .apply { setMargins(convertDpToPixel(7),0,0,0) }
+                    }
+                }
+
+                ll_festival_detail_genres.addView(childView)
+
+            }
 
             // gachi
             var gachis = it.getJSONArray("leadrooms")
