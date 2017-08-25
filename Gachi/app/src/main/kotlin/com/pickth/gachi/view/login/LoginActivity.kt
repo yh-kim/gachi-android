@@ -159,17 +159,26 @@ class LoginActivity : BaseActivity() {
                                 .enqueue(object: Callback<ResponseBody> {
                                     override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
                                         Log.d(TAG, "getUser onResponse, code: ${response.code()}")
-                                        val json = response.body()?.string()
+                                        val json = JSONObject(response.body()?.string())
                                         Log.d(TAG, "getUser onResponse, json: ${json}")
 
-                                        val init_step = JSONObject(json).getInt("init_step")
-                                        val fbid = JSONObject(json).getString("fbid")
-                                        val profileImage = JSONObject(json).getString("profile_image")
-                                        val nickname = JSONObject(json).getString("nickname")
-                                        val age = JSONObject(json).getString("age")
-                                        val gender = JSONObject(json).getString("gender")
-                                        val location = JSONObject(json).getString("location")
+                                        val init_step = json.getInt("init_step")
+                                        val fbid = json.getString("fbid")
+                                        val profileImage = json.getString("profile_image")
+                                        val nickname = json.getString("nickname")
+                                        val age = json.getString("age")
+                                        val gender = json.getString("gender")
+                                        val location = json.getString("location")
 
+                                        // gachi
+                                        var gachiArray = ArrayList<String>()
+                                        val gachis = json.getJSONArray("leadrooms")
+                                        for(i in 0..gachis.length() - 1) {
+                                            gachiArray.add(gachis.getJSONObject(i)
+                                                    .getString("leadroom_id"))
+                                        }
+
+                                        // set user
                                         val user = UserInfoManager.User(uid)
 
                                         user.isAddInfo = init_step != 0
@@ -179,6 +188,7 @@ class LoginActivity : BaseActivity() {
                                         if(age != "null") user.age = age.toInt()
                                         if(gender != "null") user.gender = gender
                                         if(location != "null") user.region = location
+                                        if(gachiArray.size != 0) user.gachi = gachiArray
 
                                         UserInfoManager.setUser(applicationContext, user)
                                         Log.d(TAG, "user info: ${UserInfoManager.getUser(applicationContext).toString()}")

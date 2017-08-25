@@ -2,6 +2,7 @@ package com.pickth.gachi.view.main.fragments.chat
 
 import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.util.OnItemClickListener
+import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.main.fragments.chat.adapter.Chat
 import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapterContract
 
@@ -34,10 +35,17 @@ class ChatPresenter: ChatContract.Presenter, OnItemClickListener {
         mView.intentToChatDetailActivity(position)
     }
 
-    // TODO: Remove test case
-    fun addTest() {
-        for(i in 0..0) {
-            mChatModel.addItem(Chat("${i}번째 대화방입니다."))
+    override fun getChatList() {
+        val gachis = UserInfoManager
+                .getUser(mView.getContext())
+                ?.gachi
+
+        if(gachis != null) {
+            for(i in gachis) {
+
+                // TODO get chat info
+                mChatModel.addItem(Chat("${i} 대화방입니다."))
+            }
         }
     }
 }

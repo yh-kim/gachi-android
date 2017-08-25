@@ -37,14 +37,14 @@ object UserInfoManager {
         context.getSharedPreferences("gachi", 0)
                 .edit()
                 .putString("user", "")
-                .commit()
+                .apply()
     }
 
     fun notifyDataSetChanged(context: Context) {
         context.getSharedPreferences("gachi", 0)
                 .edit()
                 .putString("user", Gson().toJson(mUser).toString())
-                .commit()
+                .apply()
     }
 
     data class User(var uid: String,
@@ -55,5 +55,6 @@ object UserInfoManager {
                     var age: Int? = null,
                     var gender: String? = null,
                     var region: String? = null,
-                    var genre: ArrayList<String>? = null)
+                    var genre: ArrayList<String>? = null,
+                    var gachi: ArrayList<String>? = null)
 }
