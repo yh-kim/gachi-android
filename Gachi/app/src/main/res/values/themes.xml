@@ -16,6 +16,10 @@
         <item name="actionBarSize">49dp</item>
     </style>
 
+    <style name="AppTheme.NoTitle.SplashTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
     <style name="TitleText">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">15sp</item>

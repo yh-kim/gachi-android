@@ -7,7 +7,7 @@
         android:id="@+id/dialog_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/test"
+        android:src="@drawable/ic_splah_gachi"
         />
 
 </LinearLayout>

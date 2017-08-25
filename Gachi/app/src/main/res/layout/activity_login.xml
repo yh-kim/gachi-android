@@ -20,12 +20,12 @@
         android:textSize="13sp" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
+        android:background="@drawable/ic_splah_gachi"
         android:layout_marginTop="45dp"
-        android:tint="@color/colorPrimary"
-        app:srcCompat="@drawable/ic_gachi" />
+        android:tint="@color/colorPrimary" />
 
     <TextView
         style="@style/FontTheme.R"

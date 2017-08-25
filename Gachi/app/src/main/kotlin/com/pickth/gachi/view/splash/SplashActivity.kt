@@ -3,7 +3,6 @@ package com.pickth.gachi.view.splash
 import android.os.Bundle
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
-import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.util.UserInfoManager
 import com.pickth.gachi.view.login.LoginActivity
@@ -20,7 +19,7 @@ class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+//        setContentView(R.layout.activity_splash)
 
         val user = FirebaseAuth.getInstance().currentUser
         if(user != null) {
