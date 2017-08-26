@@ -130,6 +130,7 @@
             android:text="@string/title_gachi_participant" />
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_gachi_participant_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="35dp"

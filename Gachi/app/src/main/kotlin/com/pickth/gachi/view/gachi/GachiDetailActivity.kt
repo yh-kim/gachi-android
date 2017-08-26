@@ -17,6 +17,7 @@
 package com.pickth.gachi.view.gachi
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.MenuItem
 import com.bumptech.glide.Glide
@@ -24,6 +25,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.net.service.GachiService
+import com.pickth.gachi.util.MyDividerItemDecoration
+import com.pickth.gachi.view.chat.Participant
 import kotlinx.android.synthetic.main.activity_gachi_detail.*
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -32,6 +35,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GachiDetailActivity: BaseActivity() {
+
+    private lateinit var mParticipantAdapter: GachiDetailParticipantAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gachi_detail)
@@ -41,6 +47,13 @@ class GachiDetailActivity: BaseActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        mParticipantAdapter = GachiDetailParticipantAdapter()
+        rv_gachi_participant_list.run {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = mParticipantAdapter
+            addItemDecoration(MyDividerItemDecoration(context, LinearLayoutManager.HORIZONTAL, 10, false))
+        }
 
         getGachiInfo()
     }
@@ -71,6 +84,17 @@ class GachiDetailActivity: BaseActivity() {
                         // get info
                         var title = json.getString("detail")
                         var maxNum = json.getInt("max_follower")
+
+                        // get member
+                        var members = json.getJSONArray("member")
+                        for(i in 0..members.length() - 1) {
+                            var member = members.getJSONObject(i)
+                            var memberNickname = member.getString("nickname")
+                            var memberProfile = member.getString("profile_image")
+
+                            // bind
+                            mParticipantAdapter.addItem(Participant(memberNickname, memberProfile))
+                        }
 
                         // get leader
                         val leader = json.getJSONObject("leader")
