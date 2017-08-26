@@ -25,6 +25,7 @@ import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
 import com.pickth.gachi.net.service.UserService
 import com.pickth.gachi.util.UserInfoManager
+import com.pickth.gachi.view.gachi.Gachi
 import com.pickth.gachi.view.main.MainActivity
 import com.pickth.gachi.view.signup.AddInfoActivity
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -147,11 +148,15 @@ class SignInWithEmailActivity: BaseActivity() {
                         val location = json.getString("location")
 
                         // gachi
-                        var gachiArray = ArrayList<String>()
+                        var gachiArray = ArrayList<Gachi>()
                         val gachis = json.getJSONArray("leadrooms")
                         for(i in 0..gachis.length() - 1) {
-                            gachiArray.add(gachis.getJSONObject(i)
-                                    .getString("leadroom_id"))
+                            var gachi = gachis.getJSONObject(i)
+                            var lid = gachi.getString("leadroom_id")
+                            var title = gachi.getString("detail")
+                            var leaderProfile = gachi.getJSONObject("leader")
+                                    .getString("profile_image")
+                            gachiArray.add(Gachi(lid, title, leaderProfile))
                         }
 
                         // set user

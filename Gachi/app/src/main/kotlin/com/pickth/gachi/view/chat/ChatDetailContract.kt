@@ -23,6 +23,7 @@ import com.pickth.gachi.view.chat.adapter.ChatDetailAdapterContract
 interface ChatDetailContract {
     interface View: BaseView<Presenter> {
         fun scrollToPosition(position: Int)
+        fun getLid(): String
     }
 
     interface Presenter: BasePresenter {

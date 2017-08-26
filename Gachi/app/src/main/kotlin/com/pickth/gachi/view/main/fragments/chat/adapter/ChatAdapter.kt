@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.pickth.gachi.R
 import com.pickth.gachi.util.OnItemClickListener
+import com.pickth.gachi.view.gachi.Gachi
 
 /**
  * Created by yonghoon on 2017-07-23.
@@ -12,7 +13,7 @@ import com.pickth.gachi.util.OnItemClickListener
  */
 class ChatAdapter: RecyclerView.Adapter<ChatViewHolder>(), ChatAdapterContract.View, ChatAdapterContract.Model {
 
-    val itemList: ArrayList<Chat> = ArrayList()
+    val itemList: ArrayList<Gachi> = ArrayList()
     var mOnItemClickListener: OnItemClickListener?= null
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ChatViewHolder {
@@ -33,9 +34,9 @@ class ChatAdapter: RecyclerView.Adapter<ChatViewHolder>(), ChatAdapterContract.V
         mOnItemClickListener = clickListener
     }
 
-    override fun getItem(position: Int): Chat = itemList[position]
+    override fun getItem(position: Int): Gachi = itemList[position]
 
-    override fun addItem(item: Chat) {
+    override fun addItem(item: Gachi) {
         itemList.add(item)
         notifyItemInserted(itemCount - 1)
     }

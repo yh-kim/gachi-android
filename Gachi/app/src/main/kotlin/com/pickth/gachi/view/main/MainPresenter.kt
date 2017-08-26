@@ -4,6 +4,7 @@ import android.util.Log
 import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.net.service.UserService
 import com.pickth.gachi.util.UserInfoManager
+import com.pickth.gachi.view.gachi.Gachi
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -42,11 +43,15 @@ class MainPresenter(): MainContract.Presenter {
                         val location = json.getString("location")
 
                         // gachi
-                        var gachiArray = ArrayList<String>()
+                        var gachiArray = ArrayList<Gachi>()
                         val gachis = json.getJSONArray("leadrooms")
                         for(i in 0..gachis.length() - 1) {
-                            gachiArray.add(gachis.getJSONObject(i)
-                                    .getString("leadroom_id"))
+                            var gachi = gachis.getJSONObject(i)
+                            var lid = gachi.getString("leadroom_id")
+                            var title = gachi.getString("detail")
+                            var leaderProfile = gachi.getJSONObject("leader")
+                                    .getString("profile_image")
+                            gachiArray.add(Gachi(lid, title, leaderProfile))
                         }
 
                         // set user

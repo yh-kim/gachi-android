@@ -41,7 +41,8 @@ class ChatFragment : TapBaseFragment(), ChatContract.View {
             attachView(this@ChatFragment)
             setChatAdapterView(mAdapter)
             setChatAdapterModel(mAdapter)
-            getChatList()
+            if(isUser()) getChatList()
+            else showGuestScreen()
         }
 
         return rootView
@@ -55,8 +56,11 @@ class ChatFragment : TapBaseFragment(), ChatContract.View {
         scrollToTop()
     }
 
-    override fun intentToChatDetailActivity(position: Int) {
-        activity.startActivity<ChatDetailActivity>()
+    override fun intentToChatDetailActivity(lid: String) {
+        activity.startActivity<ChatDetailActivity>("lid" to lid)
+    }
+
+    override fun showGuestScreen() {
     }
 
     override fun scrollToTop() {

@@ -11,9 +11,10 @@ import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapterContract
  */
 interface ChatContract {
     interface View: BaseView<Presenter> {
-        fun intentToChatDetailActivity(position: Int)
+        fun intentToChatDetailActivity(lid: String)
         fun scrollToTop()
         fun getContext(): Context
+        fun showGuestScreen()
     }
 
     interface Presenter: BasePresenter {
@@ -21,5 +22,6 @@ interface ChatContract {
         fun setChatAdapterModel(chatModel: ChatAdapterContract.Model)
         fun getItemCount(): Int
         fun getChatList()
+        fun isUser(): Boolean
     }
 }

@@ -113,6 +113,8 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
 
     }
 
+    override fun getLid(): String = intent.getStringExtra("lid")
+
     override fun scrollToPosition(position: Int) {
         if(mPresenter.getItemCount() < 0) return
 

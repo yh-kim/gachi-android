@@ -3,6 +3,7 @@ package com.pickth.gachi.util
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.pickth.gachi.view.gachi.Gachi
 
 /**
  * Created by yonghoon on 2017-08-24
@@ -56,5 +57,5 @@ object UserInfoManager {
                     var gender: String? = null,
                     var region: String? = null,
                     var genre: ArrayList<String>? = null,
-                    var gachi: ArrayList<String>? = null)
+                    var gachi: ArrayList<Gachi>? = null)
 }

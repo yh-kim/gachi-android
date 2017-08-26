@@ -3,7 +3,7 @@ package com.pickth.gachi.view.main.fragments.chat
 import com.pickth.commons.mvp.BaseView
 import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.util.UserInfoManager
-import com.pickth.gachi.view.main.fragments.chat.adapter.Chat
+import com.pickth.gachi.view.gachi.Gachi
 import com.pickth.gachi.view.main.fragments.chat.adapter.ChatAdapterContract
 
 /**
@@ -32,7 +32,7 @@ class ChatPresenter: ChatContract.Presenter, OnItemClickListener {
     override fun getItemCount(): Int = mChatModel.getItemCount()
 
     override fun onItemClick(position: Int) {
-        mView.intentToChatDetailActivity(position)
+        mView.intentToChatDetailActivity(mChatModel.getItem(position).lid)
     }
 
     override fun getChatList() {
@@ -41,11 +41,12 @@ class ChatPresenter: ChatContract.Presenter, OnItemClickListener {
                 ?.gachi
 
         if(gachis != null) {
-            for(i in gachis) {
-
-                // TODO get chat info
-                mChatModel.addItem(Chat("${i} 대화방입니다."))
+            for(gachi in gachis) {
+                mChatModel.addItem(Gachi(gachi.lid, gachi.title, gachi.userImagePath))
             }
         }
     }
+
+    override fun isUser(): Boolean = UserInfoManager
+            .getUser(mView.getContext()) != null
 }
