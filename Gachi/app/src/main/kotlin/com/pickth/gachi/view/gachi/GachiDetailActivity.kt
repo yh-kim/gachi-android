@@ -89,11 +89,12 @@ class GachiDetailActivity: BaseActivity() {
                         var members = json.getJSONArray("member")
                         for(i in 0..members.length() - 1) {
                             var member = members.getJSONObject(i)
+                            var memberUid = member.getString("uid")
                             var memberNickname = member.getString("nickname")
                             var memberProfile = member.getString("profile_image")
 
                             // bind
-                            mParticipantAdapter.addItem(Participant(memberNickname, memberProfile))
+                            mParticipantAdapter.addItem(Participant(memberUid, memberNickname, memberProfile))
                         }
 
                         // get leader

@@ -19,6 +19,7 @@ package com.pickth.gachi.view.chat
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -29,6 +30,8 @@ import com.pickth.gachi.util.GridSpacingItemDecoration
 import com.pickth.gachi.view.chat.adapter.ChatDetailAdapter
 import kotlinx.android.synthetic.main.activity_chat_detail.*
 import org.jetbrains.anko.toast
+import org.json.JSONObject
+import java.text.SimpleDateFormat
 
 class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
 
@@ -50,8 +53,6 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
             setDisplayShowTitleEnabled(false)
             setDisplayHomeAsUpEnabled(true)
         }
-
-//        title = resources.getStringArray(R.array.page_title)[0]
 
         // adpater
         mAdapter = ChatDetailAdapter()
@@ -75,7 +76,7 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
             setChatDetailAdapterView(mAdapter)
             setChatDetailAdapterModel(mAdapter)
             setParticipantAdapter(mParticipantAdapter)
-            getParticipant()
+            getGachiInfo()
         }
 
         btn_chat_detail_send.setOnClickListener {
@@ -95,10 +96,7 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
             tv_chat_show.visibility = View.VISIBLE
 
             rv_chat_participant_list.run {
-//                clearAnimation()
                 visibility = View.VISIBLE
-
-//                setShowVerticalTranslateAnimation(2000)
             }
         }
 
@@ -119,6 +117,33 @@ class ChatDetailActivity: BaseActivity(), ChatDetailContract.View {
         if(mPresenter.getItemCount() < 0) return
 
         rv_chat_detail.smoothScrollToPosition(position)
+    }
+
+    override fun bindGachiInfo(responseBody: String) {
+        val json = JSONObject(responseBody)
+        Log.d(TAG, "getGachiInfo onResponse, json: ${json}")
+
+        // get gachi info
+        var title = json.getString("detail")
+        var startDate = json.getString("lead_from").split("T")[0].replace("-",".").trim()
+        var dday = ((System.currentTimeMillis() - SimpleDateFormat("yyyy.MM.dd").parse(startDate).time) / (1000 * 60 * 60 * 24)).toInt()
+
+        // get participant list
+        var members = json.getJSONArray("member")
+        for(i in 0..members.length() - 1) {
+            var member = members.getJSONObject(i)
+
+            var memberUid = member.getString("uid")
+            var memberNickname = member.getString("nickname")
+            var memberProfile = member.getString("profile_image")
+
+            // bind participant
+            mParticipantAdapter.addItem(Participant(memberUid, memberNickname, memberProfile))
+        }
+
+        // bind view
+        tv_chat_detail_title.text = title
+        tv_chat_detail_dday.text = "D - ${if(dday == 0) "day" else dday}"
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

@@ -24,6 +24,7 @@ interface ChatDetailContract {
     interface View: BaseView<Presenter> {
         fun scrollToPosition(position: Int)
         fun getLid(): String
+        fun bindGachiInfo(responseBody: String)
     }
 
     interface Presenter: BasePresenter {
@@ -32,6 +33,6 @@ interface ChatDetailContract {
         fun setParticipantAdapter(adapter: ParticipantAdapter)
         fun getItemCount(): Int
         fun sendMessage(msg: String)
-        fun getParticipant()
+        fun getGachiInfo()
     }
 }

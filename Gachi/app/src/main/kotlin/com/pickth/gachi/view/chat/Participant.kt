@@ -20,4 +20,4 @@ package com.pickth.gachi.view.chat
  * Created by yonghoon on 2017-08-24
  */
 
-data class Participant(var name: String, var imageUrl: String)
+data class Participant(var uid: String, var name: String, var imageUrl: String)

@@ -16,9 +16,15 @@
 
 package com.pickth.gachi.view.chat
 
+import android.util.Log
 import com.pickth.commons.mvp.BaseView
+import com.pickth.gachi.net.service.GachiService
 import com.pickth.gachi.view.chat.adapter.ChatDetailAdapterContract
 import com.pickth.gachi.view.chat.adapter.ChatMessage
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -56,7 +62,19 @@ class ChatDetailPresenter: ChatDetailContract.Presenter {
         mView.scrollToPosition(getItemCount())
     }
 
-    override fun getParticipant() {
-        for(i in 0..11) mParticipantAdapter.addItem(Participant("이름 $i", ""))
+    override fun getGachiInfo() {
+        GachiService().getGachiInfo(mView.getLid())
+                .enqueue(object: Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                        Log.d("Gachi__ChatPresenter", "getGachiInfo onResponse, code: ${response.code()}")
+                        if(response.code() != 200) return
+
+                        mView.bindGachiInfo(response.body()?.string()!!)
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                    }
+
+                })
     }
 }

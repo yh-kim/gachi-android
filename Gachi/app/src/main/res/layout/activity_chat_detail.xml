@@ -23,11 +23,11 @@
             app:titleTextAppearance="@style/TitleText">
 
             <TextView
+                android:id="@+id/tv_chat_detail_title"
                 style="@style/FontTheme.B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="title"
                 android:textColor="@color/colorDarkBlack" />
 
         </android.support.v7.widget.Toolbar>
@@ -48,12 +48,12 @@
         android:paddingStart="20dp">
 
         <TextView
+            android:id="@+id/tv_chat_detail_dday"
             style="@style/FontTheme.B"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:letterSpacing="-0.39"
-            android:text="D - 30"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
@@ -82,7 +82,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_chat_participant_list"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:overScrollMode="never"
         android:paddingEnd="20dp"

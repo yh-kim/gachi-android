@@ -20,7 +20,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.pickth.gachi.R
+import kotlinx.android.synthetic.main.item_participant.view.*
 
 /**
  * Created by yonghoon on 2017-08-24
@@ -52,7 +55,20 @@ class ParticipantAdapter: RecyclerView.Adapter<ParticipantAdapter.ParticipantVie
 
     class ParticipantViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun onBind(item: Participant, position: Int) {
-
+            with(itemView) {
+                if(item.imageUrl == "") {
+                    Glide.with(context)
+                            .load(R.drawable.test)
+                            .apply(RequestOptions().circleCrop())
+                            .into(iv_participant_image)
+                } else {
+                    Glide.with(context)
+                            .load(item.imageUrl)
+                            .apply(RequestOptions().circleCrop())
+                            .into(iv_participant_image)
+                }
+                tv_participant_nickname.text = item.name
+            }
         }
     }
 }
