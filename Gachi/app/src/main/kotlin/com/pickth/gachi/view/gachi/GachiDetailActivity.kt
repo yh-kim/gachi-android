@@ -17,10 +17,19 @@
 package com.pickth.gachi.view.gachi
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.pickth.gachi.R
 import com.pickth.gachi.base.BaseActivity
+import com.pickth.gachi.net.service.GachiService
 import kotlinx.android.synthetic.main.activity_gachi_detail.*
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GachiDetailActivity: BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +42,7 @@ class GachiDetailActivity: BaseActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
+        getGachiInfo()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -44,5 +53,53 @@ class GachiDetailActivity: BaseActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun getLid(): String = intent.getStringExtra("lid")
+
+    fun getGachiInfo() {
+        GachiService()
+                .getGachiInfo(getLid())
+                .enqueue(object: Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>) {
+                        Log.d(TAG, "getGachiInfo onResponse, code: ${response.code()}")
+                        if(response.code() != 200) return
+
+                        val json = JSONObject(response.body()?.string())
+                        Log.d(TAG, "getGachiInfo onResponse, json: ${json}")
+
+                        // get info
+                        var title = json.getString("detail")
+                        var maxNum = json.getInt("max_follower")
+
+                        // get leader
+                        val leader = json.getJSONObject("leader")
+                        var uid = leader.getString("uid")
+                        var nickname = leader.getString("nickname")
+                        var profile = leader.getString("profile_image")
+
+                        // bind
+                        if(title == "null") title = "no title"
+                        tv_gachi_title.text = title
+                        tv_gachi_maxNum.text = "${maxNum}명 모집 중"
+                        if(profile == "") {
+                            Glide.with(applicationContext)
+                                    .load(R.drawable.test)
+                                    .apply(RequestOptions().circleCrop())
+                                    .into(iv_gachi_leader_profile)
+                        } else {
+                            Glide.with(applicationContext)
+                                    .load(profile)
+                                    .apply(RequestOptions().circleCrop())
+                                    .into(iv_gachi_leader_profile)
+                        }
+                        tv_gachi_leader_nickname.text = nickname
+                        tv_gachi_leader_info.text = "지역 없음\n20대 중반"
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                    }
+
+                })
     }
 }

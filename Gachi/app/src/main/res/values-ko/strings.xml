@@ -29,6 +29,10 @@
     <!-- search -->
     <string name="search_festival_hint">어느 공연을 찾으시나요?</string>
 
+    <!-- gachi -->
+    <string name="gachi_participate">참여하기</string>
+    <string name="gachi_to_chat">채팅하기</string>
+
     <!-- chat -->
     <string name="chat_input_message">메세지를 입력해주세요</string>
     <string name="chat_send">전송</string>

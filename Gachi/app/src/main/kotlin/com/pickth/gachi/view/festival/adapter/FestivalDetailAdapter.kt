@@ -73,7 +73,7 @@ class FestivalDetailAdapter(val listener: OnItemClickListener): RecyclerView.Ada
                             .into(iv_festival_gachi)
                 } else {
                     Glide.with(view)
-                            .load(R.drawable.test)
+                            .load(item.userImagePath)
                             .apply(RequestOptions().circleCrop())
                             .into(iv_festival_gachi)
                 }

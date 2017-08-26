@@ -28,6 +28,10 @@
 
     <!-- search -->
     <string name="search_festival_hint">What is the festival to look for?</string>
+    
+    <!-- gachi -->
+    <string name="gachi_participate">participate</string>
+    <string name="gachi_to_chat">chat</string>
 
     <!-- chat -->
     <string name="chat_input_message">Input message</string>

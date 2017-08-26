@@ -34,7 +34,7 @@ class FestivalFragment : TapBaseFragment(), FestivalContract.View {
         mPopularAdapter = FestivalAdapter()
         mPopularGachiAdapter = FestivalDetailAdapter(object: OnItemClickListener {
             override fun onItemClick(position: Int) {
-                activity.startActivity<GachiDetailActivity>()
+                activity.startActivity<GachiDetailActivity>("lid" to "b4f34de2-3a0c-495a-b04f-b7063d7c320c")
             }
 
         })

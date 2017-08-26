@@ -41,8 +41,9 @@ import com.pickth.gachi.util.OnItemClickListener
 import com.pickth.gachi.util.StringFormat
 import com.pickth.gachi.view.festival.adapter.FestivalDetailAdapter
 import com.pickth.gachi.view.gachi.Gachi
+import com.pickth.gachi.view.gachi.GachiDetailActivity
 import kotlinx.android.synthetic.main.activity_festival_detail.*
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 import org.json.JSONObject
 
 class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
@@ -75,7 +76,7 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
 
         mAdapter = FestivalDetailAdapter(object: OnItemClickListener {
             override fun onItemClick(position: Int) {
-                toast(mAdapter.getItem(position).lid)
+                startActivity<GachiDetailActivity>("lid" to mAdapter.getItem(position).lid)
             }
         })
         rv_festival_gachi.run {
@@ -167,7 +168,7 @@ class FestivalDetailActivity: BaseActivity(), FestivalDetailContract.View {
             for(i in 0..gachis.length() - 1) {
                 var gachi = gachis.getJSONObject(i)
                 val lid = gachi.getString("leadroom_id")
-                val title = gachi.getString("title")
+                val title = gachi.getString("detail")
 
                 val leaderImage = gachi.getJSONObject("leader")
                         .getString("profile_image")
