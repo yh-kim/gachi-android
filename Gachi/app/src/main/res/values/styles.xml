@@ -4,7 +4,6 @@
 
     <style name="Gachi.Title">
         <item name="android:textSize">22sp</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.54</item>
         <item name="android:fontFamily">@font/noto_bold</item>
         <item name="android:textColor">@color/colorDarkBlack</item>
         <item name="android:layout_marginTop">19dp</item>
